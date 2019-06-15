@@ -20,3 +20,33 @@ enum TransformerError: Error{
     case notAbleToRestore
     case notAbleToCreateEmptyTransformer
 }
+
+
+enum TransformerState: Int {
+    case Alive
+    case Died
+    case Born
+    case Empty
+    
+    var isAlive: Bool {
+        return self == .Alive || self == .Born
+    }
+}
+
+protocol TeamStatisticsDataSource {
+    var team: Team {get set}
+    var aliveCount: Int { get }
+    var diedCount: Int { get }
+  //  mutating func reset()
+    //var stasis: Bool { get }
+}
+
+
+protocol FightDataSource: class{
+    func findOpponentFor(_ transformer1: Int)-> Transformer?
+    func startFighting(fightOver: ()->Void)
+    func reset()
+    var statistics: [TeamStatisticsDataSource]? { get }
+    var fighters: [Transformer]? {get set}
+   
+}

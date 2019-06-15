@@ -52,20 +52,63 @@ class Transformer: NSObject, NSCoding{
     var firepower:Int?
     var skill: Int?
     var teamIcon: String?
+    var state: TransformerState?
     
-    init(_id: Int, _team: Team, _name: String, _strength: Int, _intelligence: Int, _speed: Int, _endurance: Int,
-        _rank: Int, _courage: Int, _firepower: Int, _skill: Int, _teamIcon: String   ) {
-        self.transformerId = _id
-        self.transformerTeam = _team
-        self.transformerName = _name
-        self.strength = _strength
-        self.intelligence = _intelligence
-        self.speed = _speed
-        self.endurance = _endurance
-        self.rank = _rank
-        self.courage = _courage
-        self.firepower = _firepower
-        self.skill = _skill
-        self.teamIcon = _teamIcon
+    init(id: Int, team: Team, name: String, strength: Int, intelligence: Int, speed: Int, endurance: Int,
+         rank: Int, courage: Int, firepower: Int, skill: Int, teamIcon: String, state: TransformerState   ) {
+        self.transformerId = id
+        self.transformerTeam = team
+        self.transformerName = name
+        self.strength = strength
+        self.intelligence = intelligence
+        self.speed = speed
+        self.endurance = endurance
+        self.rank = rank
+        self.courage = courage
+        self.firepower = firepower
+        self.skill = skill
+        self.teamIcon = teamIcon
+        self.state = state
+    }
+}
+
+struct TeamStatistics: TeamStatisticsDataSource {
+    var team: Team
+    var aliveCount: Int
+    var diedCount: Int
+    func reset() {
+        
+    }
+}
+
+class FightModel: FightDataSource{
+    var fighters: [Transformer]?
+    var statistics: [TeamStatisticsDataSource]?
+    var currentFighters: [Transformer]?
+    
+    init(fighters: [Transformer]){
+        self.fighters = fighters
+        // initialize statistics for both the teams
+    }
+}
+
+extension FightModel{
+    func findOpponentFor(_ transformer1: Int) -> Transformer? {
+        //Sort the fighters by rank -- This should be already done when transfer is created and added. SHould not be doen here
+        //Get Transformer from the int.
+        //Get the opponent Tramsformer from the other group based on the rank
+        //populate currentFighters array with these 2 fighters
+        return nil
+    }
+    
+    func startFighting(fightOver: ()->Void) {
+        //Start the fight between fighters in current fighters
+        //Use rules to determine the winner
+        //update the statistics array
+        fightOver()
+    }
+    
+    func reset() {
+        
     }
 }
