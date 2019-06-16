@@ -33,6 +33,20 @@ enum TransformerState: Int {
     }
 }
 
+struct Messages {
+    static let TransformerReadyToBeSaved = "Transformer Ready To be Saved"
+    static let TransformerListChanged = "Transformer List changed"
+    static let TransformerDeleted = "Transformer Deleted"
+//    static let RestaurantCanBeRemovedFromFavorite = "Restaurant can be Deleted from Saved list"
+//    static let ImageArrived = "Image arrived"
+    
+}
+
+struct Consts{
+    static let KEY0 = "Key0"
+
+}
+
 protocol TeamStatisticsDataSource {
     var team: Team {get set}
     var aliveCount: Int { get }
