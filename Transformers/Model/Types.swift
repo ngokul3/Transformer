@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum Team {
+    case autobots
+    case decepticon
+}
+
 enum TransformerError: Error{
     case invalidTransformer
     case invalidRowSelection
@@ -33,13 +38,35 @@ enum TransformerState: Int {
     }
 }
 
-struct Messages {
+enum MessageType: String{
+    case winnerFound = "Winner among Transformer"
+    case bothDead = "Both Transformers are dead"
+    case gameOver = "All Transformers are dead"
+    
+    var asNN: Notification.Name {
+        return Notification.Name(self.rawValue)
+    }
+    var asNotification: Notification {
+        return Notification(name: asNN)
+    }
+}
+struct Messages{
     static let TransformerReadyToBeSaved = "Transformer Ready To be Saved"
     static let TransformerListChanged = "Transformer List changed"
     static let TransformerDeleted = "Transformer Deleted"
+    
 //    static let RestaurantCanBeRemovedFromFavorite = "Restaurant can be Deleted from Saved list"
 //    static let ImageArrived = "Image arrived"
     
+}
+
+struct TeamStatistics: TeamStatisticsDataSource {
+    var team: Team
+    var aliveCount: Int
+    var diedCount: Int
+    func reset() {
+        
+    }
 }
 
 struct Consts{
@@ -56,11 +83,14 @@ protocol TeamStatisticsDataSource {
 }
 
 
-protocol FightDataSource: class{
-    func findOpponentFor(_ transformer1: Int)-> Transformer?
-    func startFighting(fightOver: ()->Void)
+protocol FightProtocol: class{
+   // func findOpponentFor(_ transformer1: Int)-> Transformer?
+    func startFighting(rank: Int, fightOver: ()->Void)
     func reset()
     var statistics: [TeamStatisticsDataSource]? { get }
-    var fighters: [Transformer]? {get set}
-   
+    var fighters: [Transformer] {get set}
+}
+
+protocol RuleProtocol{
+    
 }
