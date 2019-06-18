@@ -103,13 +103,14 @@ protocol FightProtocol: class{
 
 protocol TransformerViewInput{
     func setUpTransformers(transformers: [Transformer])
-    func displayStatistics(statistics: TeamStatisticsDataSource)
+    //func displayStatistics(statistics: TeamStatisticsDataSource)
 }
 
 protocol TransformerViewOutput {
+    func viewReady()
     func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
-    
+    func addTransformer(transformer: Transformer)
 }
 
 protocol CollectionDataProvider{

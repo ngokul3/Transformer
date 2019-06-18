@@ -11,7 +11,7 @@ import Foundation
 class TransformerPresenter{
     var view: TransformerViewInput?
     var transformersOpt: [Transformer]?
-    
+    let model = TransformerModel()
     var fightProtocol: FightProtocol?
     
     init() {
@@ -20,7 +20,7 @@ class TransformerPresenter{
     
     
     func viewReady(){
-        
+       // let transformerArray = self.model
     }
 }
 
@@ -46,5 +46,9 @@ extension TransformerPresenter: TransformerViewOutput{
         fightProtocol?.evaluateFighters {
             
         }
+    }
+    
+    func addTransformer(transformer: Transformer){
+        
     }
 }

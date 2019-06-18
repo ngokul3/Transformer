@@ -10,6 +10,12 @@ import UIKit
 
 class AddEditVC: UIViewController {
 
+    @IBOutlet weak var teamIconView: UIImageView!
+    
+    @IBOutlet weak var nameText: UITextField!
+    @IBAction func btnSaveClick(_ sender: UIBarButtonItem) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

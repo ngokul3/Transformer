@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="-468.08035714285711"/>
         </scene>
-        <!--Add EditVC-->
+        <!--Detail-->
         <scene sceneID="zo8-3i-H6Q">
             <objects>
                 <viewController id="KC0-ez-epP" customClass="AddEditVC" customModule="Transformers" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,21 +115,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKa-KR-y5X">
-                                <rect key="frame" x="20" y="190" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKa-KR-y5X">
+                                <rect key="frame" x="20" y="178" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="amR-fP-09A">
+                                <rect key="frame" x="20" y="108" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7kB-j6-8AP"/>
+                                    <constraint firstAttribute="width" constant="50" id="DKe-FY-IDG"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KCo-qe-grN">
+                                <rect key="frame" x="110" y="173.5" width="284" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eeZ-Ew-NEh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SKa-KR-y5X" secondAttribute="trailing" symbolic="YES" id="0im-Ew-eod"/>
+                            <constraint firstItem="eeZ-Ew-NEh" firstAttribute="trailing" secondItem="KCo-qe-grN" secondAttribute="trailing" constant="20" id="UzF-LX-ElY"/>
+                            <constraint firstItem="KCo-qe-grN" firstAttribute="leading" secondItem="SKa-KR-y5X" secondAttribute="trailing" constant="40" id="bO8-pV-5L0"/>
+                            <constraint firstItem="amR-fP-09A" firstAttribute="leading" secondItem="eeZ-Ew-NEh" secondAttribute="leading" constant="20" id="feB-8J-UmM"/>
+                            <constraint firstItem="SKa-KR-y5X" firstAttribute="leading" secondItem="amR-fP-09A" secondAttribute="leading" id="hfr-IB-P3i"/>
+                            <constraint firstItem="amR-fP-09A" firstAttribute="top" secondItem="eeZ-Ew-NEh" secondAttribute="top" constant="20" id="hgP-7O-lWW"/>
+                            <constraint firstItem="KCo-qe-grN" firstAttribute="centerY" secondItem="SKa-KR-y5X" secondAttribute="centerY" id="iIH-Xa-tXZ"/>
+                            <constraint firstItem="SKa-KR-y5X" firstAttribute="top" secondItem="amR-fP-09A" secondAttribute="bottom" constant="20" id="qyI-80-3aI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eeZ-Ew-NEh"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Detail" id="kdZ-Zq-8tp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="EVI-Wb-1g4">
+                            <connections>
+                                <action selector="btnSaveClick:" destination="KC0-ez-epP" id="EYm-Ce-W0x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameText" destination="KCo-qe-grN" id="Fnt-Yh-x8Q"/>
+                        <outlet property="teamIconView" destination="amR-fP-09A" id="H0j-ES-ZPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHo-Hz-tyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="-469"/>
+            <point key="canvasLocation" x="2402.898550724638" y="-469.41964285714283"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JR1-HX-II8">

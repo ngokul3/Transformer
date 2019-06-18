@@ -264,11 +264,11 @@
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Presenter/Fight.swift"
-                  timestampString = "582509339.424726"
+                  timestampString = "582582677.602752"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
                   offsetFromSymbolStart = "46">
                </Location>
                <Location
@@ -279,11 +279,11 @@
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Presenter/Fight.swift"
-                  timestampString = "582509339.427601"
+                  timestampString = "582582677.605201"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
                   offsetFromSymbolStart = "359">
                </Location>
             </Locations>
