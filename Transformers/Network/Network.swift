@@ -12,8 +12,8 @@ import Alamofire
 
 protocol NetworkProtocol {
     static func getInstance() -> NetworkProtocol
-    
-   
+    func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: String?) -> ())
 }
 
 class NetworkModel: NetworkProtocol{
@@ -32,7 +32,11 @@ class NetworkModel: NetworkProtocol{
         return session
     }()
     
-     var apiKey: String?
+    var apiKey: String?
+    
+    lazy var httpURL: String = {
+        return self.baseURLOpt ?? "" + "transformers"
+    }()
     
     init()
     {
@@ -98,9 +102,7 @@ extension NetworkModel{
             return
         }
         
-        let keyURL = self.baseURLOpt ?? "" + "transformers"
-        
-        if let url = URL(string: keyURL) {
+        if let url = URL(string: httpURL) {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue
             urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
@@ -123,6 +125,48 @@ extension NetworkModel{
                     }
             }
         }
+    }
+    
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: String?) -> ()){
+        guard let myKey = apiKey else{
+            return
+        }
+        
+        let parameters: [String: Any] = [
+            
+            "name" : transformer.transformerName ?? "",
+            "strength" : transformer.strength ?? 0,
+            "speed" : transformer.speed  ?? 0,
+            "endurance" : transformer.endurance ?? 0,
+            "rank" : transformer.rank ?? 0,
+            "courage": transformer.courage ?? 0,
+            "firepower": transformer.firepower ?? 0,
+            "skill": transformer.skill ?? 0,
+            "team": transformer.transformerTeam.debugDescription
+        ]
+        
+        if let url = URL(string: httpURL) {
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = HTTPMethod.post.rawValue
+            urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            urlRequest.httpBody = parameters.debugDescription.data(using: .utf8)
+                
+            Alamofire.request(urlRequest)
+                .responseJSON { response in
+                    debugPrint(response)
+                    
+                    if let status = response.response?.statusCode {
+                        print("Response status: \(status)")
+                    }
+            }
+        }
+        
+        Alamofire.request("http://myserver.com", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+        }
+        
     }
    
     

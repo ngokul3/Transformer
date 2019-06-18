@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Team {
+enum Team: String {
     case autobots
     case decepticon
 }
