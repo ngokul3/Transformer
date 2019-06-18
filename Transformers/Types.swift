@@ -39,6 +39,12 @@ enum TransformerState: Int {
 }
 
 enum MessageType: String{
+    case evaluatedByStrength = "Strength rule"
+    case evaluatedByCourage = "Courage rule"
+    case evaluatedBySkill = "Skill rule"
+    case evaluatedByRank = "Rank rule"
+    case evaluatedByRating = "Rating rule"
+    case evaluatedByName = "Name rule"
     case winnerFound = "Winner among Transformer"
     case bothDead = "Both Transformers are dead"
     case gameOver = "All Transformers are dead"
@@ -83,14 +89,34 @@ protocol TeamStatisticsDataSource {
 }
 
 
+//protocol FightProtocol: class{
+//   // func findOpponentFor(_ transformer1: Int)-> Transformer?
+//    func startFighting(rank: Int, fightOver: ()->Void)
+//    func reset()
+//    var statistics: [TeamStatisticsDataSource]? { get }
+//    var fighters: [Transformer] {get set}
+//}
+
 protocol FightProtocol: class{
-   // func findOpponentFor(_ transformer1: Int)-> Transformer?
-    func startFighting(rank: Int, fightOver: ()->Void)
-    func reset()
-    var statistics: [TeamStatisticsDataSource]? { get }
-    var fighters: [Transformer] {get set}
+    func evaluateFighters(evaluationComplete : ()->Void)
 }
 
-protocol RuleProtocol{
+protocol TransformerViewInput{
+    func setUpTransformers(transformers: [Transformer])
+    func displayStatistics(statistics: TeamStatisticsDataSource)
+}
+
+protocol TransformerViewOutput {
+    func findFighters(for rank: Int)->(Transformer?, Transformer?)?
+    func setUpFight(for rank: Int)
     
+}
+
+protocol CollectionDataProvider{
+    func numberOfSections() -> Int
+    func numberOfItems(in section: Int) -> Int
+    func addTransformer(transformerOpt: Transformer?) throws
+    func editTransformer(transformer: Transformer) throws
+    func deleteTransformer(transformer: Transformer) throws
+   
 }

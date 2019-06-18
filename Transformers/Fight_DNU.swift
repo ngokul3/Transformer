@@ -9,19 +9,20 @@
 import Foundation
 
 
-class Fight: FightProtocol{
-    var fighters: [Transformer]
-    var statistics: [TeamStatisticsDataSource]?
-    
-   // var currentFighters: [Transformer]?
-    
-    init(fighters: [Transformer]){
-        self.fighters = fighters
-        // initialize statistics for both the teams
-    }
+class Fight_DNU{
+//    var fighters: [Transformer]
+//    var statistics: [TeamStatisticsDataSource]?
+//    var ruleSpecifics: RuleProtocol
+//   // var currentFighters: [Transformer]?
+//
+//    init(fighters: [Transformer], ruleSpecifics: RuleProtocol){
+//        self.fighters = fighters
+//        self.ruleSpecifics = ruleSpecifics
+//        // initialize statistics for both the teams
+//    }
 }
 
-extension Fight{
+extension Fight_DNU{
     func findOpponentFor(_ rank: Int) -> Transformer? {
         //Sort the fighters by rank -- This should be already done when transfer is created and added. SHould not be doen here
         //Get Transformer from the int.
@@ -31,18 +32,20 @@ extension Fight{
     }
     
     func startFighting(rank: Int, fightOver: ()->Void) {
+//        ruleSpecifics.evaluateFighters {
+//            fightOver()
+//        }
         
-        let fighterRequestingFight = fighters.filter { (transformer) -> Bool in
-            transformer.rank == rank
-        }
-        let opponentFighterOpt = self.findOpponentFor(rank)
-        if let opponentFighter = opponentFighterOpt{
-            
-        }
+//        let fighterRequestingFight = fighters.filter { (transformer) -> Bool in
+//            transformer.rank == rank
+//        }
+//        let opponentFighterOpt = self.findOpponentFor(rank)
+//        if let opponentFighter = opponentFighterOpt{
+//
+//        }
         //Start the fight between fighters in current fighters
         //Use rules to determine the winner
         //update the statistics array
-        fightOver()
     }
     
     func reset() {

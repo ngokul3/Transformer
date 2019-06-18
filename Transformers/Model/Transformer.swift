@@ -35,6 +35,7 @@ class Transformer: NSObject, NSCoding{
         firepower = aDecoder.decodeInteger(forKey: "firepower")
         skill = aDecoder.decodeInteger(forKey: "skill")
         teamIcon = aDecoder.decodeObject(forKey: "teamIcon") as? String
+        transformerTeam = aDecoder.decodeObject(forKey: "transformerTeam") as? Team
         super.init()
     }
     
