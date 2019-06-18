@@ -18,9 +18,7 @@ protocol NetworkProtocol {
 
 class NetworkModel: NetworkProtocol{
     
-    
     private var baseURLOpt : String?
-    
     private var transitJSONFileNameOpt : String?
     private var searchDistanceLimitOpt: Int?
     private static var instance: NetworkProtocol?
