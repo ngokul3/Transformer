@@ -1,0 +1,6 @@
+framework module Pods_TransformersUITests {
+  umbrella header "Pods-TransformersUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

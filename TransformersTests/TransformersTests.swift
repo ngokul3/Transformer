@@ -22,10 +22,6 @@ class TransformersTests: XCTestCase {
         
         presenter.transformersOpt = transformerArray
     }
-    
-//    let a = (strength ?? 0) + (speed ?? 0) + (endurance ?? 0)
-//    let b = (intelligence ?? 0) + (firepower ?? 0)
-//
 
     func testRankMatching(){
         let fighters = presenter.findFighters(for: 5)
