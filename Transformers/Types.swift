@@ -117,7 +117,7 @@ protocol TransformerViewOutput {
     func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
     func addTransformer(transformer: Transformer)
-    func generateTransformerPrototype()->Transformer
+    func generateTransformerPrototype()->Transformer?
 }
 
 protocol CollectionDataProvider{

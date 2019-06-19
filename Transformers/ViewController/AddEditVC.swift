@@ -42,8 +42,8 @@ extension AddEditVC{
         transformer?.transformerName = name
         
         saveDetailVC?(transformer)
-        //navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        
     }
   
 }

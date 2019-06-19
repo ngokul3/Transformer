@@ -38,6 +38,9 @@ class NetworkModel: NetworkProtocol{
     
     init()
     {
+        self.getKey { [weak self](keyOpt) in
+            self?.apiKey = keyOpt
+        }
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
             let dictRootOpt = NSDictionary(contentsOfFile: path)
             
@@ -66,14 +69,11 @@ extension NetworkModel{
 extension NetworkModel{
     
     func getKey(finished : @escaping (String?)->Void){
-        guard let myKey = apiKey else{
-            return
-        }
+        
         let keyURL = self.baseURLOpt ?? "" + "allspark"
         if let url = URL(string: keyURL) {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue
-            urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
 
             Alamofire.request(urlRequest)

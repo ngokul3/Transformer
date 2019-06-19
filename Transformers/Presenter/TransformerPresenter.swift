@@ -11,11 +11,11 @@ import Foundation
 class TransformerPresenter{
     var view: TransformerViewInput?
     var transformersOpt: [Transformer]?
-    let model = TransformerModel()
+    let model: ModelProtocol?
     var fightProtocol: FightProtocol?
     
-    init() {
-       
+    init(model: ModelProtocol) {
+       self.model = model
     }
     
     
@@ -49,10 +49,10 @@ extension TransformerPresenter: TransformerViewOutput{
     }
     
     func addTransformer(transformer: Transformer){
-        model.addNewTransformer(transformer: transformer)
+        model?.addNewTransformer(transformer: transformer)
     }
     
-    func generateTransformerPrototype()->Transformer{
-        return self.model.generateTransformerPrototype()
+    func generateTransformerPrototype()->Transformer?{
+        return self.model?.generateTransformerPrototype()
     }
 }

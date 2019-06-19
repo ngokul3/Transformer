@@ -20,15 +20,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private var netModel = NetworkModel.getInstance()
+//    private var netModel = NetworkModel.getInstance()
+//
+//    var networkModel: NetworkProtocol {
+//        get {
+//            return netModel
+//        }
+//    }
     
-    var networkModel: NetworkProtocol {
-        get {
-            return netModel
-        }
+//    var presenterForVC: TransformerViewOutput{
+//        get{
+//            return presenterInstance
+//        }
+//    }
+    
+    var presenterInstance = TransformerPresenter(model: TransformerModel(networkModel: NetworkModel.getInstance()))
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let tabBarVC = window!.rootViewController as! UITabBarController
+        let nav = tabBarVC.viewControllers![0] as! UINavigationController
+        let masterVC = nav.viewControllers[0] as! MasterVC
+        masterVC.presenter = AppDel.presenterInstance
+        return true
     }
-    
-    var presenterInstance = TransformerPresenter()
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*

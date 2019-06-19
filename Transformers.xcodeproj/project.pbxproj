@@ -21,7 +21,6 @@
 		90DE10D922B5039C00302CB2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10D822B5039C00302CB2 /* Persistence.swift */; };
 		90DE10DB22B5049200302CB2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10DA22B5049200302CB2 /* Types.swift */; };
 		90DE10DD22B71C1300302CB2 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10DC22B71C1300302CB2 /* ModelManager.swift */; };
-		90DE10E622B7201B00302CB2 /* Fight_DNU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10E522B7201B00302CB2 /* Fight_DNU.swift */; };
 		90DE10E822B7274B00302CB2 /* Fight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10E722B7274B00302CB2 /* Fight.swift */; };
 		90DE110722B84DCE00302CB2 /* TransformerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE110622B84DCE00302CB2 /* TransformerPresenter.swift */; };
 		90DE111822B9787100302CB2 /* MasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE111722B9787100302CB2 /* MasterVC.swift */; };
@@ -74,7 +73,6 @@
 		90DE10D822B5039C00302CB2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		90DE10DA22B5049200302CB2 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		90DE10DC22B71C1300302CB2 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
-		90DE10E522B7201B00302CB2 /* Fight_DNU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fight_DNU.swift; sourceTree = "<group>"; };
 		90DE10E722B7274B00302CB2 /* Fight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fight.swift; sourceTree = "<group>"; };
 		90DE110622B84DCE00302CB2 /* TransformerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerPresenter.swift; sourceTree = "<group>"; };
 		90DE111722B9787100302CB2 /* MasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterVC.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				90DE10AC22B4F82200302CB2 /* LaunchScreen.storyboard */,
 				90DE10AF22B4F82200302CB2 /* Info.plist */,
 				90DE10A722B4F82000302CB2 /* Transformers.xcdatamodeld */,
-				90DE10E522B7201B00302CB2 /* Fight_DNU.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -495,7 +492,6 @@
 				90DE10A122B4F82000302CB2 /* AppDelegate.swift in Sources */,
 				90DE10DB22B5049200302CB2 /* Types.swift in Sources */,
 				90DE10D922B5039C00302CB2 /* Persistence.swift in Sources */,
-				90DE10E622B7201B00302CB2 /* Fight_DNU.swift in Sources */,
 				90DE110722B84DCE00302CB2 /* TransformerPresenter.swift in Sources */,
 				90DE112322B9840E00302CB2 /* TransformerModel.swift in Sources */,
 				90DE10D322B4F8E400302CB2 /* Network.swift in Sources */,

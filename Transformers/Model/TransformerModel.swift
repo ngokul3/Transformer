@@ -7,9 +7,21 @@
 //
 
 import Foundation
-class TransformerModel{
+
+protocol ModelProtocol{
+    func generateTransformerPrototype()->Transformer
+    func addNewTransformer(transformer: Transformer)
+    func getTransformers()->[Transformer]
+}
+
+
+class TransformerModel:ModelProtocol {
     var transformerArray = [Transformer]()
-    var network: NetworkProtocol?
+    private var network : NetworkProtocol?
+    
+    init(networkModel: NetworkProtocol){
+        network = networkModel
+    }
     
     func addNewTransformer(transformer: Transformer){
         network?.createNewTransformer(transformer: transformer, finished: {(arg1, arg2) in
