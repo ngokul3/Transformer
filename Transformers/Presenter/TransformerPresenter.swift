@@ -49,6 +49,10 @@ extension TransformerPresenter: TransformerViewOutput{
     }
     
     func addTransformer(transformer: Transformer){
-        
+        model.addNewTransformer(transformer: transformer)
+    }
+    
+    func generateTransformerPrototype()->Transformer{
+        return self.model.generateTransformerPrototype()
     }
 }

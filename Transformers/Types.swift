@@ -56,6 +56,12 @@ enum MessageType: String{
         return Notification(name: asNN)
     }
 }
+
+enum DetailVCType : String{
+    case Add
+    case Edit
+}
+
 struct Messages{
     static let TransformerReadyToBeSaved = "Transformer Ready To be Saved"
     static let TransformerListChanged = "Transformer List changed"
@@ -111,6 +117,7 @@ protocol TransformerViewOutput {
     func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
     func addTransformer(transformer: Transformer)
+    func generateTransformerPrototype()->Transformer
 }
 
 protocol CollectionDataProvider{
