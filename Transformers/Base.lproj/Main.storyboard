@@ -154,8 +154,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="yGm-Wm-eoy">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="yGm-Wm-eoy">
                                 <rect key="frame" x="229" y="230" width="94" height="29"/>
+                                <connections>
+                                    <action selector="rankStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="A6d-FX-AwG"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCg-yM-cHh">
                                 <rect key="frame" x="142" y="234" width="42" height="21"/>
@@ -169,8 +172,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="thY-xa-CbN">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="thY-xa-CbN">
                                 <rect key="frame" x="229" y="286" width="94" height="29"/>
+                                <connections>
+                                    <action selector="courageStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="Sb2-hQ-uvM"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyF-Rf-HsX">
                                 <rect key="frame" x="142" y="290" width="42" height="21"/>
@@ -184,8 +190,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="KdM-Ly-hxJ">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="KdM-Ly-hxJ">
                                 <rect key="frame" x="229" y="342" width="94" height="29"/>
+                                <connections>
+                                    <action selector="strengthStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="vNP-hm-t4k"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xcg-7I-h3h">
                                 <rect key="frame" x="142" y="346" width="42" height="21"/>
@@ -199,8 +208,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-dg-KGh">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-dg-KGh">
                                 <rect key="frame" x="229" y="398" width="94" height="29"/>
+                                <connections>
+                                    <action selector="skillStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="ZS0-5y-xJt"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u66-NI-Bpo">
                                 <rect key="frame" x="142" y="402" width="42" height="21"/>
@@ -214,8 +226,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qkF-FH-Bch">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="qkF-FH-Bch">
                                 <rect key="frame" x="229" y="454" width="94" height="29"/>
+                                <connections>
+                                    <action selector="speedStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="jSt-jW-MTI"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUL-wS-2mS">
                                 <rect key="frame" x="142" y="458" width="42" height="21"/>
@@ -229,8 +244,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="U1D-aT-oJ6">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="U1D-aT-oJ6">
                                 <rect key="frame" x="229" y="510" width="94" height="29"/>
+                                <connections>
+                                    <action selector="intelligenceStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="VxS-1y-jBY"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnF-U1-wHZ">
                                 <rect key="frame" x="142" y="514" width="42" height="21"/>
@@ -244,8 +262,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="alS-rf-v3v">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="alS-rf-v3v">
                                 <rect key="frame" x="229" y="566" width="94" height="29"/>
+                                <connections>
+                                    <action selector="firepowerStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="b5i-LI-IER"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18J-4v-OI5">
                                 <rect key="frame" x="142" y="570" width="42" height="21"/>
@@ -370,8 +391,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="courageLabel" destination="gyF-Rf-HsX" id="lVC-dm-lRK"/>
+                        <outlet property="firepowerLabel" destination="18J-4v-OI5" id="Nn8-0O-qmf"/>
+                        <outlet property="intelligenceLabel" destination="TnF-U1-wHZ" id="Bl9-Wv-B7v"/>
                         <outlet property="nameText" destination="KCo-qe-grN" id="Fnt-Yh-x8Q"/>
+                        <outlet property="rankLabel" destination="qCg-yM-cHh" id="hay-jC-ZIM"/>
+                        <outlet property="ratingLabel" destination="orL-Eb-dXD" id="cDF-rz-ja3"/>
+                        <outlet property="skillLabel" destination="u66-NI-Bpo" id="y5V-v0-xwm"/>
+                        <outlet property="speedLabel" destination="gUL-wS-2mS" id="8Th-uc-Tto"/>
+                        <outlet property="strengthLabel" destination="Xcg-7I-h3h" id="4Da-bx-K1y"/>
                         <outlet property="teamIconView" destination="amR-fP-09A" id="H0j-ES-ZPz"/>
+                        <outlet property="teamSegment" destination="fsE-72-wZS" id="ZS5-rl-4kc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHo-Hz-tyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
