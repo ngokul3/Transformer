@@ -33,14 +33,12 @@ class NetworkModel: NetworkProtocol{
     var apiKey: String?
     
     lazy var httpURL: String = {
-        return self.baseURLOpt ?? "" + "transformers"
+        return (self.baseURLOpt ?? "") + "transformers"
     }()
     
     init()
     {
-        self.getKey { [weak self](keyOpt) in
-            self?.apiKey = keyOpt
-        }
+       
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
             let dictRootOpt = NSDictionary(contentsOfFile: path)
             
@@ -48,6 +46,9 @@ class NetworkModel: NetworkProtocol{
                 preconditionFailure("Transformer API URL is not available")
             }
             self.baseURLOpt = dict["TransformerAPIURL"] as? String
+        }
+        self.getKey { [weak self](keyOpt) in
+            self?.apiKey = "Bearer " + (    keyOpt ?? "")
         }
     }
 }
@@ -70,14 +71,14 @@ extension NetworkModel{
     
     func getKey(finished : @escaping (String?)->Void){
         
-        let keyURL = self.baseURLOpt ?? "" + "allspark"
+        let keyURL = (self.baseURLOpt ?? "") + "allspark"
         if let url = URL(string: keyURL) {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
 
             Alamofire.request(urlRequest)
-                .responseJSON { response in
+                .responseString { response in
                     debugPrint(response)
 
                     if let status = response.response?.statusCode {
@@ -86,7 +87,7 @@ extension NetworkModel{
 
                     if let result = response.result.value {
                         
-                        finished(result as? String)
+                        finished(result)
                     }
                     else{
                         finished(nil)
@@ -104,7 +105,7 @@ extension NetworkModel{
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.get.rawValue
             urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             
             Alamofire.request(urlRequest)
                 .responseJSON { response in
@@ -133,35 +134,36 @@ extension NetworkModel{
         let parameters: [String: Any] = [
             
             "name" : transformer.transformerName ?? "",
-            "strength" : transformer.strength ?? 0,
-            "speed" : transformer.speed  ?? 0,
-            "endurance" : transformer.endurance ?? 0,
-            "rank" : transformer.rank ?? 0,
-            "courage": transformer.courage ?? 0,
-            "firepower": transformer.firepower ?? 0,
-            "skill": transformer.skill ?? 0,
-            "team": transformer.transformerTeam.debugDescription
+            "strength" : transformer.strength ?? 2,
+            "speed" : transformer.speed  ?? 2,
+            "endurance" : transformer.endurance ?? 2,
+            "rank" : transformer.rank ?? 2,
+            "courage": transformer.courage ?? 2,
+            "firepower": transformer.firepower ?? 2,
+            "skill": transformer.skill ?? 2,
+            "intelligence": transformer.intelligence ?? 0,
+            "team": "D" //transformer.transformerTeam.debugDescription ?? """
         ]
         
         if let url = URL(string: httpURL) {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = HTTPMethod.post.rawValue
             urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = parameters.debugDescription.data(using: .utf8)
-                
-            Alamofire.request(urlRequest)
-                .responseJSON { response in
-                    debugPrint(response)
-                    
-                    if let status = response.response?.statusCode {
-                        print("Response status: \(status)")
-                    }
-            }
+            
+//            Alamofire.request(urlRequest)
+//                .responseString { response in
+//                    debugPrint(response)
+//
+//                    if let status = response.response?.statusCode {
+//                        print("Response status: \(status)")
+//                    }
+//            }
         }
         
-        Alamofire.request("http://myserver.com", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { response in
+        Alamofire.request(httpURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
+            .responseString { response in
                 print(response)
         }
         

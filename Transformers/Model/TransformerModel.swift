@@ -34,6 +34,6 @@ class TransformerModel:ModelProtocol {
     }
     
     func generateTransformerPrototype()->Transformer{
-        return Transformer(id: -1, team: .autobots, name: "", strength: 0, intelligence: 0, speed: 0, endurance: 0, rank: 0, courage: 0, firepower: 0, skill: 0, teamIcon: "")
+        return Transformer(id: -1, team: .autobots, name: "", strength: 1, intelligence: 1, speed: 1, endurance: 1, rank: 1, courage: 1, firepower: 1, skill: 1, teamIcon: "")
     }
 }

@@ -25,7 +25,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>TransformerAPIURL</key>
-	<string>https://transformers-api.firebaseapp.com/allspark</string>
+	<string>https://transformers-api.firebaseapp.com/</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
