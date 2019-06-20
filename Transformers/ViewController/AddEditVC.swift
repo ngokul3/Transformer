@@ -18,9 +18,11 @@ class AddEditVC: UIViewController {
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var intelligenceLabel: UILabel!
     @IBOutlet weak var firepowerLabel: UILabel!
+    @IBOutlet weak var enduranceLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var teamSegment: UISegmentedControl!
-    
+   
+   
     var transformer: Transformer?
     var transformerVCType : DetailVCType?
     var saveDetailVC: ((Transformer?) -> Void)?
@@ -45,31 +47,47 @@ class AddEditVC: UIViewController {
 
 extension AddEditVC{
     @IBAction func rankStepperClick(_ sender: UIStepper) {
-        rankLabel.text = String(sender.value)
+        rankLabel.text = String(Int(sender.value))
     }
     
     @IBAction func courageStepperClick(_ sender: UIStepper) {
-        courageLabel.text = String(sender.value)
+        courageLabel.text = String(Int(sender.value))
     }
     
     @IBAction func strengthStepperClick(_ sender: UIStepper) {
-        strengthLabel.text = String(sender.value)
+        strengthLabel.text = String(Int(sender.value))
     }
     
     @IBAction func skillStepperClick(_ sender: UIStepper) {
-        skillLabel.text = String(sender.value)
+        skillLabel.text = String(Int(sender.value))
     }
     
     @IBAction func speedStepperClick(_ sender: UIStepper) {
-        speedLabel.text = String(sender.value)
+        speedLabel.text = String(Int(sender.value))
     }
     
     @IBAction func intelligenceStepperClick(_ sender: UIStepper) {
-        intelligenceLabel.text = String(sender.value)
+        intelligenceLabel.text = String(Int(sender.value))
     }
     
     @IBAction func firepowerStepperClick(_ sender: UIStepper) {
-        firepowerLabel.text = String(sender.value)
+        firepowerLabel.text = String(Int(sender.value))
+    }
+    
+    @IBAction func enduranceStepperClick(_ sender: UIStepper) {
+        enduranceLabel.text = String(Int(sender.value))
+    }
+    
+    @IBAction func teamSegmentChange(_ sender: UISegmentedControl) {
+        switch teamSegment.selectedSegmentIndex
+        {
+        case 0:
+            transformer?.transformerTeam = .autobots
+        case 1:
+            transformer?.transformerTeam = .decepticon
+        default:
+            break
+        }
     }
 }
 
@@ -91,6 +109,13 @@ extension AddEditVC{
                 return
         }
         transformer?.transformerName = name
+        transformer?.rank = Int(rankLabel.text ?? "")
+        transformer?.courage = Int(courageLabel.text ?? "")
+        transformer?.strength = Int(strengthLabel.text ?? "")
+        transformer?.intelligence = Int(intelligenceLabel.text ?? "")
+        transformer?.firepower = Int(firepowerLabel.text ?? "")
+        transformer?.endurance = Int(enduranceLabel.text ?? "")
+        transformer?.skill = Int(skillLabel.text ?? "")
         
         saveDetailVC?(transformer)
         navigationController?.popViewController(animated: true)

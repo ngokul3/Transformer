@@ -9,7 +9,7 @@
 import Foundation
 
 class Fight: FightProtocol{
-    let Center = NotificationCenter.default
+    //let Center = NotificationCenter.default
     var fighter1: Transformer
     var fighter2: Transformer
     
@@ -23,12 +23,12 @@ class Fight: FightProtocol{
         case (4..., 3...):
             fighter1.state = .Alive
             fighter2.state = .Died
-            self.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (...(-4), ...(-3)):
             fighter2.state = .Alive
             fighter1.state = .Died
-            self.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)
@@ -40,12 +40,12 @@ class Fight: FightProtocol{
         case 3...:
             fighter1.state = .Alive
             fighter2.state = .Died
-            self.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case ...(-3):
             fighter2.state = .Alive
             fighter1.state = .Died
-            self.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)
@@ -57,15 +57,15 @@ class Fight: FightProtocol{
         case (_, 0):
             fighter2.state = .Died
             fighter1.state = .Died
-            self.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
         case (true, _):
             fighter1.state = .Alive
             fighter2.state = .Died
-            self.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
         case (false, _):
             fighter2.state = .Alive
             fighter1.state = .Died
-            self.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
          }
         
     }
@@ -75,17 +75,17 @@ class Fight: FightProtocol{
         case (true, false):
             fighter1.state = .Alive
             fighter2.state = .Died
-            self.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (false, true):
             fighter2.state = .Alive
             fighter1.state = .Died
-            self.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
+            TransformerNotification.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (true, true):
             fighter1.state = .Died
             fighter2.state = .Died
-            self.updateObservers(message: .evaluatedByName, data: nil)
+            TransformerNotification.updateObservers(message: .evaluatedByName, data: nil)
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)
@@ -117,14 +117,14 @@ class Fight: FightProtocol{
 }
 
 extension Fight{
-    private func updateObservers(message: MessageType, data: Any? = nil) {
-        Center.post(name: message.asNN, object: self, userInfo: {
-            if let d = data {
-                return ["data": d]
-            }
-            else {
-                return nil
-            }
-        }())
-    }
+//    private func updateObservers(message: MessageType, data: Any? = nil) {
+//        Center.post(name: message.asNN, object: self, userInfo: {
+//            if let d = data {
+//                return ["data": d]
+//            }
+//            else {
+//                return nil
+//            }
+//        }())
+//    }
 }

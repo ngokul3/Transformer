@@ -30,6 +30,13 @@ class TransformerModel:ModelProtocol {
     }
     
     func getTransformers()->[Transformer]{
+        network?.getTransformers(finished: { [weak self](dictionary, error) in
+            print(dictionary)
+//            guard let transformerArray = dictionary?["businesses"] as? [ [String: AnyObject] ] else {
+//                print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
+//                return
+//            }
+        })
         return transformerArray
     }
     

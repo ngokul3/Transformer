@@ -20,7 +20,14 @@ class TransformerPresenter{
     
     
     func viewReady(){
+        self.updateView()
        // let transformerArray = self.model
+    }
+    
+    func updateView(){
+        if let transformerArray = self.model?.getTransformers(){
+            self.view?.setUpTransformers(transformers: transformerArray)
+        }
     }
 }
 

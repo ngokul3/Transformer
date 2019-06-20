@@ -62,15 +62,7 @@ enum DetailVCType : String{
     case Edit
 }
 
-struct Messages{
-    static let TransformerReadyToBeSaved = "Transformer Ready To be Saved"
-    static let TransformerListChanged = "Transformer List changed"
-    static let TransformerDeleted = "Transformer Deleted"
-    
-//    static let RestaurantCanBeRemovedFromFavorite = "Restaurant can be Deleted from Saved list"
-//    static let ImageArrived = "Image arrived"
-    
-}
+
 
 struct TeamStatistics: TeamStatisticsDataSource {
     var team: Team
