@@ -11,7 +11,7 @@ import Foundation
 protocol ModelProtocol{
     func restorelocalFromDatabase()throws
     func generateTransformerPrototype()->Transformer
-    func addNewTransformer(transformer: Transformer)
+    func handleTransformer(transformer: Transformer, opType: DetailVCType)
     func getTeamIcon(id: String,  completion: @escaping (Data?)->())
     var transformerArray: [Transformer]{get}
 }
@@ -56,8 +56,8 @@ class TransformerModel:ModelProtocol {
         }
     }
     
-    func addNewTransformer(transformer: Transformer){
-        network?.createNewTransformer(transformer: transformer, finished: {[weak self](dictionary, error) in
+    func handleTransformer(transformer: Transformer, opType: DetailVCType){
+        network?.persistTransformer(transformer: transformer, opType: opType, finished: {[weak self](dictionary, error) in
             if let _ = error{
                 preconditionFailure("Could not fetch from web server")
             }
@@ -70,7 +70,6 @@ class TransformerModel:ModelProtocol {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
                     do{
                         try Persistence.save(transformerObject)
-                        //try self?.restorelocalFromDatabase()
                         self?.transformers.append(transformerObject)
                         TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
                     }
@@ -79,7 +78,7 @@ class TransformerModel:ModelProtocol {
                     }
                 }
             }
-
+            
         })
     }
     
@@ -131,7 +130,15 @@ class TransformerModel:ModelProtocol {
             preconditionFailure("speed not found in JSON")
         }
         
-        let transformer = Transformer(id: id, team: .autobots, name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firepower, skill: skill, teamIcon: teamImageURL)
+        
+        guard let teamName = transformerDict["team"] as? String,
+                let team = Team(rawValue: teamName.lowercased())
+            else{
+            preconditionFailure("team not found in JSON")
+        }
+        
+        
+        let transformer = Transformer(id: id, team: team, name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firepower, skill: skill, teamIcon: teamImageURL)
         
         return transformer
         

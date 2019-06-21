@@ -14,7 +14,7 @@ protocol NetworkProtocol {
     static func getInstance() -> NetworkProtocol
     func getKey(finished : @escaping (Error?)->Void)
     func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ())
+    func persistTransformer(transformer: Transformer, opType: DetailVCType, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ())
     func getTeamImage(forTeamIconURL iconURL : String, imageLoaded : @escaping (Data?, HTTPURLResponse?, Error?)->Void)
 }
 
@@ -129,34 +129,34 @@ extension NetworkModel{
         }
     }
     
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ()){
+    func persistTransformer(transformer: Transformer, opType: DetailVCType, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ()){
         guard let myKey = transformerKey else{
             return
         }
+        var httpMethodValue : HTTPMethod?
         
-        let parameters: [String: Any] = [
-            
+        var parameters: [String: Any] = [
             "name" : transformer.transformerName ?? "",
-            "strength" : transformer.strength ?? 2,
-            "speed" : transformer.speed  ?? 2,
-            "endurance" : transformer.endurance ?? 2,
-            "rank" : transformer.rank ?? 2,
-            "courage": transformer.courage ?? 2,
-            "firepower": transformer.firepower ?? 2,
-            "skill": transformer.skill ?? 2,
+            "strength" : transformer.strength ?? 0,
+            "speed" : transformer.speed  ?? 0,
+            "endurance" : transformer.endurance ?? 0,
+            "rank" : transformer.rank ?? 0,
+            "courage": transformer.courage ?? 0,
+            "firepower": transformer.firepower ?? 0,
+            "skill": transformer.skill ?? 0,
             "intelligence": transformer.intelligence ?? 0,
-            "team": "D" //transformer.transformerTeam.debugDescription ?? """
+            "team": transformer.transformerTeam?.rawValue ?? ""
         ]
         
-        if let url = URL(string: httpURL) {
-            var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = HTTPMethod.post.rawValue
-            urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = parameters.debugDescription.data(using: .utf8)
-        }
+        switch opType {
+        case .Add:
+            httpMethodValue = HTTPMethod.post
+        case .Edit:
+            parameters["id"] = transformer.transformerId ?? ""
+            httpMethodValue = HTTPMethod.put
+         }
         
-        Alamofire.request(httpURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
+        Alamofire.request(httpURL, method: httpMethodValue ?? .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
             .responseJSON { response in
                 print(response)
                 
@@ -171,8 +171,6 @@ extension NetworkModel{
                 else{
                     finished(nil, response.error)
                 }
-                
-                
         }
         
     }

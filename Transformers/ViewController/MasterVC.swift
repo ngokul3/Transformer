@@ -46,10 +46,30 @@ extension MasterVC{
             vc.transformer = presenter?.generateTransformerPrototype()
             vc.saveDetailVC = {[weak self] (transformerOpt) in
                 if let transformer = transformerOpt{
-                     self?.presenter?.addTransformer(transformer: transformer)
+                     self?.presenter?.transformerInContext(transformer: transformer, opType: .Add)
                 }
             }
         case "editSegue":
+            guard let cell = sender as? UITableViewCell,
+                let indexPath = self.tableView.indexPath(for: cell) else{
+                    preconditionFailure("Segue from unexpected object: \(sender ?? "sender = nil")")
+            }
+            
+            do{
+                if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
+                    vc.transformer = transformer
+                    vc.transformerVCType = DetailVCType.Edit
+                    vc.saveDetailVC = {[weak self] (transOpt) in
+                        if let trans = transOpt{
+                            self?.presenter?.transformerInContext(transformer: trans, opType: .Edit)
+                        }else{
+                            self?.alertUser = "Could not edit this Transformer"
+                        }
+                    }
+                }
+                
+            }
+            
             break
         default:
             break

@@ -9,8 +9,8 @@
 import Foundation
 
 enum Team: String {
-    case autobots
-    case decepticon
+    case autobots = "autobots"
+    case decepticon = "decepticon" 
 }
 
 enum TransformerError: Error{
@@ -92,7 +92,7 @@ protocol TransformerViewOutput {
     func viewReady()
     func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
-    func addTransformer(transformer: Transformer)
+    func transformerInContext(transformer: Transformer, opType: DetailVCType)
     func generateTransformerPrototype()->Transformer?
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?

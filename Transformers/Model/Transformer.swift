@@ -15,7 +15,6 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         return true
     }
     
-    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(transformerId, forKey: "transformerId")
         aCoder.encode(transformerName, forKey: "transformerName")
@@ -40,14 +39,14 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         
         transformerId = transId
         transformerName = transName
-        strength = aDecoder.decodeInteger(forKey: "strength")
-        intelligence = aDecoder.decodeInteger(forKey: "intelligence")
-        speed = aDecoder.decodeInteger(forKey: "speed")
-        endurance = aDecoder.decodeInteger(forKey: "endurance")
-        rank = aDecoder.decodeInteger(forKey: "rank")
-        courage = aDecoder.decodeInteger(forKey: "courage")
-        firepower = aDecoder.decodeInteger(forKey: "firepower")
-        skill = aDecoder.decodeInteger(forKey: "skill")
+        strength = aDecoder.decodeObject(forKey: "strength") as? Int
+        intelligence = aDecoder.decodeObject(forKey: "intelligence") as? Int
+        speed = aDecoder.decodeObject(forKey: "speed") as? Int
+        endurance = aDecoder.decodeObject(forKey: "endurance") as? Int
+        rank = aDecoder.decodeObject(forKey: "rank") as? Int
+        courage = aDecoder.decodeObject(forKey: "courage") as? Int
+        firepower = aDecoder.decodeObject(forKey: "firepower") as? Int
+        skill = aDecoder.decodeObject(forKey: "skill") as? Int
         teamIcon = aDecoder.decodeObject(forKey: "teamIcon") as? String
         transformerTeam = aDecoder.decodeObject(forKey: "transformerTeam") as? Team
          super.init()
