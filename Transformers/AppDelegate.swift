@@ -19,22 +19,8 @@ var AppDel: AppDelegate {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-//    private var netModel = NetworkModel.getInstance()
-//
-//    var networkModel: NetworkProtocol {
-//        get {
-//            return netModel
-//        }
-//    }
-    
-//    var presenterForVC: TransformerViewOutput{
-//        get{
-//            return presenterInstance
-//        }
-//    }
-    
-    var presenterInstance = TransformerPresenter(model: TransformerModel(networkModel: NetworkModel.getInstance()))
+     
+    var presenterInstance = TransformerPresenter(model: TransformerModel(networkModel: NetworkModel.getInstance(), queue: DispatchQueue(label: "concurrentQueue", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)))
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

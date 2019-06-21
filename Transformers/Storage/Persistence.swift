@@ -88,13 +88,16 @@ class Persistence {
     static func restore() throws -> [Transformer] {
         var savedTransformers = [Transformer]()
         
-        guard let alreadySavedData = UserDefaults.standard.data(forKey: "transformers") else{
+        guard let alreadySavedData = UserDefaults.standard.data(forKey: NSKeyedArchiveRootObjectKey) else{
             return savedTransformers
         }
-        
         if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(alreadySavedData) as? [Transformer] {
             savedTransformers = alreadySavedTransformers
         }
+        
+//        if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(alreadySavedData) as? [Transformer] {
+//            savedTransformers = alreadySavedTransformers
+//        }
         
 //        if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
 //            savedTransformers = alreadySavedTransformers

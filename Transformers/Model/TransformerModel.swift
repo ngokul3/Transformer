@@ -14,32 +14,46 @@ protocol ModelProtocol{
     func addNewTransformer(transformer: Transformer)
     func getTeamIcon(id: String,  completion: @escaping (Data?)->())
     var transformerArray: [Transformer]{get}
-    
 }
-
 
 class TransformerModel:ModelProtocol {
     private var transformers = [Transformer]()
     private var network : NetworkProtocol?
-    
-    init(networkModel: NetworkProtocol){
+    private var opQueue: DispatchQueue?
+  
+    init(networkModel: NetworkProtocol, queue: DispatchQueue){
         network = networkModel
+        opQueue = queue
         
-        network?.getKey(finished: {(errorOpt) in
-            if let _ = errorOpt{
-                preconditionFailure("Not able to get key")
-            }
-        })
+        enqueue {
+            print("Thread for getting key \(Thread.current)")
+            self.network?.getKey(finished: {(errorOpt) in
+                if let _ = errorOpt{
+                    preconditionFailure("Not able to get key")
+                }
+            })
+        }
     }
-    
     
     var transformerArray: [Transformer]{
         return transformers
     }
     
+    func enqueue(modelOp: @escaping () -> Void) {
+        opQueue?.async(execute: modelOp)
+    }
     
-    func restorelocalFromDatabase()throws{
-        transformers = try Persistence.restore()
+    func restorelocalFromDatabase(){
+        enqueue {
+            do{
+                print("Thread for restoring \(Thread.current)")
+                self.transformers = try Persistence.restore()
+            }
+            catch (let error){
+                print(error)
+                //Custom handle exception
+            }
+        }
     }
     
     func addNewTransformer(transformer: Transformer){
@@ -52,15 +66,20 @@ class TransformerModel:ModelProtocol {
                 print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
                 return
             }
-            
-            if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
-                do{
-                    try Persistence.save(transformerObject)
-                }
-                catch let error{
-                    print(error)
+            self?.enqueue {
+                if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
+                    do{
+                        try Persistence.save(transformerObject)
+                        //try self?.restorelocalFromDatabase()
+                        self?.transformers.append(transformerObject)
+                        TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
+                    }
+                    catch let error{
+                        print(error)
+                    }
                 }
             }
+
         })
     }
     
