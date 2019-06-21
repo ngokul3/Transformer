@@ -10,16 +10,30 @@ import Foundation
 
 let superHeroes = ["Optimus Prime", "Predaking"]
 
-class Transformer: NSObject, NSCoding{
+class Transformer: NSObject, NSCoding,NSSecureCoding{
+    static var supportsSecureCoding: Bool{
+        return true
+    }
+    
     
     func encode(with aCoder: NSCoder) {
-        
+        aCoder.encode(transformerId, forKey: "transformerId")
+        aCoder.encode(transformerName, forKey: "transformerName")
+        aCoder.encode(strength, forKey: "strength")
+        aCoder.encode(intelligence, forKey: "intelligence")
+        aCoder.encode(speed, forKey: "speed")
+        aCoder.encode(rank, forKey: "rank")
+        aCoder.encode(courage, forKey: "courage")
+        aCoder.encode(skill, forKey: "skill")
+        aCoder.encode(teamIcon, forKey: "teamIcon")
+        aCoder.encode(endurance, forKey: "endurance")
+        aCoder.encode(endurance, forKey: "transformerTeam")
     }
     
     required init?(coder aDecoder: NSCoder) {
         guard
             let transId = aDecoder.decodeObject(forKey: "transformerId") as? String,
-            let transName = aDecoder.decodeObject(forKey: "transformerTeam") as? String
+            let transName = aDecoder.decodeObject(forKey: "transformerName") as? String
             else {
                 return nil
         }
@@ -36,7 +50,7 @@ class Transformer: NSObject, NSCoding{
         skill = aDecoder.decodeInteger(forKey: "skill")
         teamIcon = aDecoder.decodeObject(forKey: "teamIcon") as? String
         transformerTeam = aDecoder.decodeObject(forKey: "transformerTeam") as? Team
-        super.init()
+         super.init()
     }
     
     var transformerId: String?

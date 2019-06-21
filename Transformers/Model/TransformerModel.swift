@@ -43,9 +43,79 @@ class TransformerModel:ModelProtocol {
     }
     
     func addNewTransformer(transformer: Transformer){
-        network?.createNewTransformer(transformer: transformer, finished: {[weak self](arg1, arg2) in
-            self?.getTransformers()
+        network?.createNewTransformer(transformer: transformer, finished: {[weak self](dictionary, error) in
+            if let _ = error{
+                preconditionFailure("Could not fetch from web server")
+            }
+            
+            guard let transformerDict = dictionary as?  [String: Any]  else {
+                print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
+                return
+            }
+            
+            if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
+                do{
+                    try Persistence.save(transformerObject)
+                }
+                catch let error{
+                    print(error)
+                }
+            }
         })
+    }
+    
+    
+    func returnTransformerObjectFromDict(transformerDict: [String: Any])->Transformer{
+        var teamImageURL: String = ""
+        
+        if let imageURL = transformerDict["team_icon"] as? String{
+            teamImageURL = imageURL //Not guarding. Image URL isn't important
+        }
+        
+        guard let name : String = transformerDict["name"] as? String else{
+            preconditionFailure("Name not found in JSON")
+        }
+        
+        guard let id : String = transformerDict["id"] as? String else{
+            preconditionFailure("Id not found in JSON")
+        }
+        
+        guard let strength : Int = transformerDict["strength"] as? Int else{
+            preconditionFailure("strength not found in JSON")
+        }
+        
+        guard let courage : Int = transformerDict["courage"] as? Int else{
+            preconditionFailure("courage not found in JSON")
+        }
+        
+        guard let skill : Int = transformerDict["skill"] as? Int else{
+            preconditionFailure("skill not found in JSON")
+        }
+        
+        guard let firepower : Int = transformerDict["firepower"] as? Int else{
+            preconditionFailure("firePower not found in JSON")
+        }
+        
+        guard let endurance : Int = transformerDict["endurance"] as? Int else{
+            preconditionFailure("endurance not found in JSON")
+        }
+        
+        guard let intelligence : Int = transformerDict["intelligence"] as? Int else{
+            preconditionFailure("endurance not found in JSON")
+        }
+        
+        guard let rank : Int = transformerDict["rank"] as? Int else{
+            preconditionFailure("rank not found in JSON")
+        }
+        
+        guard let speed : Int = transformerDict["speed"] as? Int else{
+            preconditionFailure("speed not found in JSON")
+        }
+        
+        let transformer = Transformer(id: id, team: .autobots, name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firepower, skill: skill, teamIcon: teamImageURL)
+        
+        return transformer
+        
     }
     
     func getTransformers(){
@@ -54,68 +124,20 @@ class TransformerModel:ModelProtocol {
             if let _ = error{
                 preconditionFailure("Could not fetch from web server")
             }
-            guard let transformerArrayFromService = dictionary?["transformer"] as? [ [String: AnyObject] ] else {
+            guard let transformerArrayFromService = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
                 print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
                 return
             }
             
-            OperationQueue.main.addOperation {
-                print("Passing restaurant results to main operation queue: \(Thread.current)")
-                
-                transformerArrayFromService.forEach({ (transformer) in
-                    var teamImageURL: String = ""
+           // OperationQueue.main.addOperation {
+                transformerArrayFromService.forEach({ (transformerDict) in
                     
-                    if let imageURL = transformer["team_icon"] as? String{
-                        teamImageURL = imageURL //Not guarding. Image URL isn't important
-                    }
-                    
-                    guard let name : String = transformer["name"] as? String else{
-                        preconditionFailure("Name not found in JSON")
-                    }
-                    
-                    guard let id : String = transformer["id"] as? String else{
-                        preconditionFailure("Id not found in JSON")
-                    }
-                    
-                    guard let strength : Int = transformer["strength"] as? Int else{
-                        preconditionFailure("strength not found in JSON")
-                    }
-                    
-                    guard let courage : Int = transformer["courage"] as? Int else{
-                        preconditionFailure("courage not found in JSON")
-                    }
-                    
-                    guard let skill : Int = transformer["skill"] as? Int else{
-                        preconditionFailure("skill not found in JSON")
-                    }
-                    
-                    guard let firePower : Int = transformer["firePower"] as? Int else{
-                        preconditionFailure("firePower not found in JSON")
-                    }
-                    
-                    guard let endurance : Int = transformer["endurance"] as? Int else{
-                        preconditionFailure("endurance not found in JSON")
-                    }
-                    
-                    guard let intelligence : Int = transformer["intelligence"] as? Int else{
-                        preconditionFailure("endurance not found in JSON")
-                    }
-                    
-                    guard let rank : Int = transformer["rank"] as? Int else{
-                        preconditionFailure("rank not found in JSON")
-                    }
-                    
-                    guard let speed : Int = transformer["speed"] as? Int else{
-                        preconditionFailure("speed not found in JSON")
-                    }
-                    
-                    let transformer = Transformer(id: id, team: .autobots, name: name, strength: strength, intelligence: intelligence, speed: speed, endurance: endurance, rank: rank, courage: courage, firepower: firePower, skill: skill, teamIcon: teamImageURL)
-                    
-                    self?.transformers.append(transformer)
+                   let transformer = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
+                    //self?.transformers.append(transformer)
                      
                     TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
                 })
-            }
+           // }
         })
     }
     

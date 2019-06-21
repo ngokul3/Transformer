@@ -14,7 +14,7 @@ protocol NetworkProtocol {
     static func getInstance() -> NetworkProtocol
     func getKey(finished : @escaping (Error?)->Void)
     func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: Error?) -> ())
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ())
     func getTeamImage(forTeamIconURL iconURL : String, imageLoaded : @escaping (Data?, HTTPURLResponse?, Error?)->Void)
 }
 
@@ -129,7 +129,7 @@ extension NetworkModel{
         }
     }
     
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: Error?) -> ()){
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ()){
         guard let myKey = transformerKey else{
             return
         }
@@ -154,21 +154,25 @@ extension NetworkModel{
             urlRequest.addValue(myKey, forHTTPHeaderField: "Authorization")
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             urlRequest.httpBody = parameters.debugDescription.data(using: .utf8)
-            
-//            Alamofire.request(urlRequest)
-//                .responseString { response in
-//                    debugPrint(response)
-//
-//                    if let status = response.response?.statusCode {
-//                        print("Response status: \(status)")
-//                    }
-//            }
         }
         
         Alamofire.request(httpURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
-            .responseString { response in
-                finished(response.value, response.error)
+            .responseJSON { response in
                 print(response)
+                
+                if let status = response.response?.statusCode {
+                    print("Response status: \(status)")
+                }
+                
+                if let result = response.result.value {
+                    let JSON = result as? NSDictionary
+                    finished(JSON, nil)
+                }
+                else{
+                    finished(nil, response.error)
+                }
+                
+                
         }
         
     }

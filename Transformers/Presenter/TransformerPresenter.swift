@@ -27,10 +27,7 @@ class TransformerPresenter{
             // Perform custom action
         }
         
-        Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
-            [weak self] (notification) in
-            self?.updateView()
-        }
+
 
     }
     
@@ -41,8 +38,8 @@ class TransformerPresenter{
     }
     
     func updateView(){
-        if let transformerArray = self.model?.transformerArray{
-            self.view?.setUpTransformers(transformers: transformerArray)
+        if let _ = self.model?.transformerArray{
+            self.view?.setUpTransformers()
         }
     }
 }

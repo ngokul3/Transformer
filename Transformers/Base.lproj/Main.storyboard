@@ -76,6 +76,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="68R-WH-pE0" id="Odd-zU-QCQ"/>
+                                    <outlet property="delegate" destination="68R-WH-pE0" id="4to-56-bCo"/>
+                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tK3-3h-jwo">
                                 <rect key="frame" x="0.0" y="96" width="414" height="56"/>
@@ -101,6 +105,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kqH-vp-Uun" id="Y5f-vE-Wzu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmo-a7-2O5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,7 @@ class Persistence {
             return
         }
         
+        
         if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
             if(alreadySavedTransformers.contains{$0.transformerId == transformer.transformerId}){
                 let transformersSaved = alreadySavedTransformers.filter({($0.transformerId != transformer.transformerId)})
@@ -31,22 +32,45 @@ class Persistence {
     static func save(_ transformer: Transformer) throws {
         var savedTransformers = [Transformer]()
         
-        if let alreadySavedData = UserDefaults.standard.data(forKey: "transformers") {
-            if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
+//        if let alreadySavedData = UserDefaults.standard.data(forKey: NSKeyedArchiveRootObjectKey) {
+//            if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self, Transformer.self], from: alreadySavedData) as? [Transformer] {
+//                alreadySavedTransformers.forEach {
+//                    savedTransformers.append($0)
+//                }
+//            }
+//        }
+
+
+        if let alreadySavedData = UserDefaults.standard.data(forKey: NSKeyedArchiveRootObjectKey) {
+            if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(alreadySavedData) as? [Transformer] {
                 alreadySavedTransformers.forEach {
                     savedTransformers.append($0)
                 }
             }
+
+//            if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchivedObject(ofClasses: [NSArray.self], from: alreadySavedData) as? [Transformer]{
+//                alreadySavedTransformers.forEach {
+//                    savedTransformers.append($0)
+//                }
+//            }
+
+//            if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
+//                alreadySavedTransformers.forEach {
+//                    savedTransformers.append($0)
+//                }
+//            }
         }
         
         if(savedTransformers.filter({$0.transformerId == transformer.transformerId}).count != 0){
             savedTransformers.forEach({(trans) in
                 if(trans.transformerId == transformer.transformerId){
-//                    rest.transformerName = transformer.transformerName
-//                    rest.dateVisited = transformer.dateVisited
-//                    rest.comments = transformer.comments
-//                    rest.givenRating = transformer.givenRating
-//                    rest.myRating = transformer.myRating
+                    trans.courage = transformer.courage
+                    trans.strength = transformer.strength
+                    trans.skill = transformer.skill
+                    trans.rank = transformer.rank
+                    trans.firepower = transformer.firepower
+                    trans.endurance = transformer.endurance
+                    trans.intelligence = transformer.intelligence
                 }
             })
         }
@@ -54,8 +78,11 @@ class Persistence {
             savedTransformers.append(transformer)
         }
         
-        let savedData = NSKeyedArchiver.archivedData(withRootObject: savedTransformers)
-        UserDefaults.standard.set(savedData, forKey: "transformers")
+        let savedData = try NSKeyedArchiver.archivedData(withRootObject: savedTransformers, requiringSecureCoding: true)
+        UserDefaults.standard.set(savedData, forKey: NSKeyedArchiveRootObjectKey)
+        
+//        let savedData = NSKeyedArchiver.archivedData(withRootObject: savedTransformers)
+//        UserDefaults.standard.set(savedData, forKey: "transformers")
     }
     
     static func restore() throws -> [Transformer] {
@@ -65,9 +92,13 @@ class Persistence {
             return savedTransformers
         }
         
-        if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
+        if let alreadySavedTransformers = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(alreadySavedData) as? [Transformer] {
             savedTransformers = alreadySavedTransformers
         }
+        
+//        if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
+//            savedTransformers = alreadySavedTransformers
+//        }
         
         return savedTransformers
     }

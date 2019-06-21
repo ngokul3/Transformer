@@ -84,7 +84,7 @@ protocol FightProtocol: class{
 }
 
 protocol TransformerViewInput{
-    func setUpTransformers(transformers: [Transformer])
+    func setUpTransformers()
     //func displayStatistics(statistics: TeamStatisticsDataSource)
 }
 

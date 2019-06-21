@@ -11,15 +11,22 @@ import UIKit
 class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var presenter: TransformerViewOutput?
     
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewReady()
+        
+        Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
+            [weak self] (notification) in
+                self?.setUpTransformers()
+        }
      }
  }
 
 extension MasterVC: TransformerViewInput{
-    func setUpTransformers(transformers: [Transformer]) {
-      
+    func setUpTransformers() {
+         self.tableView.reloadData()
     }
 }
 
@@ -85,7 +92,9 @@ extension MasterVC{
             cell.nameLabel.text = transformer.transformerName
             self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
                 if let data = dataOpt{
-                    cell.teamIconView.image = UIImage(data: data)
+                    OperationQueue.main.addOperation {
+                        cell.teamIconView.image = UIImage(data: data)
+                    }
                 }
             })
             
