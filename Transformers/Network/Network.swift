@@ -12,8 +12,10 @@ import Alamofire
 
 protocol NetworkProtocol {
     static func getInstance() -> NetworkProtocol
+    func getKey(finished : @escaping (Error?)->Void)
     func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: String?) -> ())
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: Error?) -> ())
+    func getTeamImage(forTeamIconURL iconURL : String, imageLoaded : @escaping (Data?, HTTPURLResponse?, Error?)->Void)
 }
 
 class NetworkModel: NetworkProtocol{
@@ -23,14 +25,18 @@ class NetworkModel: NetworkProtocol{
     private var searchDistanceLimitOpt: Int?
     private static var instance: NetworkProtocol?
     
-    var session: URLSession = {
+    private var session: URLSession = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 10.0
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
         return session
     }()
     
-    var apiKey: String?
+    private var _apiKey: String?
+    
+    var transformerKey : String?{
+        return _apiKey
+    }
     
     lazy var httpURL: String = {
         return (self.baseURLOpt ?? "") + "transformers"
@@ -38,7 +44,6 @@ class NetworkModel: NetworkProtocol{
     
     init()
     {
-       
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
             let dictRootOpt = NSDictionary(contentsOfFile: path)
             
@@ -46,9 +51,6 @@ class NetworkModel: NetworkProtocol{
                 preconditionFailure("Transformer API URL is not available")
             }
             self.baseURLOpt = dict["TransformerAPIURL"] as? String
-        }
-        self.getKey { [weak self](keyOpt) in
-            self?.apiKey = "Bearer " + (    keyOpt ?? "")
         }
     }
 }
@@ -69,7 +71,7 @@ extension NetworkModel{
 
 extension NetworkModel{
     
-    func getKey(finished : @escaping (String?)->Void){
+    func getKey(finished : @escaping (Error?)->Void){
         
         let keyURL = (self.baseURLOpt ?? "") + "allspark"
         if let url = URL(string: keyURL) {
@@ -78,7 +80,7 @@ extension NetworkModel{
             urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
 
             Alamofire.request(urlRequest)
-                .responseString { response in
+                .responseString { [weak self] response in
                     debugPrint(response)
 
                     if let status = response.response?.statusCode {
@@ -86,18 +88,19 @@ extension NetworkModel{
                     }
 
                     if let result = response.result.value {
-                        
-                        finished(result)
+                        self?._apiKey = "Bearer " + result
+                        finished(nil)
                     }
                     else{
-                        finished(nil)
+                        
+                        finished(response.error)
                     }
             }
         }
     }
     
     func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ()){
-        guard let myKey = apiKey else{
+        guard let myKey = transformerKey else{
             return
         }
         
@@ -126,8 +129,8 @@ extension NetworkModel{
         }
     }
     
-    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: String?) -> ()){
-        guard let myKey = apiKey else{
+    func createNewTransformer(transformer: Transformer, finished: @escaping(_ response: String? , _ errorMsg: Error?) -> ()){
+        guard let myKey = transformerKey else{
             return
         }
         
@@ -164,10 +167,37 @@ extension NetworkModel{
         
         Alamofire.request(httpURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
             .responseString { response in
+                finished(response.value, response.error)
                 print(response)
         }
         
     }
    
+    func getTeamImage(forTeamIconURL iconURL : String, imageLoaded : @escaping (Data?, HTTPURLResponse?, Error?)->Void) {
+        
+        if let teamIconURL = URL(string: iconURL)
+        {
+            let downloadPicTask = session.dataTask(with: teamIconURL) { (data, responseOpt, error) in
+                if let e = error {
+                    print("Error downloading cat picture: \(e)")
+                }
+                else {
+                    if let response = responseOpt as? HTTPURLResponse {
+                        
+                        if let imageData = data {
+                            imageLoaded(imageData, response, error)
+                        }
+                        else {
+                            imageLoaded(nil, response, error)
+                        }
+                    }
+                    else {
+                        imageLoaded(nil, nil, error)
+                    }
+                }
+            }
+            downloadPicTask.resume()
+        }
+    }
     
 }

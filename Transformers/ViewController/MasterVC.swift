@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterVC: UIViewController {
+class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var presenter: TransformerViewOutput?
     
     override func viewDidLoad() {
@@ -19,7 +19,7 @@ class MasterVC: UIViewController {
 
 extension MasterVC: TransformerViewInput{
     func setUpTransformers(transformers: [Transformer]) {
-        
+      
     }
 }
 
@@ -47,6 +47,55 @@ extension MasterVC{
         default:
             break
         }
+    }
+}
+
+extension MasterVC{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if(model.currentFilter != searchText){
+//            model.currentFilter = searchText
+//        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
+
+extension MasterVC{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.transformerCount() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "transformerCell", for: indexPath) as? MasterViewCell else{
+            preconditionFailure("Incorrect Cell provided")
+        }
+        if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
+            cell.nameLabel.text = transformer.transformerName
+            self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
+                if let data = dataOpt{
+                    cell.teamIconView.image = UIImage(data: data)
+                }
+            })
+            
+        }
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 }
 

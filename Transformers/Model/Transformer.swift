@@ -18,7 +18,7 @@ class Transformer: NSObject, NSCoding{
     
     required init?(coder aDecoder: NSCoder) {
         guard
-            let transId = aDecoder.decodeObject(forKey: "transformerId") as? Int,
+            let transId = aDecoder.decodeObject(forKey: "transformerId") as? String,
             let transName = aDecoder.decodeObject(forKey: "transformerTeam") as? String
             else {
                 return nil
@@ -39,7 +39,7 @@ class Transformer: NSObject, NSCoding{
         super.init()
     }
     
-    var transformerId: Int?
+    var transformerId: String?
     var transformerTeam: Team?
     var transformerName: String?
     var strength: Int?
@@ -67,7 +67,7 @@ class Transformer: NSObject, NSCoding{
     var teamIcon: String?
     var state: TransformerState?
     
-    init(id: Int, team: Team, name: String, strength: Int, intelligence: Int, speed: Int, endurance: Int,
+    init(id: String, team: Team, name: String, strength: Int, intelligence: Int, speed: Int, endurance: Int,
          rank: Int, courage: Int, firepower: Int, skill: Int, teamIcon: String  ) {
         self.transformerId = id
         self.transformerTeam = team

@@ -26,7 +26,6 @@ class Persistence {
                 throw TransformerError.notAbleToDelete(name: transformer.transformerName ?? "")
             }
         }
-      //  transformer.isFavorite = false
     }
     
     static func save(_ transformer: Transformer) throws {

@@ -7,16 +7,32 @@
 //
 
 import Foundation
-struct Messages{
-    static let TransformerReadyToBeSaved = "Transformer Ready To be Saved"
-    static let TransformerListChanged = "Transformer List changed"
-    static let TransformerDeleted = "Transformer Deleted"
-    static let ModelChanged = "ModelChanged"
+
+let Center = NotificationCenter.default
+
+enum MessageType: String{
+    case evaluatedByStrength = "Strength rule"
+    case evaluatedByCourage = "Courage rule"
+    case evaluatedBySkill = "Skill rule"
+    case evaluatedByRank = "Rank rule"
+    case evaluatedByRating = "Rating rule"
+    case evaluatedByName = "Name rule"
+    case winnerFound = "Winner among Transformer"
+    case bothDead = "Both Transformers are dead"
+    case gameOver = "All Transformers are dead"
+    case transformerListChanged = "Transformer Ready To be Saved"
+    
+    var asNN: Notification.Name {
+        return Notification.Name(self.rawValue)
+    }
+    var asNotification: Notification {
+        return Notification(name: asNN)
+    }
 }
 
+
+
 struct TransformerNotification {
-    static let Center = NotificationCenter.default
-    
     static func updateObservers(message: MessageType, data: Any? = nil) {
         Center.post(name: message.asNN, object: self, userInfo: {
             if let d = data {

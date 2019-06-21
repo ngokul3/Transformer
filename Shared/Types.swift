@@ -24,6 +24,7 @@ enum TransformerError: Error{
     case notAbleToSave(name: String)
     case notAbleToRestore
     case notAbleToCreateEmptyTransformer
+    case notAbleToGetKey
 }
 
 
@@ -38,24 +39,7 @@ enum TransformerState: Int {
     }
 }
 
-enum MessageType: String{
-    case evaluatedByStrength = "Strength rule"
-    case evaluatedByCourage = "Courage rule"
-    case evaluatedBySkill = "Skill rule"
-    case evaluatedByRank = "Rank rule"
-    case evaluatedByRating = "Rating rule"
-    case evaluatedByName = "Name rule"
-    case winnerFound = "Winner among Transformer"
-    case bothDead = "Both Transformers are dead"
-    case gameOver = "All Transformers are dead"
-    
-    var asNN: Notification.Name {
-        return Notification.Name(self.rawValue)
-    }
-    var asNotification: Notification {
-        return Notification(name: asNN)
-    }
-}
+
 
 enum DetailVCType : String{
     case Add
@@ -110,6 +94,9 @@ protocol TransformerViewOutput {
     func setUpFight(for rank: Int)
     func addTransformer(transformer: Transformer)
     func generateTransformerPrototype()->Transformer?
+    func transformerCount()->Int
+    func transformerAtIndex(index: Int)->Transformer?
+     func getTeamIcon(id: String, completion: @escaping (Data?)->())
 }
 
 protocol CollectionDataProvider{
