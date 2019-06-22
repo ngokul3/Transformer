@@ -57,6 +57,13 @@ struct TeamStatistics: TeamStatisticsDataSource {
     }
 }
 
+
+struct FighterSetUp{
+    var fighter1: Transformer?
+    var fighter2: Transformer?
+    var rank: Int?
+}
+
 struct Consts{
     static let KEY0 = "Key0"
 
@@ -89,7 +96,7 @@ protocol TransformerViewInput{
 }
 
 protocol FightViewInput{
-    func prepForFight()
+    func prepForFight(fightSetUpArray: [FighterSetUp])
     func displayStatistics(statistics: TeamStatisticsDataSource)
 }
 
@@ -106,6 +113,7 @@ protocol TransformerViewOutput {
 
 protocol FightViewOutput{
     func viewReady()
+    func ranksAvailable(transformers: [Transformer])->Set<Int>
     func startFight()
 }
 

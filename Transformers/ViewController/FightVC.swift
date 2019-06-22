@@ -14,22 +14,26 @@ class FightVC: UIViewController{
     
     @IBOutlet weak var fightPrepTableView: UITableView!
     
-    override func viewWillAppear() {
-        
+    override func viewWillAppear(_ animated: Bool) {
+        let  s = 10
+        print(s)
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewReady()
         
+        
         Center.addObserver(forName: MessageType.transformersReadyToFight.asNN, object: nil, queue: OperationQueue.main) {
             [weak self] (notification) in
-            self?.prepForFight()
+            //self?.prepForFight()
         }
     }
 }
 
 extension FightVC: FightViewInput{
-    func prepForFight() {
+    func prepForFight(fightSetUpArray: [FighterSetUp]) {
         self.fightPrepTableView.reloadData()
     }
     
@@ -44,12 +48,12 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return presenter?.transformerCount() ?? 0
+       // return presenter?.transformerCount() ?? 0
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "transformerCell", for: indexPath) as? MasterViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fightCell", for: indexPath) as? MasterViewCell else{
             preconditionFailure("Incorrect Cell provided")
         }
 //        if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
