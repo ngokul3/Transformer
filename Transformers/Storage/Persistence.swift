@@ -42,6 +42,7 @@ class Persistence {
         if(savedTransformers.filter({$0.transformerId == transformer.transformerId}).count != 0){
             savedTransformers.forEach({(trans) in
                 if(trans.transformerId == transformer.transformerId){
+                    trans.transformerName = transformer.transformerName
                     trans.courage = transformer.courage
                     trans.strength = transformer.strength
                     trans.skill = transformer.skill
@@ -49,6 +50,7 @@ class Persistence {
                     trans.firepower = transformer.firepower
                     trans.endurance = transformer.endurance
                     trans.intelligence = transformer.intelligence
+                    trans.transformerTeam = transformer.transformerTeam
                 }
             })
         }

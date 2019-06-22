@@ -42,7 +42,7 @@ class AddEditVC: UIViewController {
             firepowerLabel.text = String(t.firepower ?? 1)
             ratingLabel.text = String(t.rating)
             enduranceLabel.text = String(t.endurance ?? 1)
-            if let team = Team(rawValue: t.transformerTeam.debugDescription){
+            if let team = t.transformerTeam {
                 switch team{
                 case .autobots:
                     teamSegment.selectedSegmentIndex = 0
@@ -128,6 +128,15 @@ extension AddEditVC{
         transformer?.firepower = Int(firepowerLabel.text ?? "")
         transformer?.endurance = Int(enduranceLabel.text ?? "")
         transformer?.skill = Int(skillLabel.text ?? "")
+        
+        switch self.teamSegment.selectedSegmentIndex{
+        case 0 :
+            transformer?.transformerTeam = Team.autobots
+        case 1:
+            transformer?.transformerTeam = Team.decepticon
+        default:
+            break
+        }
         
         saveDetailVC?(transformer)
         navigationController?.popViewController(animated: true)

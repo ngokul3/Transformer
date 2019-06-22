@@ -10,8 +10,10 @@ import UIKit
 
 class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     var presenter: TransformerViewOutput?
+    let imageCache = NSCache<AnyObject, AnyObject>()
     
     @IBOutlet weak var tableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +49,11 @@ extension MasterVC{
             
             vc.saveDetailVC = {[weak self] (transformerOpt) in
                 if let transformer = transformerOpt{
-                     self?.presenter?.transformerInContext(transformer: transformer, opType: .Add)
+                    self?.presenter?.transformerInContext(transformer: transformer, opType: .Add, errorMsg: {(error) in
+                        if let _ = error{
+                            self?.alertUser = "Not able to Add"
+                        }
+                    })
                 }
             }
         case "editSegue":
@@ -61,17 +67,29 @@ extension MasterVC{
                     vc.transformer = transformer
                     vc.transformerVCType = DetailVCType.Edit
                     vc.childLoaded = {[weak self] in
-                        self?.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
-                            if let data = dataOpt{
-                                OperationQueue.main.addOperation {
-                                    vc.teamIconView.image = UIImage(data: data)
-                                }
+                        
+                        if let imageFromCache = self?.imageCache.object(forKey: (transformer.teamIcon ?? "") as AnyObject) as? UIImage{
+                            OperationQueue.main.addOperation {
+                                vc.teamIconView.image = imageFromCache
                             }
-                        })
+                        }
+                        
+                        
+//                        self?.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
+//                            if let data = dataOpt{
+//                                OperationQueue.main.addOperation {
+//                                    vc.teamIconView.image = UIImage(data: data)
+//                                }
+//                            }
+//                        })
                     }
                     vc.saveDetailVC = {[weak self] (transOpt) in
                         if let trans = transOpt{
-                            self?.presenter?.transformerInContext(transformer: trans, opType: .Edit)
+                            self?.presenter?.transformerInContext(transformer: trans, opType: .Edit, errorMsg: {(error) in
+                                if let _ = error{
+                                    self?.alertUser = "Not able to Edit"
+                                }
+                            })
                         }else{
                             self?.alertUser = "Could not edit this Transformer"
                         }
@@ -120,14 +138,25 @@ extension MasterVC{
         }
         if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
             cell.nameLabel.text = transformer.transformerName
-            self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
-                if let data = dataOpt{
-                    OperationQueue.main.addOperation {
-                        cell.teamIconView.image = UIImage(data: data)
-                    }
-                }
-            })
             
+            guard let teamIconURL = transformer.teamIcon as NSString? else{
+                return cell
+            }
+            
+            if let imageFromCache = imageCache.object(forKey: teamIconURL as AnyObject) as? UIImage{
+                 cell.teamIconView.image = imageFromCache
+            }else{
+                self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { [weak self](dataOpt) in
+                    if let data = dataOpt{
+                        if let iconImage = UIImage(data: data){
+                            self?.imageCache.setObject(iconImage, forKey: (teamIconURL) as AnyObject)
+                            OperationQueue.main.addOperation {
+                                cell.teamIconView.image = iconImage
+                            }
+                        }
+                    }
+                })
+            }
         }
         return cell
         
@@ -138,6 +167,7 @@ extension MasterVC{
     }
 }
 
+
 extension MasterVC{
     var alertUser :  String{
         get{
@@ -145,10 +175,7 @@ extension MasterVC{
         }
         set{
             let alert = UIAlertController(title: "Changes not saved", message: newValue, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Stay", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Disregard", style: .default, handler: ({[weak self](arg) -> Void in
-                self?.navigationController?.popViewController(animated: true)
-            })))
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

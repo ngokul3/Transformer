@@ -71,8 +71,8 @@ extension TransformerPresenter: TransformerViewOutput{
         }
     }
     
-    func transformerInContext(transformer: Transformer, opType: DetailVCType){
-        model?.handleTransformer(transformer: transformer, opType: opType)
+    func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void){
+        model?.handleTransformer(transformer: transformer, opType: opType, errorMsg: errorMsg)
     }
     
     func generateTransformerPrototype()->Transformer?{

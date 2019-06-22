@@ -92,7 +92,7 @@ protocol TransformerViewOutput {
     func viewReady()
     func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
-    func transformerInContext(transformer: Transformer, opType: DetailVCType)
+    func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
     func generateTransformerPrototype()->Transformer?
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
@@ -107,3 +107,5 @@ protocol CollectionDataProvider{
     func deleteTransformer(transformer: Transformer) throws
    
 }
+
+

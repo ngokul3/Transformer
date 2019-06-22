@@ -11,7 +11,7 @@ import Foundation
 protocol ModelProtocol{
     func restorelocalFromDatabase()throws
     func generateTransformerPrototype()->Transformer
-    func handleTransformer(transformer: Transformer, opType: DetailVCType)
+    func handleTransformer(transformer: Transformer, opType: DetailVCType , errorMsg: @escaping (Error?)->Void)
     func getTeamIcon(id: String,  completion: @escaping (Data?)->())
     var transformerArray: [Transformer]{get}
 }
@@ -20,7 +20,7 @@ class TransformerModel:ModelProtocol {
     private var transformers = [Transformer]()
     private var network : NetworkProtocol?
     private var opQueue: DispatchQueue?
-  
+    
     init(networkModel: NetworkProtocol, queue: DispatchQueue){
         network = networkModel
         opQueue = queue
@@ -48,6 +48,8 @@ class TransformerModel:ModelProtocol {
             do{
                 print("Thread for restoring \(Thread.current)")
                 self.transformers = try Persistence.restore()
+                TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
+                
             }
             catch (let error){
                 print(error)
@@ -56,10 +58,11 @@ class TransformerModel:ModelProtocol {
         }
     }
     
-    func handleTransformer(transformer: Transformer, opType: DetailVCType){
+    func handleTransformer(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void){
         network?.persistTransformer(transformer: transformer, opType: opType, finished: {[weak self](dictionary, error) in
             if let _ = error{
-                preconditionFailure("Could not fetch from web server")
+                errorMsg(error)
+           //     preconditionFailure("Could not fetch from web server")
             }
             
             guard let transformerDict = dictionary as?  [String: Any]  else {
@@ -70,8 +73,8 @@ class TransformerModel:ModelProtocol {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
                     do{
                         try Persistence.save(transformerObject)
-                        self?.transformers.append(transformerObject)
-                        TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
+                        
+                        self?.restorelocalFromDatabase()
                     }
                     catch let error{
                         print(error)
@@ -158,7 +161,7 @@ class TransformerModel:ModelProtocol {
            // OperationQueue.main.addOperation {
                 transformerArrayFromService.forEach({ (transformerDict) in
                     
-                   let transformer = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
+                   let _ = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
                     //self?.transformers.append(transformer)
                      
                     TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
