@@ -62,6 +62,24 @@ struct FighterSetUp{
     var fighter1: Transformer?
     var fighter2: Transformer?
     var rank: Int?
+    
+    
+    var fightDesc : String {
+        let fighter1Name = fighter1?.transformerName ?? ""
+        let fighter2Name = fighter2?.transformerName ?? ""
+        
+        if (fighter1Name.count != 0 && fighter2Name.count != 0){
+            return "Rank \(rank ?? 1) - \(fighter1Name) Vs \(fighter2Name)"
+        }
+        else if (fighter1Name.count == 0 && fighter2Name.count != 0){
+            return "Rank \(rank ?? 1) - \(fighter2Name)"
+        }
+        else if (fighter2Name.count == 0 && fighter1Name.count != 0){
+            return "Rank \(rank ?? 1) - \(fighter1Name)"
+        }else{
+            return "Rank \(rank ?? 1) - No fighters"
+        }
+    }
 }
 
 struct Consts{
@@ -96,12 +114,13 @@ protocol TransformerViewInput{
 }
 
 protocol FightViewInput{
-    func prepForFight(fightSetUpArray: [FighterSetUp])
+    func prepForFight()
     func displayStatistics(statistics: TeamStatisticsDataSource)
+    
 }
 
 protocol TransformerViewOutput {
-    func viewReady()
+    func viewReady(view: TransformerViewInput)
     //func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
     func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
@@ -112,9 +131,12 @@ protocol TransformerViewOutput {
 }
 
 protocol FightViewOutput{
-    func viewReady()
+    func viewReady(view: FightViewInput)
+    var fightSetArray : [FighterSetUp]{get}
+    func updateView()
     func ranksAvailable(transformers: [Transformer])->Set<Int>
     func startFight()
+    func fightAtIndex(index: Int)->FighterSetUp?
 }
 
 protocol CollectionDataProvider{

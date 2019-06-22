@@ -17,7 +17,7 @@ class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewReady()
+        presenter?.viewReady(view: self)
         
         Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
             [weak self] (notification) in

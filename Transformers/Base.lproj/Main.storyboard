@@ -64,6 +64,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2ck-V5-3bl" id="pT3-iS-wpe"/>
+                                    <outlet property="delegate" destination="2ck-V5-3bl" id="lk0-iJ-6TS"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkl-MD-uA1">
                                 <rect key="frame" x="15" y="569" width="384" height="30"/>

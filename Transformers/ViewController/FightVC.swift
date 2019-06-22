@@ -14,26 +14,28 @@ class FightVC: UIViewController{
     
     @IBOutlet weak var fightPrepTableView: UITableView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        let  s = 10
-        print(s)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        let  s = 10
+//        print(s)
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewReady()
+        presenter?.viewReady(view: self)
+        presenter?.updateView()
         
         
         Center.addObserver(forName: MessageType.transformersReadyToFight.asNN, object: nil, queue: OperationQueue.main) {
             [weak self] (notification) in
+            self?.presenter?.updateView()
             //self?.prepForFight()
         }
     }
 }
 
 extension FightVC: FightViewInput{
-    func prepForFight(fightSetUpArray: [FighterSetUp]) {
+    func prepForFight() {
         self.fightPrepTableView.reloadData()
     }
     
@@ -48,36 +50,16 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // return presenter?.transformerCount() ?? 0
-        return 0
+        return presenter?.fightSetArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fightCell", for: indexPath) as? MasterViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fightCell", for: indexPath) as? FightViewCell else{
             preconditionFailure("Incorrect Cell provided")
         }
-//        if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
-//            cell.nameLabel.text = transformer.transformerName
-//
-//            guard let teamIconURL = transformer.teamIcon as NSString? else{
-//                return cell
-//            }
-//
-//            if let imageFromCache = imageCache.object(forKey: teamIconURL as AnyObject) as? UIImage{
-//                cell.teamIconView.image = imageFromCache
-//            }else{
-//                self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { [weak self](dataOpt) in
-//                    if let data = dataOpt{
-//                        if let iconImage = UIImage(data: data){
-//                            self?.imageCache.setObject(iconImage, forKey: (teamIconURL) as AnyObject)
-//                            OperationQueue.main.addOperation {
-//                                cell.teamIconView.image = iconImage
-//                            }
-//                        }
-//                    }
-//                })
-//            }
-//        }
+        if let fightSetUp = presenter?.fightAtIndex(index: indexPath.row) {
+            cell.fightSetLabel.text = fightSetUp.fightDesc
+        }
         return cell
         
     }

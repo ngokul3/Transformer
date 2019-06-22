@@ -27,10 +27,9 @@ class TransformerPresenter{
         }
     }
     
-    func viewReady(){
-        self.updateView()
-       
-    }
+    func viewReady(view: TransformerViewInput){
+        self.view = view
+     }
     
     func updateView(){
         if let _ = self.model?.transformerArray{
