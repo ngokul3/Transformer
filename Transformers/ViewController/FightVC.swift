@@ -13,23 +13,19 @@ class FightVC: UIViewController{
     var presenter: FightViewOutput?
     
     @IBOutlet weak var fightPrepTableView: UITableView!
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        let  s = 10
-//        print(s)
-//    }
-    
+
+    @IBAction func statrFightClick(_ sender: UIButton) {
+        presenter?.startFight()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewReady(view: self)
         presenter?.updateView()
         
-        
-        Center.addObserver(forName: MessageType.transformersReadyToFight.asNN, object: nil, queue: OperationQueue.main) {
+        Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
             [weak self] (notification) in
             self?.presenter?.updateView()
-            //self?.prepForFight()
         }
     }
 }

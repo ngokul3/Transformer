@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TransformersTests/TransformersTests.swift"
-            timestampString = "582509540.752654"
+            timestampString = "582932231.548629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TransformersTests/TransformersTests.swift"
-            timestampString = "582509540.753551"
+            timestampString = "582932231.5491379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -244,7 +244,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Presenter/Fight.swift"
@@ -257,14 +257,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Transformers.Fight.(checkRating in _E0612D712F21A8FE828D540D2B3F7D65)() -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Presenter/Fight.swift"
-                  timestampString = "582918808.2439801"
+                  timestampString = "582932231.859679"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"
@@ -272,14 +272,14 @@
                   offsetFromSymbolStart = "46">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Transformers.Fight.(checkRating in _E0612D712F21A8FE828D540D2B3F7D65)() -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Presenter/Fight.swift"
-                  timestampString = "582918808.245976"
+                  timestampString = "582932231.861834"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"

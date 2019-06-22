@@ -33,13 +33,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-lz-wgi">
-                                                    <rect key="frame" x="5" y="5" width="162" height="33.5"/>
+                                                    <rect key="frame" x="5" y="5" width="258" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-5L-Zd9">
-                                                    <rect key="frame" x="177" y="5" width="192" height="33.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yet to fight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-5L-Zd9">
+                                                    <rect key="frame" x="273" y="5" width="96" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="2:4" id="Xhs-N4-ryq"/>
+                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="1:4" id="Xhs-N4-ryq"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="fightSetLabel" destination="FHh-lz-wgi" id="cOF-JT-cjw"/>
@@ -72,27 +72,30 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkl-MD-uA1">
                                 <rect key="frame" x="15" y="569" width="384" height="30"/>
                                 <state key="normal" title="START FIGHT"/>
+                                <connections>
+                                    <action selector="statrFightClick:" destination="2ck-V5-3bl" eventType="touchUpInside" id="cbu-Ju-gaX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battles - " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NX-XQ-kjU">
-                                <rect key="frame" x="15" y="619" width="70" height="21"/>
+                                <rect key="frame" x="15" y="639" width="70" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tet-QU-ilS">
-                                <rect key="frame" x="155" y="619" width="42" height="21"/>
+                                <rect key="frame" x="155" y="639" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpL-Jv-lw0">
-                                <rect key="frame" x="155" y="660" width="42" height="21"/>
+                                <rect key="frame" x="155" y="680" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8b-ar-Ire">
-                                <rect key="frame" x="15" y="660" width="132" height="21"/>
+                                <rect key="frame" x="15" y="680" width="132" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -102,7 +105,7 @@
                         <constraints>
                             <constraint firstItem="Tet-QU-ilS" firstAttribute="centerY" secondItem="8NX-XQ-kjU" secondAttribute="centerY" id="3NE-gE-dsJ"/>
                             <constraint firstItem="nkl-MD-uA1" firstAttribute="trailing" secondItem="4uF-c8-UgR" secondAttribute="trailing" id="468-cC-aZm"/>
-                            <constraint firstItem="8NX-XQ-kjU" firstAttribute="top" secondItem="nkl-MD-uA1" secondAttribute="bottom" constant="20" id="6Dv-QW-Ixv"/>
+                            <constraint firstItem="8NX-XQ-kjU" firstAttribute="top" secondItem="nkl-MD-uA1" secondAttribute="bottom" constant="40" id="6Dv-QW-Ixv"/>
                             <constraint firstItem="FpL-Jv-lw0" firstAttribute="leading" secondItem="Tet-QU-ilS" secondAttribute="leading" id="AWo-vs-Pau"/>
                             <constraint firstItem="4uF-c8-UgR" firstAttribute="top" secondItem="0FD-WM-a7y" secondAttribute="top" constant="5" id="ArM-IB-gYu"/>
                             <constraint firstItem="0FD-WM-a7y" firstAttribute="trailing" secondItem="4uF-c8-UgR" secondAttribute="trailing" constant="15" id="Azw-6o-yiC"/>

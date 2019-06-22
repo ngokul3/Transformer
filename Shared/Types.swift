@@ -28,58 +28,20 @@ enum TransformerError: Error{
 }
 
 
-enum TransformerState: Int {
-    case Alive
-    case Died
-    case Born
-    case Empty
+enum TransformerState: String {
+    case Alive = "Alive"
+    case Died = "Died"
+    case Born = "Born"
+    case Empty = "Empty"
     
     var isAlive: Bool {
         return self == .Alive || self == .Born
     }
 }
 
-
-
 enum DetailVCType : String{
     case Add
     case Edit
-}
-
-
-
-struct TeamStatistics: TeamStatisticsDataSource {
-    var team: Team
-    var aliveCount: Int
-    var diedCount: Int
-    func reset() {
-        
-    }
-}
-
-
-struct FighterSetUp{
-    var fighter1: Transformer?
-    var fighter2: Transformer?
-    var rank: Int?
-    
-    
-    var fightDesc : String {
-        let fighter1Name = fighter1?.transformerName ?? ""
-        let fighter2Name = fighter2?.transformerName ?? ""
-        
-        if (fighter1Name.count != 0 && fighter2Name.count != 0){
-            return "Rank \(rank ?? 1) - \(fighter1Name) Vs \(fighter2Name)"
-        }
-        else if (fighter1Name.count == 0 && fighter2Name.count != 0){
-            return "Rank \(rank ?? 1) - \(fighter2Name)"
-        }
-        else if (fighter2Name.count == 0 && fighter1Name.count != 0){
-            return "Rank \(rank ?? 1) - \(fighter1Name)"
-        }else{
-            return "Rank \(rank ?? 1) - No fighters"
-        }
-    }
 }
 
 struct Consts{

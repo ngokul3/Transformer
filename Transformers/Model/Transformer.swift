@@ -27,6 +27,7 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         aCoder.encode(teamIcon, forKey: "teamIcon")
         aCoder.encode(endurance, forKey: "endurance")
         aCoder.encode(firepower, forKey: "firepower")
+        aCoder.encode((state ?? TransformerState.Born).rawValue, forKey: "state")
         aCoder.encode((transformerTeam ?? Team.autobots).rawValue, forKey: "transformerTeam")
     }
     
@@ -51,6 +52,8 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         teamIcon = aDecoder.decodeObject(forKey: "teamIcon") as? String
         let team = aDecoder.decodeObject(forKey: "transformerTeam") as? String
         transformerTeam = Team(rawValue: team ?? "A")
+        let s = aDecoder.decodeObject(forKey: "state") as? String
+        state = TransformerState(rawValue: s ?? "Alive")
          super.init()
     }
     

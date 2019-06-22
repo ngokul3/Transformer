@@ -51,6 +51,7 @@ class Persistence {
                     trans.endurance = transformer.endurance
                     trans.intelligence = transformer.intelligence
                     trans.transformerTeam = transformer.transformerTeam
+                    trans.teamIcon = transformer.teamIcon
                 }
             })
         }
