@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.714551"
+            timestampString = "582856211.969017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.715335"
+            timestampString = "582856211.96961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.715673"
+            timestampString = "582856211.970343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/AddEditVC.swift"
-            timestampString = "582766331.004967"
+            timestampString = "582856211.970976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "btnSaveClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.715997"
+            timestampString = "582856211.971639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.716277"
+            timestampString = "582856211.972285"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/AddEditVC.swift"
-            timestampString = "582766331.005769"
+            timestampString = "582856211.972942"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "btnSaveClick(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.7166229"
+            timestampString = "582856211.973614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.716907"
+            timestampString = "582856211.974317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -375,7 +375,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Presenter/TransformerPresenter.swift"
-            timestampString = "582840859.327189"
+            timestampString = "582856211.9748681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -391,7 +391,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.7173491"
+            timestampString = "582856211.975365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -407,7 +407,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.717671"
+            timestampString = "582856211.975756"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -423,7 +423,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.717947"
+            timestampString = "582856211.976122"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -439,7 +439,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.718251"
+            timestampString = "582856211.976465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -455,7 +455,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.718527"
+            timestampString = "582856211.976796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -471,23 +471,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.718809"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "persistTransformer(transformer:opType:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.719094"
+            timestampString = "582856211.977137"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -503,7 +487,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Presenter/TransformerPresenter.swift"
-            timestampString = "582840859.329216"
+            timestampString = "582856211.977495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -519,7 +503,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.719414"
+            timestampString = "582856211.977828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -535,7 +519,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.719752"
+            timestampString = "582856211.978168"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -551,12 +535,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.720202"
+            timestampString = "582856211.9785039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "returnTransformerObjectFromDict(transformerDict:)"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "getTransformers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -567,7 +551,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.7209899"
+            timestampString = "582856211.97894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -583,7 +567,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.7213711"
+            timestampString = "582856211.979279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -599,7 +583,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.721705"
+            timestampString = "582856211.979609"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
@@ -615,7 +599,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.722024"
+            timestampString = "582856211.979943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
@@ -631,7 +615,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.722321"
+            timestampString = "582856211.980316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -643,16 +627,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.722617"
+            timestampString = "582856211.980824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "searchBar(_:textDidChange:)"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -663,7 +647,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Network/Network.swift"
-            timestampString = "582841540.722923"
+            timestampString = "582856211.981517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -679,12 +663,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.723236"
+            timestampString = "582856211.9818569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "returnTransformerObjectFromDict(transformerDict:)"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "getTransformers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -695,7 +679,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.723837"
+            timestampString = "582856211.98229"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -707,11 +691,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Presenter/TransformerPresenter.swift"
-            timestampString = "582840859.333589"
+            timestampString = "582856211.982971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -723,62 +707,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/ViewController/MasterVC.swift"
-            timestampString = "582841540.724175"
+            timestampString = "582856211.9833111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "MasterVC"
-            landmarkType = "21">
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.72446"
+            timestampString = "582856211.983997"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "getTransformers()"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "getTeamIcon(id:completion:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Transformers.TransformerModel.getTeamIcon(id: Swift.String, completion: (Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Model/TransformerModel.swift"
-                  timestampString = "582840803.702527"
+                  timestampString = "582853622.25848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "168"
-                  endingLineNumber = "168"
+                  startingLineNumber = "175"
+                  endingLineNumber = "175"
                   offsetFromSymbolStart = "64">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Transformers.Transformer) -&gt; Swift.Bool in Transformers.TransformerModel.getTeamIcon(id: Swift.String, completion: (Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()) -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Model/TransformerModel.swift"
-                  timestampString = "582840803.704296"
+                  timestampString = "582853622.260052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
+                  startingLineNumber = "176"
+                  endingLineNumber = "176"
                   offsetFromSymbolStart = "37">
                </Location>
             </Locations>
@@ -787,32 +771,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.725004"
+            timestampString = "582856211.984471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "getTransformers()"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "getTeamIcon(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.725547"
+            timestampString = "582856211.9848959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "getTransformers()"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "getTeamIcon(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -823,7 +807,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.726088"
+            timestampString = "582856211.9853261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -839,87 +823,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.726444"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "save(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.726728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "save(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.72701"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "save(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
-                  moduleName = "Transformers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.724116"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "1509">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Transformers.Transformer) -&gt; Swift.Bool in static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
-                  moduleName = "Transformers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.725952"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.7272871"
+            timestampString = "582856211.985762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -934,12 +838,76 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.727568"
+            filePath = "Transformers/Storage/Persistence.swift"
+            timestampString = "582856211.986106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "save(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Storage/Persistence.swift"
+            timestampString = "582856211.986511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "save(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
+                  moduleName = "Transformers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
+                  timestampString = "582854522.001699"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Transformers.Transformer) -&gt; Swift.Bool in static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
+                  moduleName = "Transformers"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
+                  timestampString = "582854522.0037169"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Model/Transformer.swift"
+            timestampString = "582856211.987078"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -951,11 +919,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.727632"
+            timestampString = "582856211.9871759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "init(id:team:name:strength:intelligence:speed:endurance:rank:courage:firepower:skill:teamIcon:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -963,11 +931,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.727687"
+            timestampString = "582856211.98724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -979,46 +947,46 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.727741"
+            timestampString = "582856211.987325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "save(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.7381361"
+                  timestampString = "582856287.146921"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
                   offsetFromSymbolStart = "1102">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Transformers.Transformer) -&gt; () in static Transformers.Persistence.save(Transformers.Transformer) throws -&gt; ()"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.739823"
+                  timestampString = "582856287.14891"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
                   offsetFromSymbolStart = "34">
                </Location>
             </Locations>
@@ -1031,12 +999,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.728017"
+            timestampString = "582856211.987739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "returnTransformerObjectFromDict(transformerDict:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "getTransformers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1047,12 +1015,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.72856"
+            timestampString = "582856211.988207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "returnTransformerObjectFromDict(transformerDict:)"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "getTransformers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1063,7 +1031,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.729086"
+            timestampString = "582856211.988622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -1079,7 +1047,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.729623"
+            timestampString = "582856211.989067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -1091,15 +1059,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.73014"
+            timestampString = "582856211.989475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "restore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1107,27 +1075,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Storage/Persistence.swift"
-            timestampString = "582841540.730461"
+            timestampString = "582856211.989825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "restore()"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "static Transformers.Persistence.restore() throws -&gt; Swift.Array&lt;Transformers.Transformer&gt;"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.75547"
+                  timestampString = "582853622.30922"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -1135,14 +1103,14 @@
                   offsetFromSymbolStart = "654">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "static Transformers.Persistence.restore() throws -&gt; Swift.Array&lt;Transformers.Transformer&gt;"
                   moduleName = "Transformers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gokulnarasimhan/Custom/Transformers/Transformers/Storage/Persistence.swift"
-                  timestampString = "582840803.757212"
+                  timestampString = "582853622.310993"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -1159,7 +1127,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.730751"
+            timestampString = "582856211.99015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -1175,7 +1143,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.730813"
+            timestampString = "582856211.990214"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -1187,15 +1155,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/Transformer.swift"
-            timestampString = "582841540.7308691"
+            timestampString = "582856211.990271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "init(coder:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1207,7 +1175,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.731636"
+            timestampString = "582856211.990532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -1223,12 +1191,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transformers/Model/TransformerModel.swift"
-            timestampString = "582841540.7321579"
+            timestampString = "582856211.990908"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
             landmarkName = "restorelocalFromDatabase()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Storage/Persistence.swift"
+            timestampString = "582856211.991281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "save(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Network/Network.swift"
+            timestampString = "582856211.991591"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "persistTransformer(transformer:opType:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Model/TransformerModel.swift"
+            timestampString = "582856211.991922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "returnTransformerObjectFromDict(transformerDict:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Transformers/Model/Transformer.swift"
+            timestampString = "582856354.581795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "encode(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

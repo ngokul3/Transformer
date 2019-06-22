@@ -9,8 +9,8 @@
 import Foundation
 
 enum Team: String {
-    case autobots = "autobots"
-    case decepticon = "decepticon" 
+    case autobots = "A"
+    case decepticon = "D"
 }
 
 enum TransformerError: Error{

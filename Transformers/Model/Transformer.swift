@@ -26,7 +26,8 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         aCoder.encode(skill, forKey: "skill")
         aCoder.encode(teamIcon, forKey: "teamIcon")
         aCoder.encode(endurance, forKey: "endurance")
-        aCoder.encode(endurance, forKey: "transformerTeam")
+        aCoder.encode(firepower, forKey: "firepower")
+        aCoder.encode((transformerTeam ?? Team.autobots).rawValue, forKey: "transformerTeam")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,7 +49,8 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         firepower = aDecoder.decodeObject(forKey: "firepower") as? Int
         skill = aDecoder.decodeObject(forKey: "skill") as? Int
         teamIcon = aDecoder.decodeObject(forKey: "teamIcon") as? String
-        transformerTeam = aDecoder.decodeObject(forKey: "transformerTeam") as? Team
+        let team = aDecoder.decodeObject(forKey: "transformerTeam") as? String
+        transformerTeam = Team(rawValue: team ?? "A")
          super.init()
     }
     

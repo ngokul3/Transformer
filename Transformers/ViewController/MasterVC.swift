@@ -44,6 +44,7 @@ extension MasterVC{
         case "addSegue":
             vc.transformerVCType = DetailVCType.Add
             vc.transformer = presenter?.generateTransformerPrototype()
+            
             vc.saveDetailVC = {[weak self] (transformerOpt) in
                 if let transformer = transformerOpt{
                      self?.presenter?.transformerInContext(transformer: transformer, opType: .Add)
@@ -59,6 +60,15 @@ extension MasterVC{
                 if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
                     vc.transformer = transformer
                     vc.transformerVCType = DetailVCType.Edit
+                    vc.childLoaded = {[weak self] in
+                        self?.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
+                            if let data = dataOpt{
+                                OperationQueue.main.addOperation {
+                                    vc.teamIconView.image = UIImage(data: data)
+                                }
+                            }
+                        })
+                    }
                     vc.saveDetailVC = {[weak self] (transOpt) in
                         if let trans = transOpt{
                             self?.presenter?.transformerInContext(transformer: trans, opType: .Edit)

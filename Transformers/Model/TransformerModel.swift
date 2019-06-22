@@ -132,7 +132,7 @@ class TransformerModel:ModelProtocol {
         
         
         guard let teamName = transformerDict["team"] as? String,
-                let team = Team(rawValue: teamName.lowercased())
+                let team = Team(rawValue: teamName)
             else{
             preconditionFailure("team not found in JSON")
         }

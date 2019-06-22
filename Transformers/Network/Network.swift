@@ -154,7 +154,7 @@ extension NetworkModel{
         case .Edit:
             parameters["id"] = transformer.transformerId ?? ""
             httpMethodValue = HTTPMethod.put
-         }
+        }
         
         Alamofire.request(httpURL, method: httpMethodValue ?? .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])
             .responseJSON { response in

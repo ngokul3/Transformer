@@ -21,16 +21,18 @@ class AddEditVC: UIViewController {
     @IBOutlet weak var enduranceLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var teamSegment: UISegmentedControl!
-   
+
    
     var transformer: Transformer?
     var transformerVCType : DetailVCType?
     var saveDetailVC: ((Transformer?) -> Void)?
+    var childLoaded:(()->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let t = transformer{
+            nameText.text = t.transformerName ?? ""
             rankLabel.text = String(t.rank ?? 1)
             courageLabel.text = String(t.courage ?? 1)
             strengthLabel.text = String(t.strength ?? 1)
@@ -39,6 +41,16 @@ class AddEditVC: UIViewController {
             intelligenceLabel.text = String(t.intelligence ?? 1)
             firepowerLabel.text = String(t.firepower ?? 1)
             ratingLabel.text = String(t.rating)
+            enduranceLabel.text = String(t.endurance ?? 1)
+            if let team = Team(rawValue: t.transformerTeam.debugDescription){
+                switch team{
+                case .autobots:
+                    teamSegment.selectedSegmentIndex = 0
+                case .decepticon:
+                    teamSegment.selectedSegmentIndex = 1
+                }
+            }
+            childLoaded?()
         }
             
     }
@@ -95,7 +107,7 @@ extension AddEditVC{
 extension AddEditVC{
     @IBAction func btnBackClicked(_ sender: UIBarButtonItem) {
         if(transformer?.transformerName != nameText.text){
-            alertUser = "Restaurant Name was changed"
+            alertUser = "Transformer Name was changed"
             return
         }
         
