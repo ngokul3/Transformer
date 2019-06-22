@@ -10,7 +10,6 @@ import Foundation
 
 class TransformerPresenter{
     var view: TransformerViewInput?
-    //var transformersOpt: [Transformer]?
     let model: ModelProtocol?
     var fightProtocol: FightProtocol?
     
@@ -26,11 +25,7 @@ class TransformerPresenter{
         catch{
             // Perform custom action
         }
-        
-
-
     }
-    
     
     func viewReady(){
         self.updateView()
@@ -47,23 +42,23 @@ class TransformerPresenter{
 extension TransformerPresenter: TransformerViewOutput{
     
     
-    
-    func findFighters(for rank: Int)->(Transformer?, Transformer?)?{
-//        guard let transformers = transformersOpt else{
-//            return nil
-//        }
 //
-//        let fighter1 = transformers.filter { (arg) -> Bool in
-//            arg.rank == rank && arg.transformerTeam == .autobots
-//        }.first
-//
-//        let fighter2 = transformers.filter { (arg) -> Bool in
-//            arg.rank == rank && arg.transformerTeam == .decepticon
-//        }.first
-//
-//        return (fighter1, fighter2)
-        return(nil, nil)
-    }
+//    func findFighters(for rank: Int)->(Transformer?, Transformer?)?{
+////        guard let transformers = transformersOpt else{
+////            return nil
+////        }
+////
+////        let fighter1 = transformers.filter { (arg) -> Bool in
+////            arg.rank == rank && arg.transformerTeam == .autobots
+////        }.first
+////
+////        let fighter2 = transformers.filter { (arg) -> Bool in
+////            arg.rank == rank && arg.transformerTeam == .decepticon
+////        }.first
+////
+////        return (fighter1, fighter2)
+//        return(nil, nil)
+//    }
     
     func setUpFight(for rank: Int) {
         fightProtocol?.evaluateFighters {

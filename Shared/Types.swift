@@ -85,18 +85,28 @@ protocol FightProtocol: class{
 
 protocol TransformerViewInput{
     func setUpTransformers()
-    //func displayStatistics(statistics: TeamStatisticsDataSource)
+    
+}
+
+protocol FightViewInput{
+    func prepForFight()
+    func displayStatistics(statistics: TeamStatisticsDataSource)
 }
 
 protocol TransformerViewOutput {
     func viewReady()
-    func findFighters(for rank: Int)->(Transformer?, Transformer?)?
+    //func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
     func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
     func generateTransformerPrototype()->Transformer?
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
-     func getTeamIcon(id: String, completion: @escaping (Data?)->())
+    func getTeamIcon(id: String, completion: @escaping (Data?)->())
+}
+
+protocol FightViewOutput{
+    func viewReady()
+    func startFight()
 }
 
 protocol CollectionDataProvider{

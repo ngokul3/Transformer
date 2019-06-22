@@ -19,7 +19,7 @@ var AppDel: AppDelegate {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-     
+    
     var presenterInstance = TransformerPresenter(model: TransformerModel(networkModel: NetworkModel.getInstance(), queue: DispatchQueue(label: "concurrentQueue", qos: .background, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)))
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarVC.viewControllers![0] as! UINavigationController
         let masterVC = nav.viewControllers[0] as! MasterVC
         masterVC.presenter = AppDel.presenterInstance
+        let fightVC = nav.viewControllers[1] as! FightVC
+       // fightVC.presenter =
         return true
     }
     

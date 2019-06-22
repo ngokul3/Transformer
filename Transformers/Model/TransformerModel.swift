@@ -49,7 +49,6 @@ class TransformerModel:ModelProtocol {
                 print("Thread for restoring \(Thread.current)")
                 self.transformers = try Persistence.restore()
                 TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
-                
             }
             catch (let error){
                 print(error)

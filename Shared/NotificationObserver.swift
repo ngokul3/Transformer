@@ -21,6 +21,7 @@ enum MessageType: String{
     case bothDead = "Both Transformers are dead"
     case gameOver = "All Transformers are dead"
     case transformerListChanged = "Transformer Ready To be Saved"
+    case transformersReadyToFight = "Fight to happen soon"
     
     var asNN: Notification.Name {
         return Notification.Name(self.rawValue)

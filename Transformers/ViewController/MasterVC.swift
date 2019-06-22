@@ -73,15 +73,6 @@ extension MasterVC{
                                 vc.teamIconView.image = imageFromCache
                             }
                         }
-                        
-                        
-//                        self?.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { (dataOpt) in
-//                            if let data = dataOpt{
-//                                OperationQueue.main.addOperation {
-//                                    vc.teamIconView.image = UIImage(data: data)
-//                                }
-//                            }
-//                        })
                     }
                     vc.saveDetailVC = {[weak self] (transOpt) in
                         if let trans = transOpt{

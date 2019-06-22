@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6C716341A23C1B9B61835681 /* Pods_TransformersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1885F7E865E5CCDD9BF7723E /* Pods_TransformersTests.framework */; };
+		900EA7AB22BE420B005F69B1 /* FightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7AA22BE420B005F69B1 /* FightPresenter.swift */; };
+		900EA7AD22BE7CEC005F69B1 /* FightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7AC22BE7CEC005F69B1 /* FightModel.swift */; };
+		901B7F4C22BE3B600063145F /* FightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B7F4B22BE3B600063145F /* FightVC.swift */; };
+		901B7F5522BE40280063145F /* FightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B7F5422BE40280063145F /* FightViewCell.swift */; };
 		90DE10A122B4F82000302CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10A022B4F82000302CB2 /* AppDelegate.swift */; };
 		90DE10A322B4F82000302CB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10A222B4F82000302CB2 /* ViewController.swift */; };
 		90DE10A622B4F82000302CB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90DE10A422B4F82000302CB2 /* Main.storyboard */; };
@@ -55,6 +59,10 @@
 		26354514668DA5432F541CD5 /* Pods-Transformers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transformers.release.xcconfig"; path = "Pods/Target Support Files/Pods-Transformers/Pods-Transformers.release.xcconfig"; sourceTree = "<group>"; };
 		5A5D406F0162031E82F0B0FD /* Pods-TransformersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransformersTests/Pods-TransformersTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EBF0532875F9EF52E48C52F /* Pods-TransformersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransformersTests/Pods-TransformersTests.release.xcconfig"; sourceTree = "<group>"; };
+		900EA7AA22BE420B005F69B1 /* FightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPresenter.swift; sourceTree = "<group>"; };
+		900EA7AC22BE7CEC005F69B1 /* FightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightModel.swift; sourceTree = "<group>"; };
+		901B7F4B22BE3B600063145F /* FightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightVC.swift; sourceTree = "<group>"; };
+		901B7F5422BE40280063145F /* FightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewCell.swift; sourceTree = "<group>"; };
 		90DE109D22B4F82000302CB2 /* Transformers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transformers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DE10A022B4F82000302CB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90DE10A222B4F82000302CB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +198,7 @@
 				90DE10D522B5028000302CB2 /* Transformer.swift */,
 				90DE10DC22B71C1300302CB2 /* ModelManager.swift */,
 				90DE112222B9840E00302CB2 /* TransformerModel.swift */,
+				900EA7AC22BE7CEC005F69B1 /* FightModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +216,7 @@
 			children = (
 				90DE10E722B7274B00302CB2 /* Fight.swift */,
 				90DE110622B84DCE00302CB2 /* TransformerPresenter.swift */,
+				900EA7AA22BE420B005F69B1 /* FightPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -224,6 +234,7 @@
 			children = (
 				90DE111722B9787100302CB2 /* MasterVC.swift */,
 				90DE111E22B97E5100302CB2 /* AddEditVC.swift */,
+				901B7F4B22BE3B600063145F /* FightVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -232,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				90DE111A22B97CB900302CB2 /* MasterViewCell.swift */,
+				901B7F5422BE40280063145F /* FightViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -497,14 +509,18 @@
 				90DE10D622B5028000302CB2 /* Transformer.swift in Sources */,
 				90DE10E822B7274B00302CB2 /* Fight.swift in Sources */,
 				90DE111C22B97CB900302CB2 /* MasterViewCell.swift in Sources */,
+				901B7F4C22BE3B600063145F /* FightVC.swift in Sources */,
 				90DE10DD22B71C1300302CB2 /* ModelManager.swift in Sources */,
 				90DE10A322B4F82000302CB2 /* ViewController.swift in Sources */,
 				90DE111822B9787100302CB2 /* MasterVC.swift in Sources */,
+				900EA7AB22BE420B005F69B1 /* FightPresenter.swift in Sources */,
 				90DE10A122B4F82000302CB2 /* AppDelegate.swift in Sources */,
+				900EA7AD22BE7CEC005F69B1 /* FightModel.swift in Sources */,
 				90DE10DB22B5049200302CB2 /* Types.swift in Sources */,
 				90DE10D922B5039C00302CB2 /* Persistence.swift in Sources */,
 				90DE110722B84DCE00302CB2 /* TransformerPresenter.swift in Sources */,
 				90DE112322B9840E00302CB2 /* TransformerModel.swift in Sources */,
+				901B7F5522BE40280063145F /* FightViewCell.swift in Sources */,
 				90DE10D322B4F8E400302CB2 /* Network.swift in Sources */,
 				90DE112022B97E5100302CB2 /* AddEditVC.swift in Sources */,
 				90DE10A922B4F82000302CB2 /* Transformers.xcdatamodeld in Sources */,
