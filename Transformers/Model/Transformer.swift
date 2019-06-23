@@ -53,7 +53,7 @@ class Transformer: NSObject, NSCoding,NSSecureCoding{
         let team = aDecoder.decodeObject(forKey: "transformerTeam") as? String
         transformerTeam = Team(rawValue: team ?? "A")
         let s = aDecoder.decodeObject(forKey: "state") as? String
-        state = TransformerState(rawValue: s ?? "Alive")
+        state = TransformerState(rawValue: s ?? "Born")
          super.init()
     }
     

@@ -33,13 +33,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-lz-wgi">
-                                                    <rect key="frame" x="5" y="5" width="258" height="33.5"/>
+                                                    <rect key="frame" x="5" y="5" width="210" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yet to fight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-5L-Zd9">
-                                                    <rect key="frame" x="273" y="5" width="96" height="33.5"/>
+                                                    <rect key="frame" x="225" y="5" width="144" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="1:4" id="Xhs-N4-ryq"/>
+                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="1.5:4" id="Xhs-N4-ryq"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="fightSetLabel" destination="FHh-lz-wgi" id="cOF-JT-cjw"/>
@@ -159,17 +159,25 @@
                                                         <constraint firstAttribute="width" constant="50" id="WV7-fR-cEr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-ah-z42">
-                                                    <rect key="frame" x="70" y="29.5" width="308" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-ah-z42">
+                                                    <rect key="frame" x="70" y="29.5" width="243" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu9-Hh-weV">
+                                                    <rect key="frame" x="321" y="29.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Wu9-Hh-weV" firstAttribute="centerY" secondItem="lpY-ah-z42" secondAttribute="centerY" id="Abn-ad-qFI"/>
                                                 <constraint firstItem="lpY-ah-z42" firstAttribute="leading" secondItem="isF-U6-gU1" secondAttribute="trailing" constant="10" id="Jqo-IH-dwP"/>
-                                                <constraint firstItem="lpY-ah-z42" firstAttribute="trailing" secondItem="Aa9-Gj-DuQ" secondAttribute="trailingMargin" constant="10" id="aU3-6C-VxZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wu9-Hh-weV" secondAttribute="trailing" constant="5" id="YQg-jS-Epi"/>
                                                 <constraint firstItem="lpY-ah-z42" firstAttribute="centerY" secondItem="isF-U6-gU1" secondAttribute="centerY" id="iRT-Fr-SdF"/>
+                                                <constraint firstItem="Wu9-Hh-weV" firstAttribute="leading" secondItem="lpY-ah-z42" secondAttribute="trailing" constant="8" id="nfS-dU-ENy"/>
                                                 <constraint firstItem="isF-U6-gU1" firstAttribute="leading" secondItem="Aa9-Gj-DuQ" secondAttribute="leading" constant="10" id="xsM-l8-uX2"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -178,6 +186,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="nameLabel" destination="lpY-ah-z42" id="YBx-wK-pzH"/>
+                                            <outlet property="stateLabel" destination="Wu9-Hh-weV" id="hr5-VX-ErE"/>
                                             <outlet property="teamIconView" destination="isF-U6-gU1" id="LOS-ZU-4gY"/>
                                             <segue destination="KC0-ez-epP" kind="show" identifier="editSegue" id="VN2-cy-uzH"/>
                                         </connections>

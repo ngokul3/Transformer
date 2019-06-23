@@ -12,5 +12,5 @@ class MasterViewCell: UITableViewCell {
 
     @IBOutlet weak var teamIconView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var stateLabel: UILabel!
 }

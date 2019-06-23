@@ -13,7 +13,7 @@ import Alamofire
 protocol NetworkProtocol {
     static func getInstance() -> NetworkProtocol
     func getKey(finished : @escaping (Error?)->Void)
-    func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
+    func getTransformersFromNetwork(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ())
     func persistTransformer(transformer: Transformer, opType: DetailVCType, finished: @escaping(_ dataDict: NSDictionary? , _ errorMsg: Error?) -> ())
     func getTeamImage(forTeamIconURL iconURL : String, imageLoaded : @escaping (Data?, HTTPURLResponse?, Error?)->Void)
 }
@@ -99,7 +99,7 @@ extension NetworkModel{
         }
     }
     
-    func getTransformers(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ()){
+    func getTransformersFromNetwork(finished: @escaping (_ dataDict: NSDictionary?, _ errorMsg: String?)  -> ()){
         guard let myKey = transformerKey else{
             return
         }
@@ -154,6 +154,9 @@ extension NetworkModel{
         case .Edit:
             parameters["id"] = transformer.transformerId ?? ""
             httpMethodValue = HTTPMethod.put
+            
+        default:
+            break
         }
         
         Alamofire.request(httpURL, method: httpMethodValue ?? .post, parameters: parameters, encoding: JSONEncoding.default, headers: ["Authorization" : myKey, "Content-Type" :  "application/json"])

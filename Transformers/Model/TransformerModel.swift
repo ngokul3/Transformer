@@ -20,6 +20,7 @@ class TransformerModel:ModelProtocol {
     private var transformers = [Transformer]()
     private var network : NetworkProtocol?
     private var opQueue: DispatchQueue?
+    private var idSet = Set<String>()
     
     init(networkModel: NetworkProtocol, queue: DispatchQueue){
         network = networkModel
@@ -30,6 +31,19 @@ class TransformerModel:ModelProtocol {
             self.network?.getKey(finished: {(errorOpt) in
                 if let _ = errorOpt{
                     preconditionFailure("Not able to get key")
+                }else{
+                    self.network?.getTransformersFromNetwork(finished: {[weak self] (dictionary, errorMsg) in
+                        guard let transformerArray = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
+                            print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
+                            return
+                        }
+                        
+                        transformerArray.forEach { (arg) in
+                            if let id = arg["id"] as? String{
+                                self?.idSet.insert(id)
+                            }
+                        }
+                    })
                 }
             })
         }
@@ -47,7 +61,10 @@ class TransformerModel:ModelProtocol {
         enqueue {
             do{
                 print("Thread for restoring \(Thread.current)")
-                self.transformers = try Persistence.restore()
+                self.transformers = try Persistence.restore().sorted(by: { (arg1, arg2) -> Bool in
+                    arg1.rank ?? 0 < arg2.rank ?? 0
+                    
+                })
                 TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
             }
             catch (let error){
@@ -58,11 +75,24 @@ class TransformerModel:ModelProtocol {
     }
     
     func handleTransformer(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void){
+        
+        if(opType == .Result || !(idSet.contains(transformer.transformerId ?? ""))){
+            do{
+                try Persistence.save(transformer)
+                self.restorelocalFromDatabase()
+            }
+            catch let error{
+                errorMsg(error)
+            }
+            
+            errorMsg(nil)
+            return
+        }
+        
         network?.persistTransformer(transformer: transformer, opType: opType, finished: {[weak self](dictionary, error) in
             if let _ = error{
                 errorMsg(error)
-           //     preconditionFailure("Could not fetch from web server")
-            }
+             }
             
             guard let transformerDict = dictionary as?  [String: Any]  else {
                 print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
@@ -72,7 +102,6 @@ class TransformerModel:ModelProtocol {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
                     do{
                         try Persistence.save(transformerObject)
-                        
                         self?.restorelocalFromDatabase()
                     }
                     catch let error{
@@ -145,29 +174,29 @@ class TransformerModel:ModelProtocol {
         return transformer
         
     }
-    
-    func getTransformers(){
-        network?.getTransformers(finished: { [weak self](dictionary, error) in
-            
-            if let _ = error{
-                preconditionFailure("Could not fetch from web server")
-            }
-            guard let transformerArrayFromService = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
-                print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
-                return
-            }
-            
-           // OperationQueue.main.addOperation {
-                transformerArrayFromService.forEach({ (transformerDict) in
-                    
-                   let _ = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
-                    //self?.transformers.append(transformer)
-                     
-                    TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
-                })
-           // }
-        })
-    }
+//
+//    func getTransformers(){
+//        network?.getTransformers(finished: { [weak self](dictionary, error) in
+//
+//            if let _ = error{
+//                preconditionFailure("Could not fetch from web server")
+//            }
+//            guard let transformerArrayFromService = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
+//                print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
+//                return
+//            }
+//
+//           // OperationQueue.main.addOperation {
+//                transformerArrayFromService.forEach({ (transformerDict) in
+//
+//                   let _ = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
+//                    //self?.transformers.append(transformer)
+//
+//                    TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
+//                })
+//           // }
+//        })
+//    }
     
     func generateTransformerPrototype()->Transformer{
         return Transformer(id: "-1", team: .autobots, name: "", strength: 1, intelligence: 1, speed: 1, endurance: 1, rank: 1, courage: 1, firepower: 1, skill: 1, teamIcon: "")

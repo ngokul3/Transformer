@@ -42,6 +42,7 @@ enum TransformerState: String {
 enum DetailVCType : String{
     case Add
     case Edit
+    case Result
 }
 
 struct Consts{
@@ -53,18 +54,9 @@ protocol TeamStatisticsDataSource {
     var team: Team {get set}
     var aliveCount: Int { get }
     var diedCount: Int { get }
-  //  mutating func reset()
-    //var stasis: Bool { get }
+
 }
 
-
-//protocol FightProtocol: class{
-//   // func findOpponentFor(_ transformer1: Int)-> Transformer?
-//    func startFighting(rank: Int, fightOver: ()->Void)
-//    func reset()
-//    var statistics: [TeamStatisticsDataSource]? { get }
-//    var fighters: [Transformer] {get set}
-//}
 
 protocol FightProtocol: class{
     func evaluateFighters(evaluationComplete : ()->Void)
@@ -83,13 +75,13 @@ protocol FightViewInput{
 
 protocol TransformerViewOutput {
     func viewReady(view: TransformerViewInput)
-    //func findFighters(for rank: Int)->(Transformer?, Transformer?)?
     func setUpFight(for rank: Int)
     func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
     func generateTransformerPrototype()->Transformer?
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
     func getTeamIcon(id: String, completion: @escaping (Data?)->())
+    func deleteThisTransformer()
 }
 
 protocol FightViewOutput{

@@ -9,7 +9,6 @@
 import Foundation
 
 class Fight: FightProtocol{
-    //let Center = NotificationCenter.default
     var fighter1: Transformer
     var fighter2: Transformer
     
@@ -116,15 +115,3 @@ class Fight: FightProtocol{
     }
 }
 
-extension Fight{
-//    private func updateObservers(message: MessageType, data: Any? = nil) {
-//        Center.post(name: message.asNN, object: self, userInfo: {
-//            if let d = data {
-//                return ["data": d]
-//            }
-//            else {
-//                return nil
-//            }
-//        }())
-//    }
-}

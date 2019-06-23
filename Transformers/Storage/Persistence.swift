@@ -10,25 +10,6 @@ import Foundation
 
 class Persistence {
     
-    static func delete(_ transformer: Transformer) throws{
-        
-        guard let alreadySavedData = UserDefaults.standard.data(forKey: "transformers") else{
-            return
-        }
-        
-        
-        if let alreadySavedTransformers = NSKeyedUnarchiver.unarchiveObject(with: alreadySavedData) as? [Transformer] {
-            if(alreadySavedTransformers.contains{$0.transformerId == transformer.transformerId}){
-                let transformersSaved = alreadySavedTransformers.filter({($0.transformerId != transformer.transformerId)})
-                let savedData = NSKeyedArchiver.archivedData(withRootObject: transformersSaved)
-                UserDefaults.standard.set(savedData, forKey: "transformers")
-            }
-            else{
-                throw TransformerError.notAbleToDelete(name: transformer.transformerName ?? "")
-            }
-        }
-    }
-    
     static func save(_ transformer: Transformer) throws {
         var savedTransformers = [Transformer]()
         if let alreadySavedData = UserDefaults.standard.data(forKey: NSKeyedArchiveRootObjectKey) {
@@ -52,6 +33,7 @@ class Persistence {
                     trans.intelligence = transformer.intelligence
                     trans.transformerTeam = transformer.transformerTeam
                     trans.teamIcon = transformer.teamIcon
+                    trans.state = transformer.state
                 }
             })
         }

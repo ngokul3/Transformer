@@ -193,9 +193,10 @@
 		90DE10D422B4F92A00302CB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				90DE10E722B7274B00302CB2 /* Fight.swift */,
+				900EA7AC22BE7CEC005F69B1 /* FightModel.swift */,
 				90DE10D522B5028000302CB2 /* Transformer.swift */,
 				90DE112222B9840E00302CB2 /* TransformerModel.swift */,
-				900EA7AC22BE7CEC005F69B1 /* FightModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,7 +212,6 @@
 		90DE10FD22B84C4200302CB2 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				90DE10E722B7274B00302CB2 /* Fight.swift */,
 				90DE110622B84DCE00302CB2 /* TransformerPresenter.swift */,
 				900EA7AA22BE420B005F69B1 /* FightPresenter.swift */,
 			);

@@ -15,13 +15,15 @@ class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UIS
     @IBOutlet weak var tableView: UITableView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewReady(view: self)
-        
-        Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
-            [weak self] (notification) in
-                self?.setUpTransformers()
+         [ MessageType.transformerListChanged, MessageType.fightDone ].forEach {
+            Center.addObserver(forName: $0.asNN, object: nil, queue: OperationQueue.main) {
+                [weak self] (notification) in
+                    self?.setUpTransformers()
+            }
         }
      }
  }
@@ -129,7 +131,8 @@ extension MasterVC{
         }
         if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
             cell.nameLabel.text = transformer.transformerName
-            
+            cell.stateLabel.text = transformer.state?.rawValue
+
             guard let teamIconURL = transformer.teamIcon as NSString? else{
                 return cell
             }

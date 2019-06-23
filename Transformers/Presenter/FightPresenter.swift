@@ -24,6 +24,7 @@ class FightPresenter{
     
     
     func updateView(){
+      
         if let t = self.model?.transformerArray{
             let rankSet = ranksAvailable(transformers: t)
             
@@ -41,7 +42,7 @@ class FightPresenter{
                             arg.fighter2?.transformerId == trans.transformerId))
                 })
 
-                return !s
+                return !s && (trans.state?.isAlive ?? false)
             }
             
             let restFightArray = restoffighters.map { (fighter) -> FighterSetUp in
@@ -62,7 +63,10 @@ extension FightPresenter: FightViewOutput
         var rankSet = Set<Int>()
         
         transformers.forEach { (arg)  in
-            rankSet.insert(arg.rank ?? 1)
+            
+            if(arg.state?.isAlive ?? false){
+                rankSet.insert(arg.rank ?? 1)
+            }
         }
         
         return rankSet
@@ -71,13 +75,11 @@ extension FightPresenter: FightViewOutput
     func findFighters(for rank: Int,  transformers: [Transformer])->FighterSetUp{
         
         let fighter1 = transformers.filter { (arg) -> Bool in
-            arg.rank == rank && arg.transformerTeam == .autobots
+            arg.rank == rank && arg.transformerTeam == .autobots && (arg.state?.isAlive ?? false)
         }.first
 
-        fighter1?.state = .Died
-        
         let fighter2 = transformers.filter { (arg) -> Bool in
-            arg.rank == rank && arg.transformerTeam == .decepticon
+            arg.rank == rank && arg.transformerTeam == .decepticon && (arg.state?.isAlive ?? false)
         }.first
         
         
@@ -96,15 +98,33 @@ extension FightPresenter: FightViewOutput
     }
     
     func startFight() {
-        for fightSet in self.fightSetArray{
-            if var fighter1 = fightSet.fighter1,
-                var fighter2 = fightSet.fighter2{
-                let fight = Fight(fighter1: fighter1, fighter2: fighter2)
-                fight.evaluateFighters {
-                    fighter1 = fight.fighter1
-                    fighter2 = fight.fighter2
+        let fightQueue = DispatchQueue(label: "serialQueue", qos: .background, attributes: .init(), autoreleaseFrequency: .inherit, target: .global())
+        
+        fightQueue.async {[weak self] in
+            if let s = self{
+                for fightSet in s.fightSetArray{
+                    if var fighter1 = fightSet.fighter1,
+                        var fighter2 = fightSet.fighter2{
+                        let fight = Fight(fighter1: fighter1, fighter2: fighter2)
+                        fight.evaluateFighters {
+                            fighter1 = fight.fighter1
+                            fighter2 = fight.fighter2
+                            
+                            [fighter1, fighter2].forEach({ (transformer) in
+                                s.model?.handleTransformer(transformer: transformer, opType: .Result, errorMsg: { (error) in
+                                    if let e = error{
+                                        print(e)
+                                        //Custom handle
+                                    }
+                                })
+                            })
+                            
+                            TransformerNotification.updateObservers(message: .fightDone, data: nil)
+                        }
+                    }
                 }
             }
         }
     }
+
 }

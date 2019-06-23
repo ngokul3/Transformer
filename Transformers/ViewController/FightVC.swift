@@ -23,10 +23,13 @@ class FightVC: UIViewController{
         presenter?.viewReady(view: self)
         presenter?.updateView()
         
-        Center.addObserver(forName: MessageType.transformerListChanged.asNN, object: nil, queue: OperationQueue.main) {
-            [weak self] (notification) in
-            self?.presenter?.updateView()
+        [ MessageType.transformerListChanged, MessageType.fightDone ].forEach {
+            Center.addObserver(forName: $0.asNN, object: nil, queue: OperationQueue.main) {
+                [weak self] (notification) in
+                self?.presenter?.updateView()
+            }
         }
+       
     }
 }
 
@@ -55,6 +58,7 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
         }
         if let fightSetUp = presenter?.fightAtIndex(index: indexPath.row) {
             cell.fightSetLabel.text = fightSetUp.fightDesc
+            cell.resultLabel.text = fightSetUp.resultDesc
         }
         return cell
         
