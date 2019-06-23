@@ -35,7 +35,9 @@ class FightPresenter{
             for rank in rankSet{
                 
             let fighters = findFighters(for: rank, transformers: t)
-                self.fightSetArray.append(fighters)
+                if !fighters.isBothDead{
+                    self.fightSetArray.append(fighters)
+                }
             }
             
             let restoffighters = t.filter { (trans) -> Bool in

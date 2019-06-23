@@ -90,6 +90,7 @@ extension AddEditVC{
     @IBAction func strengthStepperClick(_ sender: UIStepper) {
         strengthLabel.text = String(Int(sender.value))
         transformer?.strength = Int(strengthLabel.text ?? "")
+        transformer?.transformerName = nameText.text
         loadTransformer()
     }
     
@@ -101,24 +102,28 @@ extension AddEditVC{
     @IBAction func speedStepperClick(_ sender: UIStepper) {
         speedLabel.text = String(Int(sender.value))
         transformer?.speed = Int(speedLabel.text ?? "")
+        transformer?.transformerName = nameText.text
         loadTransformer()
     }
     
     @IBAction func intelligenceStepperClick(_ sender: UIStepper) {
         intelligenceLabel.text = String(Int(sender.value))
         transformer?.intelligence = Int(intelligenceLabel.text ?? "")
+        transformer?.transformerName = nameText.text
         loadTransformer()
     }
     
     @IBAction func firepowerStepperClick(_ sender: UIStepper) {
         firepowerLabel.text = String(Int(sender.value))
         transformer?.firepower = Int(firepowerLabel.text ?? "")
+        transformer?.transformerName = nameText.text
         loadTransformer()
     }
     
     @IBAction func enduranceStepperClick(_ sender: UIStepper) {
         enduranceLabel.text = String(Int(sender.value))
         transformer?.endurance = Int(enduranceLabel.text ?? "")
+        transformer?.transformerName = nameText.text
         loadTransformer()
     }
     
@@ -154,8 +159,7 @@ extension AddEditVC{
                 alertUser = "Transformer Name cannot be empty"
                 return
         }
-        transformer?.transformerName = name
-        
+         transformer?.transformerName = nameText.text
         switch self.teamSegment.selectedSegmentIndex{
         case 0 :
             transformer?.transformerTeam = Team.autobots

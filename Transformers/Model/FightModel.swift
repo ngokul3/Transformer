@@ -14,6 +14,11 @@ struct FighterSetUp{
     var fighter2: Transformer?
     var rank: Int?
     
+    var isBothDead: Bool{
+        return ((fighter1?.state?.isAlive ?? false == false) &&
+                ((fighter2?.state?.isAlive ?? false == false))
+                )
+    }
     
     var fightDesc : String {
         let fighter1Name = fighter1?.transformerName ?? ""

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class FightStatistics : FightStatisticsDataSource{
+struct FightStatistics : FightStatisticsDataSource{
     var battleNo: Int = 0
     var fighter1: Transformer?
     var fighter2: Transformer?
