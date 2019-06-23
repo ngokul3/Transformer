@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class FightVC: UIViewController{
     var presenter: FightViewOutput?
     var statisticsArray = [FightStatistics]()
@@ -25,7 +26,7 @@ class FightVC: UIViewController{
         presenter?.viewReady(view: self)
         presenter?.updateView()
         
-        [ MessageType.transformerListChanged, MessageType.fightDone ].forEach {
+        [ MessageType.transformerListChanged, MessageType.fightDone, MessageType.gameOver ].forEach {
             Center.addObserver(forName: $0.asNN, object: nil, queue: OperationQueue.main) {
                 [weak self] (notification) in
                 if(notification.name.rawValue == MessageType.fightDone.asNN.rawValue){
@@ -84,7 +85,7 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
                 preconditionFailure("Incorrect Cell provided")
             }
             if let stat = self.statisticsArray[safe: indexPath.row]{
-                cell.battleLabel.text = "Battle No: \(stat.battleNo)"
+                cell.battleLabel.text = "Battle: \(stat.battleNo)"
                 cell.resultLabel.text = stat.winningTeam.rawValue
             }
             return cell
@@ -94,5 +95,18 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
+    }
+}
+
+extension FightVC{
+    var alertUser :  String{
+        get{
+            preconditionFailure("You cannot read from this object")
+        }
+        set{
+            let alert = UIAlertController(title: "Game Over", message: newValue, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
 }

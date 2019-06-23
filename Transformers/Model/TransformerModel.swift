@@ -71,7 +71,6 @@ class TransformerModel:ModelProtocol {
             }
             catch (let error){
                 print(error)
-                //Custom handle exception
             }
         }
     }
@@ -90,20 +89,7 @@ class TransformerModel:ModelProtocol {
         default:
             break
         }
-       // if(opType == .Result || (!(idSet.contains(transformer.transformerId ?? "")) && (idSet.count > 0)) ){
-//         if((opType == .Result || opType == .Edit) && !(idSet.contains(transformer.transformerId ?? ""))) {
-//            do{
-//                try Persistence.save(transformer)
-//                self.restorelocalFromDatabase()
-//            }
-//            catch let error{
-//                errorMsg(error)
-//            }
-//
-//            errorMsg(nil)
-//            return
-//        }
-        
+
         network?.persistTransformer(transformer: transformer, opType: opType, finished: {[weak self](dictionary, error) in
             if let _ = error{
                 errorMsg(error)
@@ -115,11 +101,7 @@ class TransformerModel:ModelProtocol {
             }
             self?.enqueue {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
-                   
-    //                        try Persistence.save(transforerObject)
-    //
-    //                        self?.restorelocalFromDatabase()
-                    self?.persist(transformer: transformerObject)
+                     self?.persist(transformer: transformerObject)
                     if (opType == .Add){
                         self?.idSet.insert(transformerObject.transformerId ?? "")
                     }

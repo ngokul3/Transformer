@@ -10,13 +10,15 @@ import Foundation
 
 class Fight: FightProtocol{
     var fightResult: FightResult
+    var delegate: FightCompleteDelegate
     
     var fighter1: Transformer
     var fighter2: Transformer
     
-    init(fighter1: Transformer, fighter2: Transformer){
+    init(fighter1: Transformer, fighter2: Transformer, delegate: FightCompleteDelegate){
         self.fighter1 = fighter1
         self.fighter2 = fighter2
+        self.delegate = delegate
         fightResult = .NoWinner
     }
     
@@ -26,13 +28,11 @@ class Fight: FightProtocol{
             fighter1.state = .Alive
             fighter2.state = .Died
             fightResult = .AutobotsWon
-            TransformerNotification.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (...(-4), ...(-3)):
             fighter2.state = .Alive
             fighter1.state = .Died
             fightResult = .DecepticonsWon
-            TransformerNotification.updateObservers(message: .evaluatedByCourage, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)
@@ -45,13 +45,11 @@ class Fight: FightProtocol{
             fighter1.state = .Alive
             fighter2.state = .Died
             fightResult = .AutobotsWon
-            TransformerNotification.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case ...(-3):
             fighter2.state = .Alive
             fighter1.state = .Died
             fightResult = .DecepticonsWon
-            TransformerNotification.updateObservers(message: .evaluatedBySkill, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)
@@ -64,17 +62,14 @@ class Fight: FightProtocol{
             fighter2.state = .Died
             fighter1.state = .Died
             fightResult = .NoWinner
-            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
         case (true, _):
             fighter1.state = .Alive
             fighter2.state = .Died
             fightResult = .AutobotsWon
-            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
         case (false, _):
             fighter2.state = .Alive
             fighter1.state = .Died
             fightResult = .DecepticonsWon
-            TransformerNotification.updateObservers(message: .evaluatedByRating, data: [fighter1, fighter2])
          }
         
     }
@@ -85,19 +80,17 @@ class Fight: FightProtocol{
             fighter1.state = .Alive
             fighter2.state = .Died
             fightResult = .AutobotsWon
-            TransformerNotification.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (false, true):
             fighter2.state = .Alive
             fighter1.state = .Died
             fightResult = .DecepticonsWon
-            TransformerNotification.updateObservers(message: .evaluatedByName, data: [fighter1, fighter2])
             proceedToNextCheck(false)
         case (true, true):
             fighter1.state = .Died
             fighter2.state = .Died
-            fightResult = .NoWinner
-            TransformerNotification.updateObservers(message: .evaluatedByName, data: nil)
+            fightResult = .NoSurvivor
+            self.delegate.fightOverBecauseOfNames()
             proceedToNextCheck(false)
         default:
             proceedToNextCheck(true)

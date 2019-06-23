@@ -56,6 +56,7 @@ enum FightResult : String{
     case AutobotsWon = "Autobots won"
     case DecepticonsWon = "Decepticons won"
     case NoWinner = "No winner"
+    case NoSurvivor = "All dead"
 }
 
 
@@ -64,7 +65,7 @@ protocol FightStatisticsDataSource{
     var fighter1: Transformer? {get set}
     var fighter2: Transformer? {get set}
     var winningTeam: FightResult {get set}
-    
+   // var didSuperHeroesClash: Bool{get set}
 }
 
 protocol FightProtocol: class{
@@ -109,6 +110,10 @@ protocol CollectionDataProvider{
     func addTransformer(transformerOpt: Transformer?) throws
     func editTransformer(transformer: Transformer) throws
     func deleteTransformer(transformer: Transformer) throws
+}
+
+protocol FightCompleteDelegate{
+    func fightOverBecauseOfNames()
 }
 
 extension Collection where Indices.Iterator.Element == Index {
