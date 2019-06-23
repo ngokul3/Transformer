@@ -34,11 +34,14 @@ class AddEditVC: UIViewController {
     var transformer: Transformer?
     var transformerVCType : DetailVCType?
     var saveDetailVC: ((Transformer?) -> Void)?
-    var childLoaded:(()->Void)?
+    var loadImage:(()->Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadTransformer()
+    }
+    
+    func loadTransformer(){
         if let t = transformer{
             rankStepper.value = Double(t.rank ?? 1)
             courageStepper.value = Double(t.courage ?? 1)
@@ -47,7 +50,8 @@ class AddEditVC: UIViewController {
             speedStepper.value = Double(t.speed ?? 1)
             intelligenceStepper.value = Double(t.intelligence ?? 1)
             enduranceStepper.value = Double(t.endurance ?? 1)
-                
+            firepowerStepper.value = Double(t.firepower ?? 1)
+            
             nameText.text = t.transformerName ?? ""
             rankLabel.text = String(t.rank ?? 1)
             courageLabel.text = String(t.courage ?? 1)
@@ -66,9 +70,8 @@ class AddEditVC: UIViewController {
                     teamSegment.selectedSegmentIndex = 1
                 }
             }
-            childLoaded?()
+            loadImage?()
         }
-            
     }
 }
 
@@ -76,34 +79,47 @@ class AddEditVC: UIViewController {
 extension AddEditVC{
     @IBAction func rankStepperClick(_ sender: UIStepper) {
         rankLabel.text = String(Int(sender.value))
+        transformer?.rank = Int(rankLabel.text ?? "")
     }
     
     @IBAction func courageStepperClick(_ sender: UIStepper) {
         courageLabel.text = String(Int(sender.value))
+        transformer?.courage = Int(courageLabel.text ?? "")
     }
     
     @IBAction func strengthStepperClick(_ sender: UIStepper) {
         strengthLabel.text = String(Int(sender.value))
+        transformer?.strength = Int(strengthLabel.text ?? "")
+        loadTransformer()
     }
     
     @IBAction func skillStepperClick(_ sender: UIStepper) {
         skillLabel.text = String(Int(sender.value))
+        transformer?.skill = Int(skillLabel.text ?? "")
     }
     
     @IBAction func speedStepperClick(_ sender: UIStepper) {
         speedLabel.text = String(Int(sender.value))
+        transformer?.speed = Int(speedLabel.text ?? "")
+        loadTransformer()
     }
     
     @IBAction func intelligenceStepperClick(_ sender: UIStepper) {
         intelligenceLabel.text = String(Int(sender.value))
+        transformer?.intelligence = Int(intelligenceLabel.text ?? "")
+        loadTransformer()
     }
     
     @IBAction func firepowerStepperClick(_ sender: UIStepper) {
         firepowerLabel.text = String(Int(sender.value))
+        transformer?.firepower = Int(firepowerLabel.text ?? "")
+        loadTransformer()
     }
     
     @IBAction func enduranceStepperClick(_ sender: UIStepper) {
         enduranceLabel.text = String(Int(sender.value))
+        transformer?.endurance = Int(enduranceLabel.text ?? "")
+        loadTransformer()
     }
     
     @IBAction func teamSegmentChange(_ sender: UISegmentedControl) {
@@ -111,8 +127,10 @@ extension AddEditVC{
         {
         case 0:
             transformer?.transformerTeam = .autobots
+            loadImage?()
         case 1:
             transformer?.transformerTeam = .decepticon
+            loadImage?()
         default:
             break
         }
@@ -137,13 +155,6 @@ extension AddEditVC{
                 return
         }
         transformer?.transformerName = name
-        transformer?.rank = Int(rankLabel.text ?? "")
-        transformer?.courage = Int(courageLabel.text ?? "")
-        transformer?.strength = Int(strengthLabel.text ?? "")
-        transformer?.intelligence = Int(intelligenceLabel.text ?? "")
-        transformer?.firepower = Int(firepowerLabel.text ?? "")
-        transformer?.endurance = Int(enduranceLabel.text ?? "")
-        transformer?.skill = Int(skillLabel.text ?? "")
         
         switch self.teamSegment.selectedSegmentIndex{
         case 0 :

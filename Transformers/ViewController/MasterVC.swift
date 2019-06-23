@@ -13,7 +13,6 @@ class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     let imageCache = NSCache<AnyObject, AnyObject>()
     
     @IBOutlet weak var tableView: UITableView!
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,9 +66,9 @@ extension MasterVC{
                 if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
                     vc.transformer = transformer
                     vc.transformerVCType = DetailVCType.Edit
-                    vc.childLoaded = {[weak self] in
+                    vc.loadImage = {[weak self] in
                         
-                        if let imageFromCache = self?.imageCache.object(forKey: (transformer.teamIcon ?? "") as AnyObject) as? UIImage{
+                        if let imageFromCache = self?.imageCache.object(forKey: (transformer.transformerTeam ?? Team.autobots) as AnyObject) as? UIImage{
                             OperationQueue.main.addOperation {
                                 vc.teamIconView.image = imageFromCache
                             }
@@ -115,17 +114,18 @@ extension MasterVC{
             cell.nameLabel.text = transformer.transformerName
             cell.stateLabel.text = transformer.state?.rawValue
 
-            guard let teamIconURL = transformer.teamIcon as NSString? else{
+            guard
+                let team = transformer.transformerTeam else{
                 return cell
             }
             
-            if let imageFromCache = imageCache.object(forKey: teamIconURL as AnyObject) as? UIImage{
+            if let imageFromCache = imageCache.object(forKey: team as AnyObject) as? UIImage{
                  cell.teamIconView.image = imageFromCache
             }else{
                 self.presenter?.getTeamIcon(id: transformer.transformerId ?? "", completion: { [weak self](dataOpt) in
                     if let data = dataOpt{
                         if let iconImage = UIImage(data: data){
-                            self?.imageCache.setObject(iconImage, forKey: (teamIconURL) as AnyObject)
+                            self?.imageCache.setObject(iconImage, forKey: (team) as AnyObject)
                             OperationQueue.main.addOperation {
                                 cell.teamIconView.image = iconImage
                             }
@@ -140,13 +140,6 @@ extension MasterVC{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
-    }
-}
-
-
-extension MasterVC{
-    @IBAction func typeListValueChanged(_ sender: UISegmentedControl) {
-        
     }
 }
 

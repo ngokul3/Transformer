@@ -11,6 +11,7 @@ import Foundation
 enum Team: String {
     case autobots = "A"
     case decepticon = "D"
+ 
 }
 
 
@@ -75,14 +76,14 @@ protocol FightViewInput{
 }
 
 protocol TransformerViewOutput {
-    var filterCriteria : String{get set}
     func viewReady(view: TransformerViewInput)
-    func setUpFight(for rank: Int)
+    //func setUpFight(for rank: Int)
     func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
     func generateTransformerPrototype()->Transformer?
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
     func getTeamIcon(id: String, completion: @escaping (Data?)->())
+  
 }
 
 protocol FightViewOutput{
@@ -101,7 +102,4 @@ protocol CollectionDataProvider{
     func addTransformer(transformerOpt: Transformer?) throws
     func editTransformer(transformer: Transformer) throws
     func deleteTransformer(transformer: Transformer) throws
-   
 }
-
-

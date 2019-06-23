@@ -14,14 +14,17 @@ protocol ModelProtocol{
     func handleTransformer(transformer: Transformer, opType: DetailVCType , errorMsg: @escaping (Error?)->Void)
     func getTeamIcon(id: String,  completion: @escaping (Data?)->())
     var transformerArray: [Transformer]{get}
+   
 }
 
 class TransformerModel:ModelProtocol {
+    
     private var transformers = [Transformer]()
+    private var filteredTransformers = [Transformer]()
     private var network : NetworkProtocol?
     private var opQueue: DispatchQueue?
     private var idSet = Set<String>()
-    
+
     init(networkModel: NetworkProtocol, queue: DispatchQueue){
         network = networkModel
         opQueue = queue
@@ -31,25 +34,13 @@ class TransformerModel:ModelProtocol {
             self.network?.getKey(finished: {(errorOpt) in
                 if let _ = errorOpt{
                     preconditionFailure("Not able to get key")
-                }else{
-                    self.network?.getTransformersFromNetwork(finished: {[weak self] (dictionary, errorMsg) in
-                        guard let transformerArray = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
-                            print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
-                            return
-                        }
-                        
-                        transformerArray.forEach { (arg) in
-                            if let id = arg["id"] as? String{
-                                self?.idSet.insert(id)
-                            }
-                        }
-                    })
                 }
             })
         }
     }
     
     var transformerArray: [Transformer]{
+
         return transformers
     }
     
@@ -76,7 +67,8 @@ class TransformerModel:ModelProtocol {
     
     func handleTransformer(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void){
         
-        if(opType == .Result || !(idSet.contains(transformer.transformerId ?? ""))){
+       // if(opType == .Result || (!(idSet.contains(transformer.transformerId ?? "")) && (idSet.count > 0)) ){
+         if((opType == .Result || opType == .Edit) && !(idSet.contains(transformer.transformerId ?? ""))) {
             do{
                 try Persistence.save(transformer)
                 self.restorelocalFromDatabase()
@@ -102,6 +94,9 @@ class TransformerModel:ModelProtocol {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
                     do{
                         try Persistence.save(transformerObject)
+                        if (opType == .Add){
+                            self?.idSet.insert(transformerObject.transformerId ?? "")
+                        }
                         self?.restorelocalFromDatabase()
                     }
                     catch let error{
@@ -174,30 +169,7 @@ class TransformerModel:ModelProtocol {
         return transformer
         
     }
-//
-//    func getTransformers(){
-//        network?.getTransformers(finished: { [weak self](dictionary, error) in
-//
-//            if let _ = error{
-//                preconditionFailure("Could not fetch from web server")
-//            }
-//            guard let transformerArrayFromService = dictionary?["transformers"] as? [ [String: AnyObject] ] else {
-//                print("data format error: \(dictionary?.description ?? "[Missing dictionary]")")
-//                return
-//            }
-//
-//           // OperationQueue.main.addOperation {
-//                transformerArrayFromService.forEach({ (transformerDict) in
-//
-//                   let _ = self?.returnTransformerObjectFromDict(transformerDict: transformerDict)
-//                    //self?.transformers.append(transformer)
-//
-//                    TransformerNotification.updateObservers(message: .transformerListChanged, data: nil)
-//                })
-//           // }
-//        })
-//    }
-    
+
     func generateTransformerPrototype()->Transformer{
         return Transformer(id: "-1", team: .autobots, name: "", strength: 1, intelligence: 1, speed: 1, endurance: 1, rank: 1, courage: 1, firepower: 1, skill: 1, teamIcon: "")
     }

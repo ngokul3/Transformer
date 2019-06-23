@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kqH-vp-Uun">
-                                <rect key="frame" x="0.0" y="141" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="705"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transformerCell" rowHeight="80" id="WwO-wN-vRT" customClass="MasterViewCell" customModule="Transformers" customModuleProvider="target">
@@ -197,25 +197,12 @@
                                     <outlet property="delegate" destination="68R-WH-pE0" id="4to-56-bCo"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-yW-j0X">
-                                <rect key="frame" x="71" y="98" width="272" height="29"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="Autobots"/>
-                                    <segment title="Decepticons"/>
-                                </segments>
-                                <connections>
-                                    <action selector="typeListValueChanged:" destination="68R-WH-pE0" eventType="valueChanged" id="t34-vc-Wz8"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="leading" secondItem="aru-K6-LXO" secondAttribute="leading" id="6Pd-oS-rCY"/>
-                            <constraint firstItem="eHz-yW-j0X" firstAttribute="top" secondItem="aru-K6-LXO" secondAttribute="top" constant="10" id="Aaa-QT-aTa"/>
-                            <constraint firstItem="kqH-vp-Uun" firstAttribute="top" secondItem="eHz-yW-j0X" secondAttribute="bottom" constant="15" id="ceV-mN-enw"/>
+                            <constraint firstItem="kqH-vp-Uun" firstAttribute="top" secondItem="aru-K6-LXO" secondAttribute="top" constant="20" id="KD2-cr-W0Q"/>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="trailing" secondItem="aru-K6-LXO" secondAttribute="trailing" id="dMG-OW-d2h"/>
-                            <constraint firstItem="eHz-yW-j0X" firstAttribute="centerX" secondItem="aru-K6-LXO" secondAttribute="centerX" id="yjr-vl-lBo"/>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="bottom" secondItem="aru-K6-LXO" secondAttribute="bottom" id="zdD-WT-NUH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aru-K6-LXO"/>
@@ -398,7 +385,6 @@
                                 <rect key="frame" x="229" y="622" width="94" height="29"/>
                                 <connections>
                                     <action selector="enduranceStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="wlx-Cx-4PE"/>
-                                    <action selector="firepowerStepperClick:" destination="KC0-ez-epP" eventType="valueChanged" id="qrH-1U-Kuz"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySI-0g-70C">
