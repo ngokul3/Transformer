@@ -43,7 +43,8 @@ class FightPresenter{
                             arg.fighter2?.transformerId == trans.transformerId))
                 })
 
-                return !s && (trans.state?.isAlive ?? false)
+               // return !s && (trans.state?.isAlive ?? false)
+                 return !s
             }
             
             let restFightArray = restoffighters.map { (fighter) -> FighterSetUp in
@@ -67,9 +68,10 @@ extension FightPresenter: FightViewOutput
         
         transformers.forEach { (arg)  in
             
-            if(arg.state?.isAlive ?? false){
-                rankSet.insert(arg.rank ?? 1)
-            }
+//            if(arg.state?.isAlive ?? false){
+//                rankSet.insert(arg.rank ?? 1)
+//            }
+            rankSet.insert(arg.rank ?? 1)
         }
         
         return rankSet

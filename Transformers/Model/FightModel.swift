@@ -46,12 +46,10 @@ struct FighterSetUp{
         let fighter2State = fighter2?.state ?? TransformerState.Empty
         
         switch (fighter1State, fighter2State) {
-        case (.Died, .Alive):
-            return "\(fighter2?.transformerName ?? "") Win"
-        case (.Alive, .Died):
-            return "\(fighter1?.transformerName ?? "") Win"
-        case (.Died, .Died):
-            return "Both dead"
+        case (.Died, .Empty),(.Empty, .Died) :
+            return "Dead"
+        case (.Alive, .Empty), (.Empty, .Alive):
+            return "Alive"
         case (_, .Empty), (.Empty, _):
             return "Not fighting"
         case (.Born, .Born):
