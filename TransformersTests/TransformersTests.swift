@@ -9,38 +9,81 @@
 import XCTest
 @testable import Transformers
 
-class TransformersTests: XCTestCase {
-    var transformerArray = [Transformer]()
-    let presenter = TransformerPresenter()
+class TransformersTests: XCTestCase, FightCompleteDelegate {
+    func fightOverBecauseOfNames() {
+        print("Game over")
+    }
     
+    var transformerArray = [Transformer]()
     override func setUp() {
-        let transformer1 = Transformer(id: 0, team: Team.autobots, name: "A1", strength: 3, intelligence: 4, speed: 5, endurance: 3, rank: 5, courage: 5, firepower: 5, skill: 5, teamIcon: "")
-        transformerArray.append(transformer1)
-        
-        let transformer2 = Transformer(id: 0, team: Team.decepticon, name: "D1", strength: 7, intelligence: 2, speed: 5, endurance: 3, rank: 5, courage: 5, firepower: 5, skill: 5, teamIcon: "")
-        transformerArray.append(transformer2)
-        
-        presenter.transformersOpt = transformerArray
+       
     }
 
-    func testRankMatching(){
-        let fighters = presenter.findFighters(for: 5)
-        
-        XCTAssert(fighters != nil)
-        print(fighters!.0!)
-        print(fighters!.1!)
-        
-    }
-    
     func testBaseCase(){
-        let fighters = presenter.findFighters(for: 5)
+        let transformer1 = Transformer(id: "0", team: Team.autobots, name: "A1", strength: 3, intelligence: 4, speed: 5, endurance: 3, rank: 5, courage: 5, firepower: 5, skill: 5, teamIcon: "")
+        transformerArray.append(transformer1)
         
-        let fight = Fight(fighter1: fighters!.0!, fighter2: fighters!.1!)
+        let transformer2 = Transformer(id: "0", team: Team.decepticon, name: "D1", strength: 8, intelligence: 2, speed: 5, endurance: 3, rank: 5, courage: 10, firepower: 5, skill: 5, teamIcon: "")
+        transformerArray.append(transformer2)
         
-        fight.evaluateFighters {
+        let fight = Fight(fighter1: transformer1, fighter2: transformer2, delegate: self)
+        
+        fight.evaluateFighters { (arg) in
             print("fight complete")
             XCTAssert(fight.fighter1.state == TransformerState.Died)
             XCTAssert(fight.fighter2.state == TransformerState.Alive)
+            XCTAssert(arg == MessageType.evaluatedByCourageStrength)
+        }
+    }
+    
+    func testRatingCase(){
+        let transformer1 = Transformer(id: "0", team: Team.autobots, name: "A1", strength: 1, intelligence: 1, speed: 2, endurance: 1, rank: 2, courage: 1, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer1)
+        
+        let transformer2 = Transformer(id: "0", team: Team.decepticon, name: "D1", strength: 1, intelligence: 1, speed: 1, endurance: 1, rank: 2, courage: 1, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer2)
+        
+        let fight = Fight(fighter1: transformer1, fighter2: transformer2, delegate: self)
+        
+        fight.evaluateFighters {(arg) in
+            print("fight complete")
+            XCTAssert(fight.fighter1.state == TransformerState.Alive)
+            XCTAssert(fight.fighter2.state == TransformerState.Died)
+            XCTAssert(arg == MessageType.evaluatedByRating)
+        }
+    }
+    
+    func testNameCase1(){
+        let transformer1 = Transformer(id: "0", team: Team.autobots, name: "Predaking", strength: 1, intelligence: 1, speed: 2, endurance: 1, rank: 2, courage: 1, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer1)
+        
+        let transformer2 = Transformer(id: "0", team: Team.decepticon, name: "D1", strength: 10, intelligence: 10, speed: 1, endurance: 1, rank: 2, courage: 10, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer2)
+        
+        let fight = Fight(fighter1: transformer1, fighter2: transformer2, delegate: self)
+        
+        fight.evaluateFighters {(arg) in
+            print("fight complete")
+            XCTAssert(fight.fighter1.state == TransformerState.Alive)
+            XCTAssert(fight.fighter2.state == TransformerState.Died)
+            XCTAssert(arg == MessageType.evaluatedByName)
+        }
+    }
+    
+    func testNameCase2(){
+        let transformer1 = Transformer(id: "0", team: Team.autobots, name: "Predaking", strength: 1, intelligence: 1, speed: 2, endurance: 1, rank: 2, courage: 1, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer1)
+        
+        let transformer2 = Transformer(id: "0", team: Team.decepticon, name: "Predaking", strength: 10, intelligence: 10, speed: 1, endurance: 1, rank: 2, courage: 10, firepower: 1, skill: 1, teamIcon: "")
+        transformerArray.append(transformer2)
+        
+        let fight = Fight(fighter1: transformer1, fighter2: transformer2, delegate: self)
+        
+        fight.evaluateFighters {(arg) in
+            print("fight complete")
+            XCTAssert(fight.fighter1.state == TransformerState.Died)
+            XCTAssert(fight.fighter2.state == TransformerState.Died)
+            XCTAssert(arg == MessageType.evaluatedByName)
         }
     }
 }
