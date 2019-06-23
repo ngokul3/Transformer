@@ -38,7 +38,7 @@ struct TransformerNotification {
     static func updateObservers(message: MessageType, data: Any? = nil) {
         Center.post(name: message.asNN, object: self, userInfo: {
             if let d = data {
-                return ["data": d]
+                return [Consts.KEY0: d]
             }
             else {
                 return nil

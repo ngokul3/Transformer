@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return TransformerPresenter(model: tansformerModel)
     }()
     
+    
     lazy var fightPresenter: FightPresenter = {
         return FightPresenter(model: tansformerModel)
     }()

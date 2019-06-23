@@ -48,6 +48,17 @@ class TransformerModel:ModelProtocol {
         opQueue?.async(execute: modelOp)
     }
     
+    func persist(transformer: Transformer){
+        do{
+            try Persistence.save(transformer)
+            self.restorelocalFromDatabase()
+        }
+        catch (let error){
+            print(error)
+            //Custom handle exception
+        }
+    }
+    
     func restorelocalFromDatabase(){
         enqueue {
             do{
@@ -67,19 +78,31 @@ class TransformerModel:ModelProtocol {
     
     func handleTransformer(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void){
         
-       // if(opType == .Result || (!(idSet.contains(transformer.transformerId ?? "")) && (idSet.count > 0)) ){
-         if((opType == .Result || opType == .Edit) && !(idSet.contains(transformer.transformerId ?? ""))) {
-            do{
-                try Persistence.save(transformer)
-                self.restorelocalFromDatabase()
-            }
-            catch let error{
-                errorMsg(error)
-            }
-            
-            errorMsg(nil)
+        switch opType {
+        case .Result:
+            persist(transformer: transformer)
             return
+        case .Edit:
+            if(!(idSet.contains(transformer.transformerId ?? ""))){
+                persist(transformer: transformer)
+                return
+            }
+        default:
+            break
         }
+       // if(opType == .Result || (!(idSet.contains(transformer.transformerId ?? "")) && (idSet.count > 0)) ){
+//         if((opType == .Result || opType == .Edit) && !(idSet.contains(transformer.transformerId ?? ""))) {
+//            do{
+//                try Persistence.save(transformer)
+//                self.restorelocalFromDatabase()
+//            }
+//            catch let error{
+//                errorMsg(error)
+//            }
+//
+//            errorMsg(nil)
+//            return
+//        }
         
         network?.persistTransformer(transformer: transformer, opType: opType, finished: {[weak self](dictionary, error) in
             if let _ = error{
@@ -92,15 +115,13 @@ class TransformerModel:ModelProtocol {
             }
             self?.enqueue {
                 if let transformerObject = self?.returnTransformerObjectFromDict(transformerDict: transformerDict){
-                    do{
-                        try Persistence.save(transformerObject)
-                        if (opType == .Add){
-                            self?.idSet.insert(transformerObject.transformerId ?? "")
-                        }
-                        self?.restorelocalFromDatabase()
-                    }
-                    catch let error{
-                        print(error)
+                   
+    //                        try Persistence.save(transforerObject)
+    //
+    //                        self?.restorelocalFromDatabase()
+                    self?.persist(transformer: transformerObject)
+                    if (opType == .Add){
+                        self?.idSet.insert(transformerObject.transformerId ?? "")
                     }
                 }
             }

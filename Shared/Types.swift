@@ -52,16 +52,24 @@ struct Consts{
 
 }
 
-protocol TeamStatisticsDataSource {
-    var team: Team {get set}
-    var aliveCount: Int { get }
-    var diedCount: Int { get }
-
+enum FightResult : String{
+    case AutobotsWon = "Autobots won"
+    case DecepticonsWon = "Decepticons won"
+    case NoWinner = "No winner"
 }
 
 
+protocol FightStatisticsDataSource{
+    var battleNo: Int {get set}
+    var fighter1: Transformer? {get set}
+    var fighter2: Transformer? {get set}
+    var winningTeam: FightResult {get set}
+    
+}
+
 protocol FightProtocol: class{
     func evaluateFighters(evaluationComplete : ()->Void)
+    var fightResult: FightResult {get set}
 }
 
 protocol TransformerViewInput{
@@ -71,7 +79,6 @@ protocol TransformerViewInput{
 
 protocol FightViewInput{
     func prepForFight()
-    func displayStatistics(statistics: TeamStatisticsDataSource)
     
 }
 
@@ -83,17 +90,17 @@ protocol TransformerViewOutput {
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
     func getTeamIcon(id: String, completion: @escaping (Data?)->())
-  
+    
 }
 
 protocol FightViewOutput{
-    
     func viewReady(view: FightViewInput)
     var fightSetArray : [FighterSetUp]{get}
     func updateView()
     func ranksAvailable(transformers: [Transformer])->Set<Int>
     func startFight()
     func fightAtIndex(index: Int)->FighterSetUp?
+    var statistics: FightStatisticsDataSource { get }
 }
 
 protocol CollectionDataProvider{
@@ -102,4 +109,11 @@ protocol CollectionDataProvider{
     func addTransformer(transformerOpt: Transformer?) throws
     func editTransformer(transformer: Transformer) throws
     func deleteTransformer(transformer: Transformer) throws
+}
+
+extension Collection where Indices.Iterator.Element == Index {
+    
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
 }

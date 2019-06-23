@@ -10,6 +10,8 @@
 		6C716341A23C1B9B61835681 /* Pods_TransformersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1885F7E865E5CCDD9BF7723E /* Pods_TransformersTests.framework */; };
 		900EA7AB22BE420B005F69B1 /* FightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7AA22BE420B005F69B1 /* FightPresenter.swift */; };
 		900EA7AD22BE7CEC005F69B1 /* FightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7AC22BE7CEC005F69B1 /* FightModel.swift */; };
+		900EA7AF22BFBFB4005F69B1 /* FightStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7AE22BFBFB4005F69B1 /* FightStatistics.swift */; };
+		900EA7B122BFC9AC005F69B1 /* StatisticsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900EA7B022BFC9AC005F69B1 /* StatisticsViewCell.swift */; };
 		901B7F4C22BE3B600063145F /* FightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B7F4B22BE3B600063145F /* FightVC.swift */; };
 		901B7F5522BE40280063145F /* FightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B7F5422BE40280063145F /* FightViewCell.swift */; };
 		90DE10A122B4F82000302CB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DE10A022B4F82000302CB2 /* AppDelegate.swift */; };
@@ -60,6 +62,8 @@
 		8EBF0532875F9EF52E48C52F /* Pods-TransformersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransformersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransformersTests/Pods-TransformersTests.release.xcconfig"; sourceTree = "<group>"; };
 		900EA7AA22BE420B005F69B1 /* FightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightPresenter.swift; sourceTree = "<group>"; };
 		900EA7AC22BE7CEC005F69B1 /* FightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightModel.swift; sourceTree = "<group>"; };
+		900EA7AE22BFBFB4005F69B1 /* FightStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightStatistics.swift; sourceTree = "<group>"; };
+		900EA7B022BFC9AC005F69B1 /* StatisticsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewCell.swift; sourceTree = "<group>"; };
 		901B7F4B22BE3B600063145F /* FightVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightVC.swift; sourceTree = "<group>"; };
 		901B7F5422BE40280063145F /* FightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewCell.swift; sourceTree = "<group>"; };
 		90DE109D22B4F82000302CB2 /* Transformers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transformers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +201,7 @@
 				900EA7AC22BE7CEC005F69B1 /* FightModel.swift */,
 				90DE10D522B5028000302CB2 /* Transformer.swift */,
 				90DE112222B9840E00302CB2 /* TransformerModel.swift */,
+				900EA7AE22BFBFB4005F69B1 /* FightStatistics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			children = (
 				90DE111A22B97CB900302CB2 /* MasterViewCell.swift */,
 				901B7F5422BE40280063145F /* FightViewCell.swift */,
+				900EA7B022BFC9AC005F69B1 /* StatisticsViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -504,11 +510,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				90DE10D622B5028000302CB2 /* Transformer.swift in Sources */,
+				900EA7B122BFC9AC005F69B1 /* StatisticsViewCell.swift in Sources */,
 				90DE10E822B7274B00302CB2 /* Fight.swift in Sources */,
 				90DE111C22B97CB900302CB2 /* MasterViewCell.swift in Sources */,
 				901B7F4C22BE3B600063145F /* FightVC.swift in Sources */,
 				90DE10A322B4F82000302CB2 /* ViewController.swift in Sources */,
 				90DE111822B9787100302CB2 /* MasterVC.swift in Sources */,
+				900EA7AF22BFBFB4005F69B1 /* FightStatistics.swift in Sources */,
 				900EA7AB22BE420B005F69B1 /* FightPresenter.swift in Sources */,
 				90DE10A122B4F82000302CB2 /* AppDelegate.swift in Sources */,
 				900EA7AD22BE7CEC005F69B1 /* FightModel.swift in Sources */,

@@ -8,15 +8,6 @@
 //
 //import Foundation
 
-struct TeamStatistics: TeamStatisticsDataSource {
-    var team: Team
-    var aliveCount: Int
-    var diedCount: Int
-    func reset() {
-        
-    }
-}
-
 
 struct FighterSetUp{
     var fighter1: Transformer?
@@ -61,3 +52,5 @@ struct FighterSetUp{
         
     }
 }
+
+

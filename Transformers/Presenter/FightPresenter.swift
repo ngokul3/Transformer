@@ -13,10 +13,11 @@ class FightPresenter{
     let model: ModelProtocol?
     var fightProtocol: FightProtocol?
     var fightSetArray = [FighterSetUp]()
-  
+    var stats: FightStatisticsDataSource
     
     init(model: ModelProtocol) {
         self.model = model
+        self.stats = FightStatistics()
     }
     
     func viewReady(view: FightViewInput){
@@ -43,7 +44,6 @@ class FightPresenter{
                             arg.fighter2?.transformerId == trans.transformerId))
                 })
 
-               // return !s && (trans.state?.isAlive ?? false)
                  return !s
             }
             
@@ -61,16 +61,14 @@ class FightPresenter{
 
 extension FightPresenter: FightViewOutput
 {
-  
+    var statistics: FightStatisticsDataSource {
+        return stats
+    }
     
     func ranksAvailable(transformers: [Transformer])->Set<Int>{
         var rankSet = Set<Int>()
         
         transformers.forEach { (arg)  in
-            
-//            if(arg.state?.isAlive ?? false){
-//                rankSet.insert(arg.rank ?? 1)
-//            }
             rankSet.insert(arg.rank ?? 1)
         }
         
@@ -111,9 +109,17 @@ extension FightPresenter: FightViewOutput
                     if var fighter1 = fightSet.fighter1,
                         var fighter2 = fightSet.fighter2{
                         let fight = Fight(fighter1: fighter1, fighter2: fighter2)
+                        
+                        self?.stats.battleNo += 1
+                        
                         fight.evaluateFighters {
                             fighter1 = fight.fighter1
                             fighter2 = fight.fighter2
+                            
+                            self?.stats.fighter1 = fighter1
+                            self?.stats.fighter2 = fighter2
+                            
+                            self?.stats.winningTeam = fight.fightResult
                             
                             [fighter1, fighter2].forEach({ (transformer) in
                                 s.model?.handleTransformer(transformer: transformer, opType: .Result, errorMsg: { (error) in
@@ -124,7 +130,7 @@ extension FightPresenter: FightViewOutput
                                 })
                             })
                             
-                            TransformerNotification.updateObservers(message: .fightDone, data: nil)
+                            TransformerNotification.updateObservers(message: .fightDone, data: self?.stats)
                         }
                     }
                 }
@@ -133,3 +139,5 @@ extension FightPresenter: FightViewOutput
     }
 
 }
+
+

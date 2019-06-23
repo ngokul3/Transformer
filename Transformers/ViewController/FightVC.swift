@@ -11,9 +11,11 @@ import UIKit
 
 class FightVC: UIViewController{
     var presenter: FightViewOutput?
+    var statisticsArray = [FightStatistics]()
     
     @IBOutlet weak var fightPrepTableView: UITableView!
-
+    @IBOutlet weak var fightResultTableView: UITableView!
+    
     @IBAction func statrFightClick(_ sender: UIButton) {
         presenter?.startFight()
     }
@@ -26,6 +28,19 @@ class FightVC: UIViewController{
         [ MessageType.transformerListChanged, MessageType.fightDone ].forEach {
             Center.addObserver(forName: $0.asNN, object: nil, queue: OperationQueue.main) {
                 [weak self] (notification) in
+                if(notification.name.rawValue == MessageType.fightDone.asNN.rawValue){
+                    if let s = self{
+                        let info0 = notification.userInfo?[Consts.KEY0]
+                        let fightStatOpt = info0 as? FightStatistics
+                        
+                        guard let fightStat = fightStatOpt else{
+                            return
+                        }
+                        
+                        s.statisticsArray.append(fightStat)
+                        s.fightResultTableView.reloadData()
+                    }
+                }
                 self?.presenter?.updateView()
             }
         }
@@ -37,10 +52,7 @@ extension FightVC: FightViewInput{
     func prepForFight() {
         self.fightPrepTableView.reloadData()
     }
-    
-    func displayStatistics(statistics: TeamStatisticsDataSource) {
-        
-    }
+ 
 }
 
 extension FightVC: UITableViewDataSource, UITableViewDelegate{
@@ -49,19 +61,35 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.fightSetArray.count ?? 0
+        if (tableView == fightPrepTableView){
+            return presenter?.fightSetArray.count ?? 0
+        }else if(tableView == fightResultTableView){
+            return self.statisticsArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "fightCell", for: indexPath) as? FightViewCell else{
-            preconditionFailure("Incorrect Cell provided")
+         if (tableView == fightPrepTableView){
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "fightCell", for: indexPath) as? FightViewCell else{
+                preconditionFailure("Incorrect Cell provided")
+            }
+            if let fightSetUp = presenter?.fightAtIndex(index: indexPath.row) {
+                cell.fightSetLabel.text = fightSetUp.fightDesc
+                cell.resultLabel.text = fightSetUp.resultDesc
+            }
+            return cell
+         }else if (tableView == fightResultTableView){
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "statsCell", for: indexPath) as? StatisticsViewCell else{
+                preconditionFailure("Incorrect Cell provided")
+            }
+            if let stat = self.statisticsArray[safe: indexPath.row]{
+                cell.battleLabel.text = "Battle No: \(stat.battleNo)"
+                cell.resultLabel.text = stat.winningTeam.rawValue
+            }
+            return cell
         }
-        if let fightSetUp = presenter?.fightAtIndex(index: indexPath.row) {
-            cell.fightSetLabel.text = fightSetUp.fightDesc
-            cell.resultLabel.text = fightSetUp.resultDesc
-        }
-        return cell
-        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
