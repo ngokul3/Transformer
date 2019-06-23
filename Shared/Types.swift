@@ -13,6 +13,7 @@ enum Team: String {
     case decepticon = "D"
 }
 
+
 enum TransformerError: Error{
     case invalidTransformer
     case invalidRowSelection
@@ -74,6 +75,7 @@ protocol FightViewInput{
 }
 
 protocol TransformerViewOutput {
+    var filterCriteria : String{get set}
     func viewReady(view: TransformerViewInput)
     func setUpFight(for rank: Int)
     func transformerInContext(transformer: Transformer, opType: DetailVCType, errorMsg: @escaping (Error?)->Void)
@@ -81,10 +83,10 @@ protocol TransformerViewOutput {
     func transformerCount()->Int
     func transformerAtIndex(index: Int)->Transformer?
     func getTeamIcon(id: String, completion: @escaping (Data?)->())
-    func deleteThisTransformer()
 }
 
 protocol FightViewOutput{
+    
     func viewReady(view: FightViewInput)
     var fightSetArray : [FighterSetUp]{get}
     func updateView()

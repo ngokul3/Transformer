@@ -8,13 +8,12 @@
 
 import UIKit
 
-class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class MasterVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     var presenter: TransformerViewOutput?
     let imageCache = NSCache<AnyObject, AnyObject>()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,23 +99,6 @@ extension MasterVC{
 
 extension MasterVC{
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if(model.currentFilter != searchText){
-//            model.currentFilter = searchText
-//        }
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-}
-
-extension MasterVC{
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -161,6 +143,12 @@ extension MasterVC{
     }
 }
 
+
+extension MasterVC{
+    @IBAction func typeListValueChanged(_ sender: UISegmentedControl) {
+        
+    }
+}
 
 extension MasterVC{
     var alertUser :  String{

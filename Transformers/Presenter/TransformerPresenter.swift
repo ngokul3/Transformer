@@ -12,7 +12,7 @@ class TransformerPresenter{
     var view: TransformerViewInput?
     let model: ModelProtocol?
     var fightProtocol: FightProtocol?
-    
+      var filterBy : String?
     init(model: ModelProtocol) {
        self.model = model
         do{
@@ -39,7 +39,14 @@ class TransformerPresenter{
 }
 
 extension TransformerPresenter: TransformerViewOutput{
-
+    var filterCriteria: String {
+        get {
+            return filterBy ?? "All"
+        }
+        set {
+            filterBy = newValue
+        }
+    }
     
     func setUpFight(for rank: Int) {
         fightProtocol?.evaluateFighters {
@@ -57,6 +64,18 @@ extension TransformerPresenter: TransformerViewOutput{
     
     func transformerCount()->Int{
         return self.model?.transformerArray.count ?? 0
+//        switch self.filterBy{
+//        case "All":
+//            return self.model?.transformerArray.count ?? 0
+//        case "Autobots":
+//            let autobotsArray = self.model?.transformerArray.filter{($0.transformerTeam ?? Team.autobots) == .autobots}
+//            return autobotsArray?.transformerArray.count ?? 0
+//        case "Decepticons":
+//            let decepticonsArray = self.model?.transformerArray.filter{($0.transformerTeam ?? Team.autobots) == .decepticons}
+//            return decepticonsArray?.transformerArray.count ?? 0
+//        default: break
+//        }
+        
     }
     
     

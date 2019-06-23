@@ -22,7 +22,15 @@ class AddEditVC: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var teamSegment: UISegmentedControl!
 
-   
+    @IBOutlet weak var rankStepper: UIStepper!
+    @IBOutlet weak var courageStepper: UIStepper!
+    @IBOutlet weak var strengthStepper: UIStepper!
+    @IBOutlet weak var skillStepper: UIStepper!
+    @IBOutlet weak var speedStepper: UIStepper!
+    @IBOutlet weak var intelligenceStepper: UIStepper!
+    @IBOutlet weak var firepowerStepper: UIStepper!
+    @IBOutlet weak var enduranceStepper: UIStepper!
+    
     var transformer: Transformer?
     var transformerVCType : DetailVCType?
     var saveDetailVC: ((Transformer?) -> Void)?
@@ -32,6 +40,14 @@ class AddEditVC: UIViewController {
         super.viewDidLoad()
         
         if let t = transformer{
+            rankStepper.value = Double(t.rank ?? 1)
+            courageStepper.value = Double(t.courage ?? 1)
+            strengthStepper.value = Double(t.strength ?? 1)
+            skillStepper.value = Double(t.skill ?? 1)
+            speedStepper.value = Double(t.speed ?? 1)
+            intelligenceStepper.value = Double(t.intelligence ?? 1)
+            enduranceStepper.value = Double(t.endurance ?? 1)
+                
             nameText.text = t.transformerName ?? ""
             rankLabel.text = String(t.rank ?? 1)
             courageLabel.text = String(t.courage ?? 1)

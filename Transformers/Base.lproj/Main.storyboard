@@ -142,7 +142,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kqH-vp-Uun">
-                                <rect key="frame" x="0.0" y="154" width="414" height="659"/>
+                                <rect key="frame" x="0.0" y="141" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="transformerCell" rowHeight="80" id="WwO-wN-vRT" customClass="MasterViewCell" customModule="Transformers" customModuleProvider="target">
@@ -197,19 +197,25 @@
                                     <outlet property="delegate" destination="68R-WH-pE0" id="4to-56-bCo"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="tK3-3h-jwo">
-                                <rect key="frame" x="0.0" y="96" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-yW-j0X">
+                                <rect key="frame" x="71" y="98" width="272" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Autobots"/>
+                                    <segment title="Decepticons"/>
+                                </segments>
+                                <connections>
+                                    <action selector="typeListValueChanged:" destination="68R-WH-pE0" eventType="valueChanged" id="t34-vc-Wz8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kqH-vp-Uun" firstAttribute="top" secondItem="tK3-3h-jwo" secondAttribute="bottom" constant="2" id="5lS-5p-agD"/>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="leading" secondItem="aru-K6-LXO" secondAttribute="leading" id="6Pd-oS-rCY"/>
-                            <constraint firstItem="tK3-3h-jwo" firstAttribute="top" secondItem="aru-K6-LXO" secondAttribute="top" constant="8" id="7k7-IJ-KTS"/>
-                            <constraint firstItem="tK3-3h-jwo" firstAttribute="trailing" secondItem="aru-K6-LXO" secondAttribute="trailing" id="CCe-AW-SRr"/>
-                            <constraint firstItem="tK3-3h-jwo" firstAttribute="leading" secondItem="aru-K6-LXO" secondAttribute="leading" id="VaX-be-gJW"/>
+                            <constraint firstItem="eHz-yW-j0X" firstAttribute="top" secondItem="aru-K6-LXO" secondAttribute="top" constant="10" id="Aaa-QT-aTa"/>
+                            <constraint firstItem="kqH-vp-Uun" firstAttribute="top" secondItem="eHz-yW-j0X" secondAttribute="bottom" constant="15" id="ceV-mN-enw"/>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="trailing" secondItem="aru-K6-LXO" secondAttribute="trailing" id="dMG-OW-d2h"/>
+                            <constraint firstItem="eHz-yW-j0X" firstAttribute="centerX" secondItem="aru-K6-LXO" secondAttribute="centerX" id="yjr-vl-lBo"/>
                             <constraint firstItem="kqH-vp-Uun" firstAttribute="bottom" secondItem="aru-K6-LXO" secondAttribute="bottom" id="zdD-WT-NUH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aru-K6-LXO"/>
@@ -534,15 +540,23 @@
                     </navigationItem>
                     <connections>
                         <outlet property="courageLabel" destination="gyF-Rf-HsX" id="lVC-dm-lRK"/>
+                        <outlet property="courageStepper" destination="thY-xa-CbN" id="ZJJ-YP-U6u"/>
                         <outlet property="enduranceLabel" destination="ySI-0g-70C" id="G1x-0R-XOO"/>
+                        <outlet property="enduranceStepper" destination="rVd-fC-Wml" id="X3M-Ec-PEB"/>
                         <outlet property="firepowerLabel" destination="18J-4v-OI5" id="Nn8-0O-qmf"/>
+                        <outlet property="firepowerStepper" destination="alS-rf-v3v" id="EFm-72-VuT"/>
                         <outlet property="intelligenceLabel" destination="TnF-U1-wHZ" id="Bl9-Wv-B7v"/>
+                        <outlet property="intelligenceStepper" destination="U1D-aT-oJ6" id="GvJ-GO-szX"/>
                         <outlet property="nameText" destination="KCo-qe-grN" id="Fnt-Yh-x8Q"/>
                         <outlet property="rankLabel" destination="qCg-yM-cHh" id="hay-jC-ZIM"/>
+                        <outlet property="rankStepper" destination="yGm-Wm-eoy" id="yxy-pm-54F"/>
                         <outlet property="ratingLabel" destination="orL-Eb-dXD" id="cDF-rz-ja3"/>
                         <outlet property="skillLabel" destination="u66-NI-Bpo" id="y5V-v0-xwm"/>
+                        <outlet property="skillStepper" destination="uAF-dg-KGh" id="k2q-zX-BVM"/>
                         <outlet property="speedLabel" destination="gUL-wS-2mS" id="8Th-uc-Tto"/>
+                        <outlet property="speedStepper" destination="qkF-FH-Bch" id="Uei-es-7vp"/>
                         <outlet property="strengthLabel" destination="Xcg-7I-h3h" id="4Da-bx-K1y"/>
+                        <outlet property="strengthStepper" destination="KdM-Ly-hxJ" id="8rp-og-X6b"/>
                         <outlet property="teamIconView" destination="amR-fP-09A" id="H0j-ES-ZPz"/>
                         <outlet property="teamSegment" destination="fsE-72-wZS" id="ZS5-rl-4kc"/>
                     </connections>

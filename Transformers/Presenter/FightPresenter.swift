@@ -13,6 +13,7 @@ class FightPresenter{
     let model: ModelProtocol?
     var fightProtocol: FightProtocol?
     var fightSetArray = [FighterSetUp]()
+  
     
     init(model: ModelProtocol) {
         self.model = model
@@ -59,6 +60,8 @@ class FightPresenter{
 
 extension FightPresenter: FightViewOutput
 {
+  
+    
     func ranksAvailable(transformers: [Transformer])->Set<Int>{
         var rankSet = Set<Int>()
         
