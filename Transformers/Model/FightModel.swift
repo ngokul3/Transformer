@@ -25,7 +25,7 @@ struct FighterSetUp{
         let fighter2Name = fighter2?.transformerName ?? ""
         
         if (fighter1Name.count != 0 && fighter2Name.count != 0){
-            return "\(fighter1Name) Vs \(fighter2Name)"
+            return "Rank \(rank ?? 0): \(fighter1Name) Vs \(fighter2Name)"
         }
         else if (fighter1Name.count == 0 && fighter2Name.count != 0){
             return "\(fighter2Name)"
@@ -49,7 +49,7 @@ struct FighterSetUp{
         case (_, .Empty), (.Empty, _):
             return "Not fighting"
         case (.Born, .Born):
-            return "Not fought yet"
+            return "Ready"
         default:
             return "Both Alive"
         }

@@ -85,7 +85,7 @@ extension FightVC: UITableViewDataSource, UITableViewDelegate{
                 preconditionFailure("Incorrect Cell provided")
             }
             if let stat = self.statisticsArray[safe: indexPath.row]{
-                cell.battleLabel.text = "Battle: \(stat.battleNo)"
+                cell.battleLabel.text = "Battle \(stat.battleNo): "
                 cell.resultLabel.text = stat.winningTeam.rawValue
             }
             return cell

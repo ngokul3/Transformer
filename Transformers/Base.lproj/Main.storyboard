@@ -33,13 +33,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-lz-wgi">
-                                                    <rect key="frame" x="5" y="5" width="210" height="33.5"/>
+                                                    <rect key="frame" x="5" y="5" width="262" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yet to fight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-5L-Zd9">
-                                                    <rect key="frame" x="225" y="5" width="144" height="33.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yet to fight" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdF-5L-Zd9">
+                                                    <rect key="frame" x="272" y="5" width="104" height="33.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -48,15 +48,15 @@
                                             <constraints>
                                                 <constraint firstItem="FHh-lz-wgi" firstAttribute="top" secondItem="0BO-kE-0aT" secondAttribute="top" constant="5" id="0Pv-w0-K0j"/>
                                                 <constraint firstItem="cdF-5L-Zd9" firstAttribute="top" secondItem="0BO-kE-0aT" secondAttribute="top" constant="5" id="3fo-wU-vhu"/>
-                                                <constraint firstItem="cdF-5L-Zd9" firstAttribute="trailing" secondItem="0BO-kE-0aT" secondAttribute="trailingMargin" constant="5" id="OuV-T4-KwB"/>
+                                                <constraint firstItem="cdF-5L-Zd9" firstAttribute="leading" secondItem="FHh-lz-wgi" secondAttribute="trailing" constant="5" id="KEC-ZE-Rtz"/>
+                                                <constraint firstItem="cdF-5L-Zd9" firstAttribute="trailing" secondItem="0BO-kE-0aT" secondAttribute="trailingMargin" constant="12" id="OuV-T4-KwB"/>
                                                 <constraint firstAttribute="bottom" secondItem="cdF-5L-Zd9" secondAttribute="bottom" constant="5" id="a6b-rg-cnz"/>
                                                 <constraint firstAttribute="bottom" secondItem="FHh-lz-wgi" secondAttribute="bottom" constant="5" id="bhh-ca-2LP"/>
-                                                <constraint firstItem="cdF-5L-Zd9" firstAttribute="leading" secondItem="FHh-lz-wgi" secondAttribute="trailing" constant="10" id="dZ6-dc-Lg4"/>
                                                 <constraint firstItem="FHh-lz-wgi" firstAttribute="leading" secondItem="0BO-kE-0aT" secondAttribute="leading" constant="5" id="x6H-UI-7DC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="1.5:4" id="Xhs-N4-ryq"/>
+                                            <constraint firstItem="cdF-5L-Zd9" firstAttribute="width" secondItem="bhy-Mb-pR7" secondAttribute="width" multiplier="1.5:4" constant="-40" id="Xhs-N4-ryq"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="fightSetLabel" destination="FHh-lz-wgi" id="cOF-JT-cjw"/>
@@ -176,13 +176,13 @@
                                                         <constraint firstAttribute="width" constant="50" id="WV7-fR-cEr"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-ah-z42">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpY-ah-z42">
                                                     <rect key="frame" x="70" y="29.5" width="243" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu9-Hh-weV">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wu9-Hh-weV">
                                                     <rect key="frame" x="321" y="29.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>

@@ -154,6 +154,13 @@ extension AddEditVC{
     }
     
     @IBAction func btnSaveClick(_ sender: UIBarButtonItem) {
+        if let state = transformer?.state{
+            if (state == .Died){
+                alertUser = "Can't save dead transformers"
+                return
+            }
+        }
+        
         guard let name = nameText.text,
             !name.isEmpty else{
                 alertUser = "Transformer Name cannot be empty"
