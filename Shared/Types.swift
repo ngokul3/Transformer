@@ -68,7 +68,7 @@ protocol FightStatisticsDataSource{
 }
 
 protocol FightProtocol: class{
-    func evaluateFighters(evaluationComplete : ()->Void)
+    func evaluateFighters(evaluationComplete : (MessageType)->Void)
     var fightResult: FightResult {get set}
 }
 

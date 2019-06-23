@@ -104,21 +104,21 @@ class Fight: FightProtocol{
         }
     }
     
-    func evaluateFighters(evaluationComplete : ()->Void){
+    func evaluateFighters(evaluationComplete : (MessageType)->Void){
         checkSuperHero { (proceedToCheck2) in
             if !(proceedToCheck2) {
-                evaluationComplete()
+                evaluationComplete(MessageType.evaluatedByName)
             }else{
                 checkCourageWithStrength { (proceedToCheck3) in
                     if !(proceedToCheck3){
-                        evaluationComplete()
+                        evaluationComplete(MessageType.evaluatedByCourageStrength)
                     }else{
                         checkSkill{(proceedToCheck4) in
                             if !(proceedToCheck4){
-                                evaluationComplete()
+                                evaluationComplete(MessageType.evaluatedBySkill)
                             }else{
                                 checkRating()
-                                evaluationComplete()
+                                evaluationComplete(MessageType.evaluatedByRating)
                             }
                         }
                     }

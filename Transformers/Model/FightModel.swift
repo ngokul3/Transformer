@@ -53,9 +53,9 @@ struct FighterSetUp{
         default:
             return "Both Alive"
         }
-       
-        
     }
+    
+   
 }
 
 

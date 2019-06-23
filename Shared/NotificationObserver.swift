@@ -17,6 +17,7 @@ enum MessageType: String{
     case evaluatedByRank = "Rank rule"
     case evaluatedByRating = "Rating rule"
     case evaluatedByName = "Name rule"
+    case evaluatedByCourageStrength = "Courage and Strength"
     case winnerFound = "Winner among Transformer"
     case bothDead = "Both Transformers are dead"
     case gameOver = "All Transformers are dead"

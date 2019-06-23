@@ -102,19 +102,28 @@ extension FightPresenter: FightViewOutput
         }
     }
     
+    func gameOver(){
+        
+    }
     func startFight() {
         let fightQueue = DispatchQueue(label: "serialQueue", qos: .background, attributes: .init(), autoreleaseFrequency: .inherit, target: .global())
         
         fightQueue.async {[weak self] in
             if let s = self{
                 for fightSet in s.fightSetArray{
+                   
                     if var fighter1 = fightSet.fighter1,
                         var fighter2 = fightSet.fighter2{
                         let fight = Fight(fighter1: fighter1, fighter2: fighter2)
                         
                         self?.stats.battleNo += 1
                         
-                        fight.evaluateFighters {
+                        fight.evaluateFighters { (evaluationMethod) in
+                            
+                            if(evaluationMethod == .evaluatedByName && fightSet.isBothDead){
+                                
+                            }
+                            
                             fighter1 = fight.fighter1
                             fighter2 = fight.fighter2
                             
@@ -135,6 +144,7 @@ extension FightPresenter: FightViewOutput
                             TransformerNotification.updateObservers(message: .fightDone, data: self?.stats)
                         }
                     }
+                    
                 }
             }
         }
