@@ -22,6 +22,7 @@ class AddEditVC: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var teamSegment: UISegmentedControl!
 
+    @IBOutlet weak var iboScrollView: UIScrollView!
     @IBOutlet weak var rankStepper: UIStepper!
     @IBOutlet weak var courageStepper: UIStepper!
     @IBOutlet weak var strengthStepper: UIStepper!
@@ -39,6 +40,9 @@ class AddEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTransformer()
+        self.iboScrollView.isScrollEnabled = true
+        self.iboScrollView.isUserInteractionEnabled = true
+        
     }
     
     func loadTransformer(){

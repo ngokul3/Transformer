@@ -34,20 +34,23 @@ class FightPresenter{
             let rankSet = ranksAvailable(transformers: t)
             
             self.fightSetArray.removeAll()
+            var setId = Set<String>()
             
             for rank in rankSet{
-                
-            let fighters = findFighters(for: rank, transformers: t)
-                if !fighters.isBothDead{
-                    self.fightSetArray.append(fighters)
-                }
+                let fighters = findFighters(for: rank, transformers: t)
+                    if !fighters.isBothDead{
+                        self.fightSetArray.append(fighters)
+                        setId.insert(fighters.fighter1?.transformerId ?? "0")
+                        setId.insert(fighters.fighter2?.transformerId ?? "0")
+                    }
             }
             
             let restoffighters = t.filter { (trans) -> Bool in
-                let s = self.fightSetArray.contains(where: { (arg) -> Bool in
-                    return ((arg.fighter1?.transformerId == trans.transformerId ||
-                            arg.fighter2?.transformerId == trans.transformerId))
-                })
+//                let s = self.fightSetArray.contains(where: { (arg) -> Bool in
+//                    return ((arg.fighter1?.transformerId == trans.transformerId ||
+//                            arg.fighter2?.transformerId == trans.transformerId))
+//                })
+                let s = setId.contains(trans.transformerId ?? "0")
 
                  return !s
             }
