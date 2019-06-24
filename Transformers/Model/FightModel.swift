@@ -28,10 +28,10 @@ struct FighterSetUp{
             return "Rank \(rank ?? 0): \(fighter1Name) Vs \(fighter2Name)"
         }
         else if (fighter1Name.count == 0 && fighter2Name.count != 0){
-            return "\(fighter2Name)"
+            return "Rank \(rank ?? 0): \(fighter2Name)"
         }
         else if (fighter2Name.count == 0 && fighter1Name.count != 0){
-            return "\(fighter1Name)"
+            return "Rank \(rank ?? 0): \(fighter1Name)"
         }else{
             return "No fighters Alive for this rank"
         }

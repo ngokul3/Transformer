@@ -35,7 +35,7 @@ class AddEditVC: UIViewController {
     var transformer: Transformer?
     var transformerVCType : DetailVCType?
     var saveDetailVC: ((Transformer?) -> Void)?
-    var loadImage:(()->Void)?
+    var loadImage:((Transformer?) -> Void)?
     
     @IBAction func rankStepperClick(_ sender: UIStepper) {
         rankLabel.text = String(Int(sender.value))
@@ -92,10 +92,10 @@ class AddEditVC: UIViewController {
         {
         case 0:
             transformer?.transformerTeam = .autobots
-            loadImage?()
+            loadImage?(transformer)
         case 1:
             transformer?.transformerTeam = .decepticon
-            loadImage?()
+            loadImage?(transformer)
         default:
             break
         }
@@ -141,6 +141,7 @@ class AddEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTransformer()
+        loadImage?(transformer)
         self.iboScrollView.isScrollEnabled = true
         self.iboScrollView.isUserInteractionEnabled = true
         
@@ -175,7 +176,7 @@ class AddEditVC: UIViewController {
                     teamSegment.selectedSegmentIndex = 1
                 }
             }
-            loadImage?()
+            loadImage?(transformer)
         }
     }
 }

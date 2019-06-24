@@ -56,6 +56,16 @@ extension MasterVC{
                     })
                 }
             }
+            
+            vc.loadImage = {[weak self] (transOpt) in
+                
+                if let imageFromCache = self?.imageCache.object(forKey: (transOpt?.transformerTeam ) as AnyObject) as? UIImage{
+                    OperationQueue.main.addOperation {
+                        vc.teamIconView.image = imageFromCache
+                    }
+                }
+            }
+            
         case "editSegue":
             guard let cell = sender as? UITableViewCell,
                 let indexPath = self.tableView.indexPath(for: cell) else{
@@ -66,9 +76,9 @@ extension MasterVC{
                 if let transformer = presenter?.transformerAtIndex(index: indexPath.row){
                     vc.transformer = transformer
                     vc.transformerVCType = DetailVCType.Edit
-                    vc.loadImage = {[weak self] in
+                    vc.loadImage = {[weak self] (transOpt) in
                         
-                        if let imageFromCache = self?.imageCache.object(forKey: (transformer.transformerTeam ?? Team.autobots) as AnyObject) as? UIImage{
+                        if let imageFromCache = self?.imageCache.object(forKey: (transOpt?.transformerTeam ) as AnyObject) as? UIImage{
                             OperationQueue.main.addOperation {
                                 vc.teamIconView.image = imageFromCache
                             }
