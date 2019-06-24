@@ -37,50 +37,6 @@ class AddEditVC: UIViewController {
     var saveDetailVC: ((Transformer?) -> Void)?
     var loadImage:(()->Void)?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadTransformer()
-        self.iboScrollView.isScrollEnabled = true
-        self.iboScrollView.isUserInteractionEnabled = true
-        
-    }
-    
-    func loadTransformer(){
-        if let t = transformer{
-            rankStepper.value = Double(t.rank ?? 1)
-            courageStepper.value = Double(t.courage ?? 1)
-            strengthStepper.value = Double(t.strength ?? 1)
-            skillStepper.value = Double(t.skill ?? 1)
-            speedStepper.value = Double(t.speed ?? 1)
-            intelligenceStepper.value = Double(t.intelligence ?? 1)
-            enduranceStepper.value = Double(t.endurance ?? 1)
-            firepowerStepper.value = Double(t.firepower ?? 1)
-            
-            nameText.text = t.transformerName ?? ""
-            rankLabel.text = String(t.rank ?? 1)
-            courageLabel.text = String(t.courage ?? 1)
-            strengthLabel.text = String(t.strength ?? 1)
-            skillLabel.text = String(t.skill ?? 1)
-            speedLabel.text = String(t.speed ?? 1)
-            intelligenceLabel.text = String(t.intelligence ?? 1)
-            firepowerLabel.text = String(t.firepower ?? 1)
-            ratingLabel.text = String(t.rating)
-            enduranceLabel.text = String(t.endurance ?? 1)
-            if let team = t.transformerTeam {
-                switch team{
-                case .autobots:
-                    teamSegment.selectedSegmentIndex = 0
-                case .decepticon:
-                    teamSegment.selectedSegmentIndex = 1
-                }
-            }
-            loadImage?()
-        }
-    }
-}
-
-
-extension AddEditVC{
     @IBAction func rankStepperClick(_ sender: UIStepper) {
         rankLabel.text = String(Int(sender.value))
         transformer?.rank = Int(rankLabel.text ?? "")
@@ -144,10 +100,7 @@ extension AddEditVC{
             break
         }
     }
-}
-
-
-extension AddEditVC{
+    
     @IBAction func btnBackClicked(_ sender: UIBarButtonItem) {
         if(transformer?.transformerName != nameText.text){
             alertUser = "Transformer Name was changed"
@@ -170,7 +123,7 @@ extension AddEditVC{
                 alertUser = "Transformer Name cannot be empty"
                 return
         }
-         transformer?.transformerName = nameText.text
+        transformer?.transformerName = nameText.text
         switch self.teamSegment.selectedSegmentIndex{
         case 0 :
             transformer?.transformerTeam = Team.autobots
@@ -184,7 +137,47 @@ extension AddEditVC{
         navigationController?.popViewController(animated: true)
         
     }
-  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadTransformer()
+        self.iboScrollView.isScrollEnabled = true
+        self.iboScrollView.isUserInteractionEnabled = true
+        
+    }
+    
+    func loadTransformer(){
+        if let t = transformer{
+            rankStepper.value = Double(t.rank ?? 1)
+            courageStepper.value = Double(t.courage ?? 1)
+            strengthStepper.value = Double(t.strength ?? 1)
+            skillStepper.value = Double(t.skill ?? 1)
+            speedStepper.value = Double(t.speed ?? 1)
+            intelligenceStepper.value = Double(t.intelligence ?? 1)
+            enduranceStepper.value = Double(t.endurance ?? 1)
+            firepowerStepper.value = Double(t.firepower ?? 1)
+            
+            nameText.text = t.transformerName ?? ""
+            rankLabel.text = String(t.rank ?? 1)
+            courageLabel.text = String(t.courage ?? 1)
+            strengthLabel.text = String(t.strength ?? 1)
+            skillLabel.text = String(t.skill ?? 1)
+            speedLabel.text = String(t.speed ?? 1)
+            intelligenceLabel.text = String(t.intelligence ?? 1)
+            firepowerLabel.text = String(t.firepower ?? 1)
+            ratingLabel.text = String(t.rating)
+            enduranceLabel.text = String(t.endurance ?? 1)
+            if let team = t.transformerTeam {
+                switch team{
+                case .autobots:
+                    teamSegment.selectedSegmentIndex = 0
+                case .decepticon:
+                    teamSegment.selectedSegmentIndex = 1
+                }
+            }
+            loadImage?()
+        }
+    }
 }
 
 extension AddEditVC{
