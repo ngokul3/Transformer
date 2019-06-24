@@ -39,6 +39,11 @@
    Battle3: All dead
    
 
+## How to run this app -
+
+Open Transformers.xcworkspace since there are dependencies. Run the app.
+
+
 ## How can we improve this app -
 
 1) The statistics of the battle can be persisted. The total history of battle information can be on a different controller from Results.
